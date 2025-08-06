@@ -1,0 +1,15 @@
+appId: nl.amsterdam.app.dev
+tags:
+  - util
+---
+- tapOn:
+    id: 'OnboardingCloseIcon'
+    # optional: true
+- tapOn:
+    id: 'HeaderEnvironmentIcon'
+- tapOn:
+    id: 'HomeEnvironmentSelector${ENVIRONMENT}Button'
+- tapOn:
+    id: 'HeaderBackIcon'
+- tapOn:
+    id: ${MODULE}

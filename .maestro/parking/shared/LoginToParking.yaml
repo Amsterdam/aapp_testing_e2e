@@ -1,0 +1,30 @@
+appId: nl.amsterdam.app.dev
+env:
+  REPORT_CODE: '37613017'
+  PIN_CODE: '8633'
+---
+- tapOn:
+    id: 'ParkingHomeLoginButton'
+- tapOn:
+    id: 'ParkingLoginFormReportCodeInputFieldInput'
+- inputText: ${REPORT_CODE}
+- tapOn:
+    id: 'ParkingLoginFormPinCodeInputFieldInput'
+- inputText: ${PIN_CODE}
+- tapOn:
+    id: 'ParkingLoginFormSubmitButton'
+- tapOn:
+    id: 'NoInternetCloseIcon'
+    optional: true
+- tapOn:
+    id: 'ParkingLoginScreenNextButton'
+- repeat:
+    times: 2
+    commands:
+      - runFlow: ../../shared/EnterAccessCode.yaml
+- tapOn:
+    id: 'ParkingLoginScreenNextButton'
+- runFlow: ../../shared/EnterAccessCode.yaml
+- tapOn:
+    id: AccessCodeBiometricsPermissionScreenDeclineButton
+    optional: true

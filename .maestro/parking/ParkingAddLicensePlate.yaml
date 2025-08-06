@@ -1,0 +1,39 @@
+appId: nl.amsterdam.app.dev
+---
+- launchApp:
+    clearState: true
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeParkingModuleButton
+- runFlow:
+    file: shared/LoginToParking.yaml
+- runFlow:
+    file: shared/SelectPermit.yaml
+    env:
+      PERMIT: 'Kraskaart.*'
+- tapOn:
+    id: ParkingLicensePlatesButton
+- tapOn:
+    id: ParkingRemoveLicensePlate9Button
+    optional: true
+- tapOn:
+    text: Verwijderen
+    optional: true
+- tapOn:
+    id: ParkingAddLicensePlateHeaderButton
+- tapOn:
+    id: ParkingAddLicensePlateFormLicensePlateInputFieldInput
+- inputText: 'ABC123'
+- pressKey: Enter
+- tapOn:
+    id: ParkingAddLicensePlateFormNameInputFieldInput
+- inputText: 'Mijn auto'
+- pressKey: Enter
+- tapOn:
+    id: ParkingAddLicensePlateFormSubmitButton
+- assertVisible: Kenteken ABC123 - Mijn auto
+- tapOn: Verwijder kenteken ABC123, Mijn auto
+- tapOn:
+    text: Verwijderen

@@ -1,0 +1,14 @@
+appId: nl.amsterdam.app.dev
+tags:
+  - util
+---
+- tapOn:
+    id: 'AccessCodeKeyBoardKey1Button'
+- tapOn:
+    id: 'AccessCodeKeyBoardKey2Button'
+- tapOn:
+    id: 'AccessCodeKeyBoardKey3Button'
+- tapOn:
+    id: 'AccessCodeKeyBoardKey4Button'
+- tapOn:
+    id: 'AccessCodeKeyBoardKey6Button'

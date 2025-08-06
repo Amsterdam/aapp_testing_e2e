@@ -1,0 +1,5 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: 'ParkingPermitTopTaskButtonTitleIcon'
+- tapOn: ${PERMIT}

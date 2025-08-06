@@ -1,0 +1,32 @@
+appId: nl.amsterdam.app.dev
+---
+- launchApp:
+    clearState: true
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeParkingModuleButton
+- runFlow:
+    file: shared/LoginToParking.yaml
+- runFlow:
+    file: shared/SelectPermit.yaml
+    env:
+      PERMIT: 'Kraskaart.*'
+- scrollUntilVisible:
+    element:
+      id: ParkingPermitBalanceMoneyAddButton
+- tapOn:
+    id: ParkingPermitBalanceMoneyAddButton
+- tapOn:
+    id: ParkingChooseAmountButton
+- tapOn:
+    id: ParkingSessionAmountBottomSheetContentRadioGroup2.5RadioButtonPhrase
+- tapOn:
+    id: ParkingSessionAmountBottomSheetContentDoneButton
+- tapOn:
+    id: ParkingIncreaseBalanceExternalLinkButton
+- runFlow:
+    file: ../shared/OpenAppDeeplink.yaml
+- assertVisible:
+    id: ParkingIncreaseBalanceSuccessAlert

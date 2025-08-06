@@ -1,0 +1,63 @@
+appId: nl.amsterdam.app.dev
+---
+- launchApp:
+    clearState: true
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeParkingModuleButton
+- runFlow:
+    file: shared/LoginToParking.yaml
+    env:
+      REPORT_CODE: ${REPORT_CODE}
+      PIN_CODE: ${PIN_CODE}
+- runFlow:
+    file: shared/SelectPermit.yaml
+    env:
+      PERMIT: 'Kraskaart.*'
+- tapOn: 'Start parkeersessie'
+- tapOn:
+    id: 'ParkingChooseLicensePlateButton'
+- tapOn:
+    id: ParkingAddLicensePlateFormLicensePlateInputFieldInput
+- inputText: 'ABC123'
+- pressKey: Enter
+- tapOn:
+    id: 'ParkingSessionAddLicensePlateSubmitButton'
+- tapOn:
+    id: 'ParkingChooseEndTimeButton'
+- swipe:
+    from:
+      id: TimeDurationSpinnerLine2
+    direction: RIGHT
+- tapOn:
+    id: 'ParkingSessionEndTimeBottomSheetContentDoneButton'
+- tapOn:
+    id: 'ParkingChoosePaymentZoneButton'
+- tapOn:
+    id: 'ParkingSessionPaymentZoneRadioGroupT11VRadioButtonPhrase'
+- tapOn:
+    id: 'ParkingSessionPaymentZoneBottomSheetContentDoneButton'
+- assertVisible:
+    id: 'ParkingChooseLicensePlateTitle'
+- scrollUntilVisible:
+    element:
+      text: 'Bevestig parkeersessie'
+- tapOn: 'Bevestig parkeersessie'
+- tapOn:
+    text: 'Sta toe'
+    optional: true
+- tapOn:
+    text: 'Allow'
+    optional: true
+# TODO: add the allow options for android
+- tapOn:
+    id: 'ParkingActiveSessionNavigationButton'
+- tapOn:
+    id: 'ParkingSessionDetailsStopButton'
+- assertVisible: 'Annuleren'
+- tapOn:
+    text: Stoppen
+    index: 0
+- assertVisible: 'Start parkeersessie'

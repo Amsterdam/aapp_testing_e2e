@@ -1,0 +1,21 @@
+appId: nl.amsterdam.app.dev
+---
+- launchApp:
+    clearState: true
+    permissions:
+      notifications: allow
+- assertVisible:
+    id: 'OnboardingCloseIcon'
+- openLink: 'amsterdam://construction-work/project/348' # ontw: 351, test: 353, prod:
+- runFlow:
+    file: ../shared/OpenAppDeeplink.yaml
+- tapOn:
+    id: ConstructionWorkProjectUnFollowButton
+    optional: true
+- tapOn:
+    id: ConstructionWorkProjectFollowButton
+- tapOn:
+    text: Sta toe
+    optional: true
+- tapOn:
+    id: ConstructionWorkProjectUnFollowButton
