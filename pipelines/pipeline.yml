@@ -1,0 +1,27 @@
+resources:
+  pipelines:
+    - pipeline: build
+      source: 'aapp_app_mobile [build]'
+      trigger:
+        branches:
+          include:
+            - main
+
+variables:
+  - group: aapp_testing_e2e
+
+jobs:
+  - job: 'RunAndroidTests'
+    displayName: 'Run Android Tests'
+    pool:
+      vmImage: 'macOS-15'
+
+    steps:
+      - template: templates/android-pipeline.yml
+  - job: 'RunIOSTests'
+    displayName: 'Run iOS Tests'
+    pool:
+      vmImage: 'macOS-15'
+
+    steps:
+      - template: templates/ios-pipeline.yml

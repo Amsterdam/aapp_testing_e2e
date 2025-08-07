@@ -1,0 +1,10 @@
+steps:
+- template: shared.yml
+  parameters:
+    appId: ${{ parameters.androidAppId }}
+    testSuiteId: ${{ parameters.testSuiteId }}
+    buildArtifact: 'android-build'
+    appFileName: 'android/app/build/outputs/apk/dev/release/app-dev-release.apk'
+    platform: 'android'
+    device: 'Samsung Galaxy S24-14.0'
+    buildApiUrl: 'https://api-cloud.browserstack.com/app-automate/maestro/v2/android/build'

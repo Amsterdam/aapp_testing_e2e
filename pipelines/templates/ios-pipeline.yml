@@ -1,0 +1,19 @@
+resources:
+  pipelines:
+    - pipeline: build
+      source: 'aapp_app_mobile [build]'
+      trigger:
+        branches:
+          include:
+            - main
+
+steps:
+- template: shared.yml
+  parameters:
+    appId: ${{ parameters.iosAppId }}
+    testSuiteId: ${{ parameters.testSuiteId }}
+    buildArtifact: 'ios-build'
+    appFileName: 'ios/builds/AmsterdamTest.ipa'
+    platform: 'ios'
+    device: 'iPhone 15-17.0'
+    buildApiUrl: 'https://api-cloud.browserstack.com/app-automate/maestro/v2/ios/build'

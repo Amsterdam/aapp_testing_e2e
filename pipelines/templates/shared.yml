@@ -1,57 +1,58 @@
-resources:
-  pipelines:
-    - pipeline: build
-      source: 'aapp_app_mobile [build]'
-      trigger:
-        branches:
-          include:
-            - main
-
-pool:
-  name: Selfhosted Azure Devops Agents
-
 parameters:
-  - name: TEST_SUITE_ID
-    displayName: 'Existing Test Suite ID (optional)'
+  - name: appId
     type: string
-    default: ' '
-  - name: IOS_APP_ID
-    displayName: 'Existing iOS App ID (optional)'
+    default: ''
+  - name: testSuiteId
     type: string
-    default: ' '
-
-variables:
-  - group: aapp_testing_functional
+    default: ''
+  - name: buildArtifact
+    type: string
+    default: ''
+  - name: appFileName
+    type: string
+    default: ''
+  - name: platform
+    type: string
+    default: 'not-found'
+  - name: device
+    type: string
+    default: ''
+  - name: buildApiUrl
+    type: string
+    default: ''
 
 steps:
+  # Archive Maestro tests
   - task: ArchiveFiles@2
-    condition: ${{ eq(parameters.TEST_SUITE_ID, ' ') }}
+    condition: ${{ eq(parameters.testSuiteId, ' ') }}
     inputs:
-      rootFolderOrFile: '.maestro'
+      rootFolderOrFile: 'maestro/aapp'
       includeRootFolder: true
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/maestro-tests.zip'
       replaceExistingArchive: true
     displayName: 'Create ZIP-file of Maestro tests'
 
+  # Download app build files
   - download: build
-    condition: ${{ eq(parameters.IOS_APP_ID, ' ') }}
-    artifact: 'ios-build'
+    condition: ${{ eq(parameters.appId, ' ') }}
+    artifact: ${{ parameters.buildArtifact }}
     displayName: 'Download app build files'
 
+  # Create BrowserStack Auth Hash
   - powershell: |
-      $authString = "$(BROWSERSTACK_USERNAME)`:$(BROWSERSTACK_ACCESS_KEY)"
+      $authString = "$(BROWSERSTACK_USERNAME):$(BROWSERSTACK_ACCESS_KEY)"
       $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes($authString))
-      Write-Host "##vso[task.setvariable variable=AUTH_HASH]$auth"
+      Write-Host "##vso[task.setvariable variable=AUTH_HASH;issecret=true]$auth"
     displayName: 'Create BrowserStack Auth Hash'
 
+  # Upload Maestro tests to BrowserStack
   - powershell: |
-      if ("${{ parameters.TEST_SUITE_ID }}" -ne " ") {
-          Write-Host "TEST_SUITE_ID is pre-filled: ${{ parameters.TEST_SUITE_ID }}"
-          Write-Host "##vso[task.setvariable variable=TEST_SUITE_ID]${{ parameters.TEST_SUITE_ID }}"
+      if ("${{ parameters.testSuiteId }}" -ne " ") {
+          Write-Host "testSuiteId is pre-filled: ${{ parameters.testSuiteId }}"
+          Write-Host "##vso[task.setvariable variable=testSuiteId]${{ parameters.testSuiteId }}"
           exit 0
       }
-
       $headers = @{
           Authorization = "Basic $(AUTH_HASH)"
       }
@@ -63,46 +64,44 @@ steps:
           -Method POST `
           -Headers $headers `
           -Form $form
-
       Write-Host "Test Suite ID: $($testSuiteResponse.test_suite_id)"
-      Write-Host "##vso[task.setvariable variable=TEST_SUITE_ID]$($testSuiteResponse.test_suite_id)"
+      Write-Host "##vso[task.setvariable variable=testSuiteId]$($testSuiteResponse.test_suite_id)"
     displayName: 'Upload Maestro tests to BrowserStack'
 
+  # Upload App to BrowserStack
   - powershell: |
-      if ("${{ parameters.IOS_APP_ID }}" -ne " ") {
-          Write-Host "IOS_APP_ID is pre-filled: ${{ parameters.IOS_APP_ID }}"
-          Write-Host "##vso[task.setvariable variable=IOS_APP_ID]${{ parameters.IOS_APP_ID }}"
+      if ("${{ parameters.appId }}" -ne " ") {
+          Write-Host "appId is pre-filled: ${{ parameters.appId }}"
+          Write-Host "##vso[task.setvariable variable=appId]${{ parameters.appId }}"
           exit 0
       }
-
-      $appFile = Get-ChildItem "$(Pipeline.Workspace)/build/ios-build/ios/builds" -Name "AmsterdamTest.ipa" | Select-Object -First 1
+      $appFile = Get-ChildItem "$(Pipeline.Workspace)/build/${{ parameters.buildArtifact }}/${{ parameters.appFileName }}" | Select-Object -First 1
       if (-not $appFile) {
-          Write-Host "##vso[task.logissue type=error]No AmsterdamTest.ipa file found"
+          Write-Host "##vso[task.logissue type=error]No ${{ parameters.appFileName }} file found"
           exit 1
       }
-
       $headers = @{
           Authorization = "Basic $(AUTH_HASH)"
       }
       $form = @{
-          custom_id = "AmsterdamAppTest"
-          file = Get-Item "$(Pipeline.Workspace)/build/ios-build/ios/builds/AmsterdamTest.ipa"
+          custom_id = "AmsterdamAppTest-${{ parameters.platform }}"
+          file = Get-Item "$(Pipeline.Workspace)/build/${{ parameters.buildArtifact }}/${{ parameters.appFileName }}"
       }
       $appResponse = Invoke-RestMethod -Uri "https://api-cloud.browserstack.com/app-automate/maestro/v2/app" `
           -Method POST `
           -Headers $headers `
           -Form $form
-
       Write-Host "App ID: $($appResponse.app_id)"
-      Write-Host "##vso[task.setvariable variable=IOS_APP_ID]$($appResponse.app_id)"
+      Write-Host "##vso[task.setvariable variable=appId]$($appResponse.app_id)"
     displayName: 'Upload App to BrowserStack'
 
+  # Run Maestro Tests on BrowserStack
   - powershell: |
       $buildBody = @{
-          app = "bs://$(IOS_APP_ID)"
-          testSuite = "bs://$(TEST_SUITE_ID)"
+          app = "bs://$(appId)"
+          testSuite = "bs://$(testSuiteId)"
           project = "Amsterdam App Maestro Tests"
-          devices = @("iPhone 15-17.0")
+          devices = @("${{ parameters.device }}")
           networkLogs = $false
           deviceLogs = $true
           execute = @("ParkingStartKraskaartSession.yaml")
@@ -111,31 +110,28 @@ steps:
           Authorization = "Basic $(AUTH_HASH)"
           "Content-Type" = "application/json"
       }
-      $buildResponse = Invoke-RestMethod -Uri "https://api-cloud.browserstack.com/app-automate/maestro/v2/ios/build" `
+      $buildResponse = Invoke-RestMethod -Uri "${{ parameters.buildApiUrl }}" `
           -Method POST `
           -Headers $headers `
           -Body $buildBody
-
       Write-Host "Build ID: $($buildResponse.build_id)"
-      Write-Host "##vso[task.setvariable variable=IOS_BUILD_ID]$($buildResponse.build_id)"
-    displayName: 'Run Maestro Tests on iOS via BrowserStack'
+      Write-Host "##vso[task.setvariable variable=BUILD_ID]$($buildResponse.build_id)"
+    displayName: 'Run Maestro Tests on BrowserStack'
 
+  # Wait for BrowserStack Build and Show Result
   - powershell: |
-      $buildId = "$(IOS_BUILD_ID)"
+      $buildId = "$(BUILD_ID)"
       $url = "https://api-cloud.browserstack.com/app-automate/maestro/v2/builds/$buildId"
-
       Write-Host "Build status URL: $url"
-
+      Write-Host "View progress in BrowserStack: https://app-automate.browserstack.com/dashboard/v2/builds/$buildId"
       $headers = @{
           Authorization = "Basic $(AUTH_HASH)"
       }
       $status = "running"
       $attempt = 0
-      $maxAttempts = 60  # Wait up to 10 minutes (60 * 10s)
+      $maxAttempts = 60
       $waitSeconds = 10
-
       Write-Host "Polling BrowserStack build status for build ID: $buildId"
-
       while ($status -eq "running" -and $attempt -lt $maxAttempts) {
           $response = Invoke-RestMethod -Uri $url -Headers $headers
           $status = $response.status
@@ -145,21 +141,16 @@ steps:
               $attempt++
           }
       }
-
       if ($status -eq "running") {
           Write-Host "##vso[task.logissue type=error]Timed out waiting for build to finish."
           exit 1
       }
-
       Write-Host "Final build status: $status"
       Write-Host "View build result in BrowserStack: https://app-automate.browserstack.com/dashboard/v2/builds/$buildId"
-
       Write-Host "Full response:"
       $response | ConvertTo-Json -Depth 10
-
       if ($status -ne "passed") {
           Write-Host "##vso[task.logissue type=error]Build did not pass. Status: $status"
           exit 1
       }
-
     displayName: 'Wait for BrowserStack Build and Show Result'
