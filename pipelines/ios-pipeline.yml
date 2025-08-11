@@ -1,3 +1,4 @@
+name: iOS
 resources:
   pipelines:
     - pipeline: build
