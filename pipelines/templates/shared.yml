@@ -33,6 +33,13 @@ steps:
       replaceExistingArchive: true
     displayName: 'Create ZIP-file of Maestro tests'
 
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)/maestro-tests.zip'
+      artifactName: 'maestro-tests'
+      publishLocation: 'Container'
+    displayName: 'Publish Maestro Tests Artifact'
+
   # Download app build files
   - download: build
     condition: ${{ eq(parameters.appId, ' ') }}
@@ -57,7 +64,6 @@ steps:
           Authorization = "Basic $(AUTH_HASH)"
       }
       $form = @{
-          custom_id = "ParkingStartSessionFlow"
           file = Get-Item "$(Build.ArtifactStagingDirectory)/maestro-tests.zip"
       }
       $testSuiteResponse = Invoke-RestMethod -Uri "https://api-cloud.browserstack.com/app-automate/maestro/v2/test-suite" `
