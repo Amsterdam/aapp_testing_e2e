@@ -153,4 +153,10 @@ steps:
           Write-Host "##vso[task.logissue type=error]Build did not pass. Status: $status"
           exit 1
       }
+      try {
+        $response = Invoke-RestMethod -Uri $url -Headers $headers
+      } catch {
+        Write-Host "##vso[task.logissue type=error]Failed to get build status: $($_.Exception.Message)"
+        exit 1
+      }
     displayName: 'Wait for BrowserStack Build and Show Result'
