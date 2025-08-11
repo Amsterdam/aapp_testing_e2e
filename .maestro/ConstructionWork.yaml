@@ -1,0 +1,4 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: construction-work/ProjectDetail.yaml

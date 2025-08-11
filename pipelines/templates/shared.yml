@@ -104,7 +104,7 @@ steps:
           devices = @("${{ parameters.device }}")
           networkLogs = $false
           deviceLogs = $true
-          execute = @("Test.yaml")
+          execute = @(".maestro")
       } | ConvertTo-Json -Depth 10
       $headers = @{
           Authorization = "Basic $(AUTH_HASH)"

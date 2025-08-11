@@ -1,6 +1,0 @@
-appId: nl.amsterdam.app.dev
----
-- runFlow:
-    file: construction-work/ConstructionWork.yaml
-- runFlow:
-    file: parking/Parking.yaml
