@@ -1,8 +1,0 @@
-appId: nl.amsterdam.app.dev
----
-- tapOn:
-    text: Amsterdam Test
-    optional: true
-- tapOn:
-    text: /Altijd|Always/
-    optional: true

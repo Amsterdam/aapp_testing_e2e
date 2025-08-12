@@ -1,8 +1,0 @@
-appId: nl.amsterdam.app.dev
----
-- extendedWaitUntil:
-    visible: Open
-    timeout: 15000
-- tapOn:
-    text: Open
-    optional: true

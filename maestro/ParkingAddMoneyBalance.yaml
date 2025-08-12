@@ -26,13 +26,7 @@ appId: nl.amsterdam.app.dev
     id: ParkingSessionAmountBottomSheetContentDoneButton
 - tapOn:
     id: ParkingIncreaseBalanceExternalLinkButton
-- runFlow:
-    when: 
-      platform: android
-    file: shared/OpenAppDialogAndroid.yaml
-- runFlow:
-    when: 
-      platform: iOS
-    file: shared/OpenAppDialogIOS.yaml
+- tapOn:
+    text: /Altijd|Always|Open/
 - assertVisible:
     id: ParkingIncreaseBalanceSuccessAlert
