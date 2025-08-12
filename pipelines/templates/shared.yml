@@ -103,7 +103,7 @@ steps:
           devices = @("${{ parameters.device }}")
           networkLogs = $false
           deviceLogs = $true
-          execute = @("Parking.yml")
+          execute = @("Parking.yaml")
       } | ConvertTo-Json -Depth 10
       $headers = @{
           Authorization = "Basic $(AUTH_HASH)"
