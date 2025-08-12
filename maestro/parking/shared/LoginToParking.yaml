@@ -1,7 +1,4 @@
 appId: nl.amsterdam.app.dev
-env:
-  REPORT_CODE: '37613017'
-  PIN_CODE: '8633'
 ---
 - tapOn:
     id: 'ParkingHomeLoginButton'
