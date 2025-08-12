@@ -24,8 +24,8 @@ parameters:
 steps:
 # Inject Azure DevOps variable(s) into Maestro YAMLs before zipping
   - script: |
-      find .maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_KRASKAART_PIN_CODE__|$(PARKING_ACCOUNT_KRASKAART_PIN_CODE)|g' {} +
-      find .maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_KRASKAART_REPORT_CODE__|$(PARKING_ACCOUNT_KRASKAART_REPORT_CODE)|g' {} +
+      find maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_KRASKAART_PIN_CODE__|$(PARKING_ACCOUNT_KRASKAART_PIN_CODE)|g' {} +
+      find maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_KRASKAART_REPORT_CODE__|$(PARKING_ACCOUNT_KRASKAART_REPORT_CODE)|g' {} +
     displayName: 'Inject parking account variables into Maestro tests'
   # Archive Maestro tests
   - task: ArchiveFiles@2
