@@ -13,6 +13,9 @@ appId: nl.amsterdam.app.dev
     file: parking/shared/SelectPermit.yaml
     env:
       PERMIT: 'Kraskaart.*'
+- scrollUntilVisible:
+    element:
+        id: ParkingLicensePlatesButton
 - tapOn:
     id: ParkingLicensePlatesButton
 - tapOn:

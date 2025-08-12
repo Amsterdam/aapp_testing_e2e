@@ -6,6 +6,3 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     text: /Altijd|Always/
     optional: true
-- tapOn:
-    text: Open
-    optional: true

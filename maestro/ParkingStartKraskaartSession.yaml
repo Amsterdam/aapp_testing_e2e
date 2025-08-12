@@ -41,6 +41,8 @@ appId: nl.amsterdam.app.dev
     id: 'ParkingSessionPaymentZoneBottomSheetContentDoneButton'
 - assertVisible:
     id: 'ParkingChooseLicensePlateTitle'
+- assertVisible:
+    id: 'ParkingCostTitle'
 - scrollUntilVisible:
     element:
       text: 'Bevestig parkeersessie'
