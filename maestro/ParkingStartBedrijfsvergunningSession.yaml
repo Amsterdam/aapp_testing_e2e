@@ -4,5 +4,5 @@ appId: nl.amsterdam.app.dev
     file: parking/shared/StartSession.yaml
     env:
         PERMIT: 'Bedrijfs.*'
-        REPORT_CODE: __PARKING_ACCOUNT_BEDRIJF_REPORT_CODE__
-        PIN_CODE: __PARKING_ACCOUNT_BEDRIJF_PIN_CODE__
+        REPORT_CODE: '__PARKING_ACCOUNT_BEDRIJF_REPORT_CODE__'
+        PIN_CODE: '__PARKING_ACCOUNT_BEDRIJF_PIN_CODE__'

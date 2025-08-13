@@ -4,5 +4,5 @@ appId: nl.amsterdam.app.dev
     file: parking/shared/StartSession.yaml
     env:
         PERMIT: 'Kraskaart.*'
-        REPORT_CODE: __PARKING_ACCOUNT_KRASKAART_REPORT_CODE__
-        PIN_CODE: __PARKING_ACCOUNT_KRASKAART_PIN_CODE__
+        REPORT_CODE: '__PARKING_ACCOUNT_KRASKAART_REPORT_CODE__'
+        PIN_CODE: '__PARKING_ACCOUNT_KRASKAART_PIN_CODE__'
