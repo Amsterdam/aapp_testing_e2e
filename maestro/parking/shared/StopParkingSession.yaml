@@ -1,0 +1,11 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: 'ParkingActiveSessionNavigationButton'
+- tapOn:
+    id: 'ParkingSessionDetailsStopButton'
+- tapOn:
+    text: Stoppen
+    index: 0
+- assertVisible:
+    id: ParkingPermitSessionsActiveTitle

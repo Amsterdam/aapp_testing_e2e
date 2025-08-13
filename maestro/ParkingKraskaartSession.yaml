@@ -1,0 +1,52 @@
+appId: nl.amsterdam.app.dev
+env:
+  LICENSE_PLATE: 'ABC123'
+---
+- launchApp:
+    clearState: true
+    permissions:
+      notifications: allow
+- runFlow:
+    file: parking/shared/InitStartSession.yaml
+    env:
+      PERMIT: 'Kraskaart.*'
+      REPORT_CODE: __PARKING_ACCOUNT_KRASKAART_REPORT_CODE__
+      PIN_CODE: __PARKING_ACCOUNT_KRASKAART_PIN_CODE__
+- tapOn:
+    id: ParkingGoToStartSessionKraskaartvergunningButton
+- tapOn:
+    id: 'ParkingChooseLicensePlateButton'
+- waitForAnimationToEnd
+- tapOn:
+    id: ParkingAddLicensePlateFormLicensePlateInputFieldInput
+- inputText: ${LICENSE_PLATE}
+- pressKey: Enter
+- tapOn:
+    id: 'ParkingSessionAddLicensePlateSubmitButton'
+- tapOn:
+    id: 'ParkingChooseEndTimeButton'
+- swipe:
+    from:
+      id: TimeDurationSpinnerLine2
+    direction: RIGHT
+- tapOn:
+    id: 'ParkingSessionEndTimeBottomSheetContentDoneButton'
+- tapOn:
+    id: 'ParkingChoosePaymentZoneButton'
+- tapOn:
+    id: 'ParkingSessionPaymentZoneRadioGroupT11VRadioButtonPhrase'
+- tapOn:
+    id: 'ParkingSessionPaymentZoneBottomSheetContentDoneButton'
+- assertVisible:
+    id: 'ParkingChooseLicensePlateTitle'
+- assertVisible:
+    id: 'ParkingCostTitle'
+- scrollUntilVisible:
+    element:
+      text: 'Bevestig parkeersessie'
+- tapOn: 'Bevestig parkeersessie'
+- tapOn: 'Kenteken ${LICENSE_PLATE}.*'
+- runFlow: parking/shared/ChangeEndTime.yaml
+- runFlow: parking/shared/StopParkingSession.yaml
+- tapOn:
+    id: ParkingGoToStartSessionKraskaartvergunningButton

@@ -9,6 +9,8 @@ appId: nl.amsterdam.app.dev
       REPORT_CODE: __PARKING_ACCOUNT_VISITOR_REPORT_CODE__
       PIN_CODE: __PARKING_ACCOUNT_VISITOR_PIN_CODE__
 - tapOn:
+    id: ParkingGoToStartSessionKraskaartvergunningButton
+- tapOn:
     id: ParkingVisitorLicensePlateInputFieldInput
 - inputText: 'ABC123'
 - pressKey: Enter

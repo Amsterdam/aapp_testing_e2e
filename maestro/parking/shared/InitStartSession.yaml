@@ -16,5 +16,3 @@ appId: nl.amsterdam.app.dev
     file: ../shared/SelectPermit.yaml
     env:
       PERMIT: ${PERMIT}
-- tapOn:
-    id: ParkingGoToStartSessionCodevergunningButton

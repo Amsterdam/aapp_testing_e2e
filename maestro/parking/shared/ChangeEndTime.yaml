@@ -1,0 +1,18 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: ParkingSessionDetailsAdjustEndTimeButton
+- tapOn:
+    id: ParkingSessionDurationIncreaseButton
+- scrollUntilVisible:
+    element:
+      id: ParkingSessionEndTimeBottomSheetContentDoneButton
+- tapOn:
+    id: ParkingSessionEndTimeBottomSheetContentDoneButton
+- scrollUntilVisible:
+    element:
+      id: ParkingEditSessionButton
+- tapOn:
+    id: ParkingEditSessionButton
+- assertVisible:
+    id: ParkingAdjustSessionSuccessAlert

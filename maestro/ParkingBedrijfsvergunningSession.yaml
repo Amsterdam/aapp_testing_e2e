@@ -10,8 +10,10 @@ env:
     file: parking/shared/InitStartSession.yaml
     env:
       PERMIT: 'Bedrijfs.*'
-      REPORT_CODE: __PARKING_ACCOUNT_BEDRIJF_REPORT_CODE__
-      PIN_CODE: __PARKING_ACCOUNT_BEDRIJF_PIN_CODE__
+      REPORT_CODE: '59069309'
+      PIN_CODE: '7554'
+- tapOn:
+    id: ParkingGoToStartSessionCodevergunningButton
 - tapOn:
     id: 'ParkingChooseLicensePlateButton'
 - waitForAnimationToEnd
@@ -29,25 +31,23 @@ env:
 - pressKey: Enter
 - tapOn:
     id: ParkingSessionAddLicensePlateSubmitButton
-- tapOn:
-    id: 'ParkingChooseEndTimeButton'
-- waitForAnimationToEnd
-- swipe:
-    start: 55%, 80%
-    end: 55%, 60%
-- tapOn:
-    id: 'ParkingSessionEndTimeBottomSheetContentDoneButton'
+- runFlow: parking/shared/ChooseEndTimeScrollWheel.yaml
 - scrollUntilVisible:
     element:
       id: ParkingStartSessionCodevergunningButton
 - tapOn:
     id: ParkingStartSessionCodevergunningButton
-- tapOn:
-    text: Open
-    index: 1
-    optional: true
 - assertVisible:
     id: ParkingStartSessionSuccessAlertWrapper
+- tapOn: 'Kenteken ${LICENSE_PLATE}.*'
+
+- tapOn:
+    id: ParkingSessionDetailsAdjustEndTimeButton
+- runFlow: parking/shared/ChooseEndTimeScrollWheel.yaml
+- tapOn:
+    id: ParkingEditSessionButton
+- assertVisible:
+    id: ParkingAdjustSessionSuccessAlert
 - scrollUntilVisible:
     element:
       id: ParkingLicensePlatesButton

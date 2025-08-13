@@ -1,0 +1,10 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: 'ParkingChooseEndTimeButton'
+- waitForAnimationToEnd
+- swipe:
+    start: 55%, 80%
+    end: 55%, 50%
+- tapOn:
+    id: 'ParkingSessionEndTimeBottomSheetContentDoneButton'

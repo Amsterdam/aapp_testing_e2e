@@ -4,10 +4,10 @@ appId: nl.amsterdam.app.dev
     id: 'ParkingHomeLoginButton'
 - tapOn:
     id: 'ParkingLoginFormReportCodeInputFieldInput'
-- inputText: ${REPORT_CODE}
+- inputText: '59069309'
 - tapOn:
     id: 'ParkingLoginFormPinCodeInputFieldInput'
-- inputText: ${PIN_CODE}
+- inputText: '7554'
 - tapOn:
     id: 'ParkingLoginFormSubmitButton'
 - tapOn:
