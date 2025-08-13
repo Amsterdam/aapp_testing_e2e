@@ -26,6 +26,8 @@ steps:
   - script: |
       find maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_KRASKAART_PIN_CODE__|$(PARKING_ACCOUNT_KRASKAART_PIN_CODE)|g' {} +
       find maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_KRASKAART_REPORT_CODE__|$(PARKING_ACCOUNT_KRASKAART_REPORT_CODE)|g' {} +
+      find maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_BEDRIJF_PIN_CODE__|$(PARKING_ACCOUNT_BEDRIJF_PIN_CODE)|g' {} +
+      find maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_BEDRIJF_REPORT_CODE__|$(PARKING_ACCOUNT_BEDRIJF_REPORT_CODE)|g' {} +
     displayName: 'Inject parking account variables into Maestro tests'
   # Archive Maestro tests
   - task: ArchiveFiles@2
@@ -37,6 +39,14 @@ steps:
       archiveFile: '$(Build.ArtifactStagingDirectory)/maestro-tests.zip'
       replaceExistingArchive: true
     displayName: 'Create ZIP-file of Maestro tests'
+
+  # Publish Maestro tests artifact
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)/maestro-tests.zip'
+      artifactName: 'maestro-tests'
+      publishLocation: 'Container'
+    displayName: 'Publish Maestro Tests Artifact'
 
   # Download app build files
   - download: build
