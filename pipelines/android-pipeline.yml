@@ -21,10 +21,10 @@ variables:
   - group: aapp_testing_e2e
   - name: devices
     value: |
-      Samsung Galaxy S25-15.0
-      Google Pixel 8-14.0
-      OnePlus 11R-13.0
-      Xiaomi Redmi Note 11-11.0
+      "Samsung Galaxy S25-15.0"
+      "Google Pixel 8 Pro-14.0"
+      "OnePlus 11R-13.0"
+      "Xiaomi Redmi Note 11-11.0"
 
 pool:
       vmImage: 'macOS-15'
