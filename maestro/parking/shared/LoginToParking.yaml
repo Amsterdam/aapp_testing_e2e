@@ -21,6 +21,7 @@ appId: nl.amsterdam.app.dev
       - runFlow: ../../shared/EnterAccessCode.yaml
 - tapOn:
     id: 'ParkingLoginScreenNextButton'
+- waitForAnimationToEnd
 - runFlow: ../../shared/EnterAccessCode.yaml
 - tapOn:
     id: AccessCodeBiometricsPermissionScreenDeclineButton

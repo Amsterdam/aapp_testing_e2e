@@ -34,10 +34,12 @@ env:
       id: ParkingStartSessionCodevergunningButton
 - tapOn:
     id: ParkingStartSessionCodevergunningButton
+- tapOn:
+    text: 'Allow'
+    optional: true
 - assertVisible:
     id: ParkingStartSessionSuccessAlertWrapper
 - tapOn: 'Kenteken ${LICENSE_PLATE}.*'
-
 - tapOn:
     id: ParkingSessionDetailsAdjustEndTimeButton
 - runFlow: parking/shared/ChooseEndTimeScrollWheel.yaml

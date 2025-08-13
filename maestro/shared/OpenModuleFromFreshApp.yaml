@@ -1,6 +1,9 @@
 appId: nl.amsterdam.app.dev
 ---
 - tapOn:
+    text: 'Allow'
+    optional: true
+- tapOn:
     id: 'OnboardingCloseIcon'
     optional: true
 - tapOn:

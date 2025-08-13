@@ -24,6 +24,9 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: ParkingStartSessionKraskaartvergunningButton
 - tapOn:
+    text: 'Allow'
+    optional: true
+- tapOn:
     text: Open
     index: 1
     optional: true

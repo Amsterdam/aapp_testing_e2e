@@ -44,6 +44,9 @@ env:
 - scrollUntilVisible:
     element:
       text: 'Bevestig parkeersessie'
+- tapOn:
+    text: 'Allow'
+    optional: true
 - tapOn: 'Bevestig parkeersessie'
 - tapOn: 'Kenteken ${LICENSE_PLATE}.*'
 - runFlow: parking/shared/ChangeEndTime.yaml
