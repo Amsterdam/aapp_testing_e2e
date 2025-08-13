@@ -24,7 +24,7 @@ variables:
       Samsung Galaxy S25-15.0
       Google Pixel 8-14.0
       OnePlus 11R-13.0
-      Samsung Galaxy A52-11.0
+      Xiaomi Redmi Note 11-11.0
 
 pool:
       vmImage: 'macOS-15'
