@@ -3,7 +3,7 @@ appId: nl.amsterdam.app.dev
 - launchApp:
     clearState: true
     permissions:
-      notifications: allow
+      all: allow
 - assertVisible:
     id: 'OnboardingCloseIcon'
 - openLink: 'amsterdam://construction-work/project/348' # ontw: 351, test: 353, prod:
@@ -15,7 +15,7 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: ConstructionWorkProjectFollowButton
 - tapOn:
-    text: Sta toe
+    text: 'Sta toe|Allow'
     optional: true
 - tapOn:
     id: ConstructionWorkProjectUnFollowButton

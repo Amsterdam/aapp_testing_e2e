@@ -1,11 +1,11 @@
 appId: nl.amsterdam.app.dev
-env:
-  LICENSE_PLATE: 'ABC123'
+jsEngine: graaljs
 ---
 - launchApp:
     clearState: true
     permissions:
       notifications: allow
+- runScript: parking/scripts/getRandomLicensePlate.js
 - runFlow:
     file: parking/shared/InitStartSession.yaml
     env:
@@ -17,12 +17,9 @@ env:
 - tapOn:
     id: 'ParkingChooseLicensePlateButton'
 - waitForAnimationToEnd
-- tapOn:
-    id: ParkingAddLicensePlateFormLicensePlateInputFieldInput
-- inputText: ${LICENSE_PLATE}
-- pressKey: Enter
-- tapOn:
-    id: 'ParkingSessionAddLicensePlateSubmitButton'
+- assertVisible:
+    id: ParkingSessionAddLicensePlateSubmitButton
+- runFlow: parking/shared/SaveLicensePlate.yaml
 - tapOn:
     id: 'ParkingChooseEndTimeButton'
 - swipe:
@@ -39,16 +36,24 @@ env:
     id: 'ParkingSessionPaymentZoneBottomSheetContentDoneButton'
 - assertVisible:
     id: 'ParkingChooseLicensePlateTitle'
-- assertVisible:
-    id: 'ParkingCostTitle'
 - scrollUntilVisible:
     element:
       text: 'Bevestig parkeersessie'
-- tapOn:
-    text: 'Allow'
-    optional: true
+- extendedWaitUntil:
+    visible:
+      id: 'ParkingCostTitle'
+- scrollUntilVisible:
+    element:
+      text: 'Bevestig parkeersessie'
 - tapOn: 'Bevestig parkeersessie'
-- tapOn: 'Kenteken ${LICENSE_PLATE}.*'
+- tapOn:
+    text: 'Sta toe|Allow'
+    optional: true
+- runFlow:
+    file: shared/SetTimeOut.yaml
+    env:
+      TIMEOUT_DURATION: '20000'
+- tapOn: 'Kenteken ${output.licensePlate}.*'
 - runFlow: parking/shared/ChangeEndTime.yaml
 - runFlow: parking/shared/StopParkingSession.yaml
 - tapOn:

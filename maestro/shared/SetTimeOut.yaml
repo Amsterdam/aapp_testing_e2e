@@ -1,0 +1,7 @@
+appId: nl.amsterdam.app.dev
+jsEngine: graaljs
+---
+- runScript:
+    file: ../scripts/setTimeOut.js
+    env:
+      TIMEOUT_DURATION: ${TIMEOUT_DURATION}

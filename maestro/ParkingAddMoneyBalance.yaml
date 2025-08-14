@@ -29,9 +29,9 @@ appId: nl.amsterdam.app.dev
     id: ParkingSessionAmountBottomSheetContentDoneButton
 - tapOn:
     id: ParkingIncreaseBalanceExternalLinkButton
-- tapOn:
-    text: Open
-    index: 1
-    optional: true
+- runFlow:
+    file: shared/OpenAppFromDeeplink.yaml
+    when:
+      platform: iOS
 - assertVisible:
     id: ParkingIncreaseBalanceSuccessAlert

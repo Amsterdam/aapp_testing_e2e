@@ -1,7 +1,9 @@
 appId: nl.amsterdam.app.dev
+jsEngine: graaljs
 ---
 - launchApp:
     clearState: true
+- runScript: parking/scripts/getRandomLicensePlate.js
 - runFlow:
     file: shared/OpenModuleFromFreshApp.yaml
     env:
@@ -31,7 +33,7 @@ appId: nl.amsterdam.app.dev
     id: ParkingAddLicensePlateHeaderButton
 - tapOn:
     id: ParkingAddLicensePlateFormLicensePlateInputFieldInput
-- inputText: 'ABC123'
+- inputText: ${output.licensePlate}
 - pressKey: Enter
 - tapOn:
     id: ParkingAddLicensePlateFormNameInputFieldInput
@@ -39,7 +41,7 @@ appId: nl.amsterdam.app.dev
 - pressKey: Enter
 - tapOn:
     id: ParkingAddLicensePlateFormSubmitButton
-- assertVisible: Kenteken ABC123 - Mijn auto
-- tapOn: Verwijder kenteken ABC123, Mijn auto
+- assertVisible: ${output.licensePlate} - Mijn auto
+- tapOn: Verwijder kenteken ${output.licensePlate}, Mijn auto
 - tapOn:
     text: Verwijderen

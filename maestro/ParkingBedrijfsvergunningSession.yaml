@@ -1,33 +1,28 @@
 appId: nl.amsterdam.app.dev
-env:
-  LICENSE_PLATE: 'ABC123'
+jsEngine: graaljs
 ---
 - launchApp:
     clearState: true
     permissions:
-      notifications: allow
+      all: allow
+- runScript: parking/scripts/getRandomLicensePlate.js
 - runFlow:
     file: parking/shared/InitStartSession.yaml
     env:
       PERMIT: 'Bedrijfs.*'
       REPORT_CODE: __PARKING_ACCOUNT_BEDRIJF_REPORT_CODE__
       PIN_CODE: __PARKING_ACCOUNT_BEDRIJF_PIN_CODE__
+- scrollUntilVisible:
+    element:
+      id: ParkingGoToStartSessionCodevergunningButton
 - tapOn:
     id: ParkingGoToStartSessionCodevergunningButton
 - tapOn:
     id: 'ParkingChooseLicensePlateButton'
 - waitForAnimationToEnd
-- tapOn:
-    id: ParkingAddLicensePlateFormLicensePlateInputFieldInput
-- inputText: ${LICENSE_PLATE}
-- pressKey: Enter
-- runFlow:
-    file: parking/shared/SaveLicensePlate.yaml
-    when:
-      notVisible:
-        id: ParkingSessionAddLicensePlateDuplicateAlert
-- tapOn:
+- assertVisible:
     id: ParkingSessionAddLicensePlateSubmitButton
+- runFlow: parking/shared/SaveLicensePlate.yaml
 - runFlow: parking/shared/ChooseEndTimeScrollWheel.yaml
 - scrollUntilVisible:
     element:
@@ -35,7 +30,7 @@ env:
 - tapOn:
     id: ParkingStartSessionCodevergunningButton
 - tapOn:
-    text: 'Allow'
+    text: 'Allow|Sta toe'
     optional: true
 - assertVisible:
     id: ParkingStartSessionSuccessAlert
@@ -44,9 +39,10 @@ env:
       id: ParkingLicensePlatesButton
 - tapOn:
     id: ParkingLicensePlatesButton
-- tapOn: 'Verwijder kenteken ${LICENSE_PLATE}.*'
+    retryTapIfNoChange: true
+- tapOn: 'Verwijder kenteken ${output.licensePlate}.*'
 - tapOn: 'Verwijderen'
-- tapOn: 'Kenteken ${LICENSE_PLATE}.*'
+- tapOn: 'Kenteken ${output.licensePlate}.*'
 - tapOn:
     id: ParkingSessionDetailsAdjustEndTimeButton
 - runFlow: parking/shared/ChooseEndTimeScrollWheel.yaml
