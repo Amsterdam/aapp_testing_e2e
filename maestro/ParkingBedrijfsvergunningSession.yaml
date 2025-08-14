@@ -34,6 +34,7 @@ jsEngine: graaljs
     optional: true
 - assertVisible:
     id: ParkingStartSessionSuccessAlert
+- tapOn: 'Kenteken ${output.licensePlate}.*'
 - tapOn:
     id: ParkingSessionDetailsAdjustEndTimeButton
 - runFlow: parking/shared/ChooseEndTimeScrollWheel.yaml
