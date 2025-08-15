@@ -1,36 +1,17 @@
 appId: nl.amsterdam.app.dev
 jsEngine: graaljs
+env:
+  VEHICLE_NAME: Mijn auto
 ---
 - launchApp:
     clearState: true
+    permissions:
+      all: allow
 - runScript: parking/scripts/getRandomLicensePlate.js
+- runFlow: parking/permits/visitor-account/Initialize.yaml
 - runFlow:
-    file: parking/shared/InitStartSession.yaml
+    file: parking/permits/visitor-account/StartSession.yaml
     env:
-      PERMIT: 'Op bezoek.*'
-      REPORT_CODE: __PARKING_ACCOUNT_VISITOR_REPORT_CODE__
-      PIN_CODE: __PARKING_ACCOUNT_VISITOR_PIN_CODE__
-- tapOn:
-    id: ParkingGoToStartSessionKraskaartvergunningButton
-- tapOn:
-    id: ParkingVisitorLicensePlateInputFieldInput
-- inputText: ${output.licensePlate}
-- pressKey: Enter
-- runFlow:
-    file: parking/shared/ChooseEndTimeSpinner.yaml
-- runFlow:
-    file: parking/shared/ChoosePaymentZone.yaml
-- scrollUntilVisible:
-    element:
-      id: ParkingStartSessionKraskaartvergunningButton
-- tapOn:
-    id: ParkingStartSessionKraskaartvergunningButton
-- tapOn:
-    text: 'Sta toe|Allow'
-    optional: true
-- runFlow:
-    file: shared/OpenAppFromDeeplink.yaml
-    when:
-      platform: iOS
-- assertVisible:
-    id: ParkingStartSessionSuccessAlertWrapper
+      LICENSE_PLATE: ${output.licensePlate}
+      VEHICLE_NAME: ${VEHICLE_NAME}
+- runFlow: parking/permits/visitor-account/PermitDetails.yaml

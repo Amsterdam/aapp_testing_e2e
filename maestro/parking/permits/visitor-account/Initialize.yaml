@@ -1,0 +1,8 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../../shared/InitializePermit.yaml
+    env:
+      PERMIT: 'Op bezoek.*'
+      REPORT_CODE: __PARKING_ACCOUNT_VISITOR_REPORT_CODE__
+      PIN_CODE: __PARKING_ACCOUNT_VISITOR_PIN_CODE__

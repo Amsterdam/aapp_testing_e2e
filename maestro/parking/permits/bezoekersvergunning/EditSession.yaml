@@ -1,0 +1,10 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../../../shared/SetTimeOut.yaml
+    env:
+      TIMEOUT_DURATION: '20000'
+- runFlow:
+    file: ../../shared/EditSession.yaml
+    env:
+      LICENSE_PLATE: ${LICENSE_PLATE}

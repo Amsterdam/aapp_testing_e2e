@@ -1,0 +1,6 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../../shared/StopSession.yaml
+    env:
+      LICENSE_PLATE: ${LICENSE_PLATE}

@@ -1,0 +1,28 @@
+appId: nl.amsterdam.app.dev
+---
+- scrollUntilVisible:
+    element:
+      id: ParkingGoToStartSessionCodevergunningButton
+- tapOn:
+    id: ParkingGoToStartSessionCodevergunningButton
+- tapOn:
+    id: 'ParkingChooseLicensePlateButton'
+- waitForAnimationToEnd
+- assertVisible:
+    id: ParkingSessionAddLicensePlateSubmitButton
+- runFlow:
+    file: ../../shared/SaveLicensePlate.yaml
+    env:
+      LICENSE_PLATE: ${LICENSE_PLATE}
+      VEHICLE_NAME: ${VEHICLE_NAME}
+- runFlow: ../../shared/ChooseEndTimeScrollWheel.yaml
+- scrollUntilVisible:
+    element:
+      id: ParkingStartSessionCodevergunningButton
+- tapOn:
+    id: ParkingStartSessionCodevergunningButton
+- tapOn:
+    text: 'Allow|Sta toe'
+    optional: true
+- assertVisible:
+    id: ParkingStartSessionSuccessAlert

@@ -1,0 +1,14 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../../../shared/SetTimeOut.yaml
+    env:
+      TIMEOUT_DURATION: '20000'
+- tapOn: 'Kenteken ${output.licensePlate}.*'
+- tapOn:
+    id: ParkingSessionDetailsAdjustEndTimeButton
+- runFlow: ../../shared/ChooseEndTimeScrollWheel.yaml
+- tapOn:
+    id: ParkingEditSessionButton
+- assertVisible:
+    id: ParkingAdjustSessionSuccessAlert

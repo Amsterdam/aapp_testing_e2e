@@ -2,6 +2,8 @@ appId: nl.amsterdam.app.dev
 ---
 - launchApp:
     clearState: true
+    permissions:
+      all: allow
 - runFlow:
     file: ../../shared/OpenModuleFromFreshApp.yaml
     env:

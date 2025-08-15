@@ -1,0 +1,7 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: ParkingLicensePlatesButton
+- tapOn: Verwijder kenteken ${LICENSE_PLATE}, ${VEHICLE_NAME}
+- tapOn: 'Verwijderen'
+- assertNotVisible: Verwijder kenteken ${LICENSE_PLATE}, ${VEHICLE_NAME}

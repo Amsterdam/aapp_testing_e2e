@@ -1,0 +1,28 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: ParkingGoToStartSessionKraskaartvergunningButton
+- tapOn:
+    id: ParkingVisitorLicensePlateInputFieldInput
+- inputText: ${LICENSE_PLATE}
+- pressKey: Enter
+- runFlow:
+    file: ../../shared/ChooseEndTimeSpinner.yaml
+- runFlow:
+    file: ../../shared/ChoosePaymentZone.yaml
+- scrollUntilVisible:
+    element:
+      id: ParkingStartSessionKraskaartvergunningButton
+- tapOn:
+    id: ParkingStartSessionKraskaartvergunningButton
+- tapOn:
+    text: 'Sta toe|Allow'
+    optional: true
+- runFlow:
+    file: ../../../shared/OpenAppFromDeeplink.yaml
+    when:
+      platform: iOS
+- assertVisible:
+    id: ParkingStartSessionSuccessAlertWrapper
+- tapOn:
+    id: ParkingStartSessionSuccessAlertCloseIcon

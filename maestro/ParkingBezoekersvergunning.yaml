@@ -8,27 +8,28 @@ env:
     permissions:
       all: allow
 - runScript: parking/scripts/getRandomLicensePlate.js
-- runFlow: parking/permits/bedrijfsvergunning/Initialize.yaml
+- runFlow: parking/permits/bezoekersvergunning/Initialize.yaml
 - runFlow:
-    file: parking/permits/bedrijfsvergunning/StartSession.yaml
+    file: parking/permits/bezoekersvergunning/StartSession.yaml
     env:
       LICENSE_PLATE: ${output.licensePlate}
       VEHICLE_NAME: ${VEHICLE_NAME}
 - runFlow:
-    file: parking/permits/bedrijfsvergunning/EditSession.yaml
+    file: parking/permits/bezoekersvergunning/EditSession.yaml
     env:
       LICENSE_PLATE: ${output.licensePlate}
 - runFlow:
-    file: parking/permits/bedrijfsvergunning/StopSession.yaml
+    file: parking/permits/bezoekersvergunning/StopSession.yaml
     env:
       LICENSE_PLATE: ${output.licensePlate}
-- runFlow: parking/permits/bedrijfsvergunning/PermitDetails.yaml
+- runFlow: parking/permits/bezoekersvergunning/IncreaseBalance.yaml
+- runFlow: parking/permits/bezoekersvergunning/PermitDetails.yaml
 - scrollUntilVisible:
     element:
       id: ParkingLicensePlatesButton
     direction: UP
 - runFlow:
-    file: parking/permits/bedrijfsvergunning/RemoveLicensePlate.yaml
+    file: parking/permits/bezoekersvergunning/RemoveLicensePlate.yaml
     env:
       LICENSE_PLATE: ${output.licensePlate}
       VEHICLE_NAME: ${VEHICLE_NAME}

@@ -1,21 +1,5 @@
 appId: nl.amsterdam.app.dev
 ---
-- launchApp:
-    clearState: true
-- runFlow:
-    file: shared/OpenModuleFromFreshApp.yaml
-    env:
-      ENVIRONMENT: Acceptance
-      MODULE: HomeParkingModuleButton
-- runFlow:
-    file: parking/shared/LoginToParking.yaml
-    env:
-      REPORT_CODE: '__PARKING_ACCOUNT_KRASKAART_REPORT_CODE__'
-      PIN_CODE: '__PARKING_ACCOUNT_KRASKAART_PIN_CODE__'
-- runFlow:
-    file: parking/shared/SelectPermit.yaml
-    env:
-      PERMIT: 'Kraskaart.*'
 - scrollUntilVisible:
     element:
       id: ParkingPermitBalanceMoneyAddButton
@@ -30,7 +14,7 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: ParkingIncreaseBalanceExternalLinkButton
 - runFlow:
-    file: shared/OpenAppFromDeeplink.yaml
+    file: ../../../shared/OpenAppFromDeeplink.yaml
     when:
       platform: iOS
 - assertVisible:

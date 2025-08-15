@@ -1,5 +1,6 @@
 appId: nl.amsterdam.app.dev
 ---
+- tapOn: 'Kenteken ${LICENSE_PLATE}.*'
 - tapOn:
     id: ParkingSessionDetailsAdjustEndTimeButton
 - tapOn:
@@ -18,3 +19,5 @@ appId: nl.amsterdam.app.dev
     id: ParkingEditSessionButton
 - assertVisible:
     id: ParkingAdjustSessionSuccessAlert
+- tapOn:
+    id: ParkingAdjustSessionSuccessAlertCloseIcon

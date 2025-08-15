@@ -1,17 +1,5 @@
 appId: nl.amsterdam.app.dev
-jsEngine: graaljs
 ---
-- launchApp:
-    clearState: true
-    permissions:
-      notifications: allow
-- runScript: parking/scripts/getRandomLicensePlate.js
-- runFlow:
-    file: parking/shared/InitStartSession.yaml
-    env:
-      PERMIT: 'Kraskaart.*'
-      REPORT_CODE: __PARKING_ACCOUNT_KRASKAART_REPORT_CODE__
-      PIN_CODE: __PARKING_ACCOUNT_KRASKAART_PIN_CODE__
 - tapOn:
     id: ParkingGoToStartSessionKraskaartvergunningButton
 - tapOn:
@@ -19,7 +7,11 @@ jsEngine: graaljs
 - waitForAnimationToEnd
 - assertVisible:
     id: ParkingSessionAddLicensePlateSubmitButton
-- runFlow: parking/shared/SaveLicensePlate.yaml
+- runFlow:
+    file: ../../shared/SaveLicensePlate.yaml
+    env:
+      LICENSE_PLATE: ${LICENSE_PLATE}
+      VEHICLE_NAME: ${VEHICLE_NAME}
 - tapOn:
     id: 'ParkingChooseEndTimeButton'
 - swipe:
@@ -49,12 +41,7 @@ jsEngine: graaljs
 - tapOn:
     text: 'Sta toe|Allow'
     optional: true
-- runFlow:
-    file: shared/SetTimeOut.yaml
-    env:
-      TIMEOUT_DURATION: '20000'
-- tapOn: 'Kenteken ${output.licensePlate}.*'
-- runFlow: parking/shared/ChangeEndTime.yaml
-- runFlow: parking/shared/StopParkingSession.yaml
+- assertVisible:
+    id: 'ParkingStartSessionSuccessAlert'
 - tapOn:
-    id: ParkingGoToStartSessionKraskaartvergunningButton
+    id: ParkingStartSessionSuccessAlertCloseIcon

@@ -1,0 +1,17 @@
+appId: nl.amsterdam.app.dev
+---
+- scrollUntilVisible:
+    element:
+      text: Alles over parkeren
+- assertVisible:
+    id: ParkingPermitDetailNamePhrase
+- assertVisible:
+    id: ParkingPermitDetailTimeBalancePhrase
+    index: 0
+- assertVisible:
+    id: ParkingPermitDetailParkingRatePhrase
+- assertVisible:
+    id: ParkingPermitDetailTimeBalancePhrase
+    index: 1
+- assertVisible:
+    id: ParkingPermitDetailPermitZoneNamePhrase

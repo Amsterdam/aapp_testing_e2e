@@ -2,7 +2,7 @@ appId: nl.amsterdam.app.dev
 ---
 - tapOn:
     id: ParkingAddLicensePlateFormLicensePlateInputFieldInput
-- inputText: ${output.licensePlate}
+- inputText: ${LICENSE_PLATE}
 - pressKey: Enter
 - swipe:
     from:
@@ -10,7 +10,7 @@ appId: nl.amsterdam.app.dev
     direction: RIGHT
 - tapOn:
     id: ParkingAddLicensePlateFormNameInputFieldInput
-- inputRandomPersonName
+- inputText: ${VEHICLE_NAME}
 - pressKey: Enter
 - tapOn:
     id: ParkingSessionAddLicensePlateSubmitButton
