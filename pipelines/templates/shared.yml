@@ -113,10 +113,6 @@ steps:
 
   # Run Maestro Tests on BrowserStack
   - powershell: |
-      $execute = @("maestro")
-      if ("${{ parameters.platform }}" -eq "ios") {
-          $execute = @("ParkingBedrijfsvergunning.yaml", "ParkingBezoekersvergunning.yaml")
-      }
       $buildBody = @{
           app = "bs://$(appId)"
           testSuite = "bs://$(testSuiteId)"
@@ -125,7 +121,12 @@ steps:
           networkLogs = $false
           deviceLogs = $true
           execute = $execute
-      } | ConvertTo-Json -Depth 10
+      }
+      if ("${{ parameters.platform }}" -eq "ios") {
+          $buildBody.execute = @("ParkingBedrijfsvergunning.yaml", "ParkingBezoekersvergunning.yaml")
+      }
+
+      $buildBodyJson = $buildBody | ConvertTo-Json -Depth 10
       $headers = @{
           Authorization = "Basic $(AUTH_HASH)"
           "Content-Type" = "application/json"
@@ -133,7 +134,7 @@ steps:
       $buildResponse = Invoke-RestMethod -Uri "${{ parameters.buildApiUrl }}" `
           -Method POST `
           -Headers $headers `
-          -Body $buildBody
+          -Body $buildBodyJson
       Write-Host "Build ID: $($buildResponse.build_id)"
       Write-Host "##vso[task.setvariable variable=BUILD_ID]$($buildResponse.build_id)"
     displayName: 'Run Maestro Tests on BrowserStack'
