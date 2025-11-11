@@ -1,5 +1,14 @@
 appId: nl.amsterdam.app.dev
 ---
+- launchApp:
+    clearState: true
+- runScript: parking/scripts/generateRandomLicensePlate.js
+- runFlow:
+    file: parking/shared/InitStartSession.yaml
+    env:
+      PERMIT: 'Op bezoek.*'
+      REPORT_CODE: __PARKING_ACCOUNT_VISITOR_REPORT_CODE__
+      PIN_CODE: __PARKING_ACCOUNT_VISITOR_PIN_CODE__
 - tapOn:
     id: ParkingGoToStartSessionKraskaartvergunningButton
 - tapOn:

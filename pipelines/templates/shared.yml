@@ -22,14 +22,16 @@ parameters:
     default: ''
 
 steps:
+  # Rename credentials.ci.js to credentials.js before variable injection
+  - script: |
+      find maestro -type f -name 'credentials.ci.js' -exec sh -c 'mv "$0" "${0%/*}/credentials.js"' {} \;
+    displayName: 'Rename credentials.ci.js to credentials.js'
+
   # Inject Azure DevOps variable(s) into Maestro YAMLs before zipping
   - script: |
-      find maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_KRASKAART_PIN_CODE__|$(PARKING_ACCOUNT_KRASKAART_PIN_CODE)|g' {} +
-      find maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_KRASKAART_REPORT_CODE__|$(PARKING_ACCOUNT_KRASKAART_REPORT_CODE)|g' {} +
-      find maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_BEDRIJF_PIN_CODE__|$(PARKING_ACCOUNT_BEDRIJF_PIN_CODE)|g' {} +
-      find maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_BEDRIJF_REPORT_CODE__|$(PARKING_ACCOUNT_BEDRIJF_REPORT_CODE)|g' {} +
-      find maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_VISITOR_PIN_CODE__|$(PARKING_ACCOUNT_VISITOR_PIN_CODE)|g' {} +
-      find maestro -type f -name '*.yaml' -exec sed -i '' 's|__PARKING_ACCOUNT_VISITOR_REPORT_CODE__|$(PARKING_ACCOUNT_VISITOR_REPORT_CODE)|g' {} +
+      find maestro -type f -name '*/credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_NAME__|$(PARKING_VISITOR_NAME)|g' {} +
+      find maestro -type f -name '*/credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_REPORT_CODE__|$(PARKING_VISITOR_REPORT_CODE)|g' {} +
+      find maestro -type f -name '*/credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_PIN_CODE__|$(PARKING_VISITOR_PIN_CODE)|g' {} +
     displayName: 'Inject parking account variables into Maestro tests'
   # Archive Maestro tests
   - task: ArchiveFiles@2
@@ -120,12 +122,8 @@ steps:
           devices = @("${{ parameters.device }}")
           networkLogs = $false
           deviceLogs = $true
-          execute = $execute
+          execute = "parking/session/visitor.yaml"
       }
-      if ("${{ parameters.platform }}" -eq "ios") {
-          $buildBody.execute = @("ParkingBedrijfsvergunning.yaml", "ParkingBezoekersvergunning.yaml")
-      }
-
       $buildBodyJson = $buildBody | ConvertTo-Json -Depth 10
       $headers = @{
           Authorization = "Basic $(AUTH_HASH)"

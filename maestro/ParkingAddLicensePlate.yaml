@@ -1,0 +1,47 @@
+appId: nl.amsterdam.app.dev
+jsEngine: graaljs
+---
+- launchApp:
+    clearState: true
+- runScript: parking/scripts/getRandomLicensePlate.js
+- runFlow:
+    file: shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Test
+      MODULE: HomeParkingModuleButton
+- runFlow:
+    file: parking/shared/LoginToParking.yaml
+    env:
+      REPORT_CODE: __PARKING_ACCOUNT_KRASKAART_REPORT_CODE__
+      PIN_CODE: __PARKING_ACCOUNT_KRASKAART_PIN_CODE__
+- runFlow:
+    file: parking/shared/SelectPermit.yaml
+    env:
+      PERMIT: 'Kraskaart.*'
+- scrollUntilVisible:
+    element:
+      id: ParkingPaymentHistoryButton
+- tapOn:
+    id: ParkingLicensePlatesButton
+- tapOn:
+    id: ParkingRemoveLicensePlate9Button
+    optional: true
+- tapOn:
+    text: Verwijderen
+    optional: true
+- tapOn:
+    id: ParkingAddLicensePlateHeaderButton
+- tapOn:
+    id: ParkingAddLicensePlateFormLicensePlateInputFieldInput
+- inputText: ${output.licensePlate}
+- pressKey: Enter
+- tapOn:
+    id: ParkingAddLicensePlateFormNameInputFieldInput
+- inputText: 'Mijn auto'
+- pressKey: Enter
+- tapOn:
+    id: ParkingAddLicensePlateFormSubmitButton
+- assertVisible: ${output.licensePlate} - Mijn auto
+- tapOn: Verwijder kenteken ${output.licensePlate}, Mijn auto
+- tapOn:
+    text: Verwijderen

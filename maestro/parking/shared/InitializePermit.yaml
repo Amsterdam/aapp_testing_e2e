@@ -7,7 +7,7 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../../shared/OpenModuleFromFreshApp.yaml
     env:
-      ENVIRONMENT: Acceptance
+      ENVIRONMENT: Test
       MODULE: HomeParkingModuleButton
 - runFlow:
     file: ../shared/LoginToParking.yaml

@@ -11,9 +11,6 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: 'ParkingLoginFormSubmitButton'
 - tapOn:
-    id: 'NoInternetCloseIcon'
-    optional: true
-- tapOn:
     id: 'ParkingLoginScreenNextButton'
 - repeat:
     times: 2

@@ -1,0 +1,11 @@
+appId: nl.amsterdam.app.dev
+---
+- launchApp:
+    clearState: true
+- runScript: ../../scripts/credentials.js
+- runFlow:
+    file: ../shared/InitStartSession.yaml
+    env:
+      PERMIT: 'Bezoekersvergunning'
+      REPORT_CODE: ${output.reportCodeVisitor}
+      PIN_CODE: ${output.pinCodeVisitor}
