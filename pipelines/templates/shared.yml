@@ -29,9 +29,9 @@ steps:
 
   # Inject Azure DevOps variable(s) into Maestro YAMLs before zipping
   - script: |
-      find maestro -type f -name '*/credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_NAME__|$(PARKING_VISITOR_NAME)|g' {} +
-      find maestro -type f -name '*/credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_REPORT_CODE__|$(PARKING_VISITOR_REPORT_CODE)|g' {} +
-      find maestro -type f -name '*/credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_PIN_CODE__|$(PARKING_VISITOR_PIN_CODE)|g' {} +
+      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_NAME__|$(PARKING_VISITOR_NAME)|g' {} +
+      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_REPORT_CODE__|$(PARKING_VISITOR_REPORT_CODE)|g' {} +
+      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_PIN_CODE__|$(PARKING_VISITOR_PIN_CODE)|g' {} +
     displayName: 'Inject parking account variables into Maestro tests'
   # Archive Maestro tests
   - task: ArchiveFiles@2
