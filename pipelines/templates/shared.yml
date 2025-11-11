@@ -38,7 +38,7 @@ steps:
     condition: ${{ eq(parameters.testSuiteId, ' ') }}
     inputs:
       rootFolderOrFile: 'maestro'
-      includeRootFolder: false
+      includeRootFolder: true
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/maestro-tests.zip'
       replaceExistingArchive: true
@@ -122,7 +122,7 @@ steps:
           devices = @("${{ parameters.device }}")
           networkLogs = $false
           deviceLogs = $true
-          execute = @("parking/session/visitor.yaml")
+          execute = @("maestro/parking/session/visitor.yaml")
       }
       $buildBodyJson = $buildBody | ConvertTo-Json -Depth 10
       $headers = @{
