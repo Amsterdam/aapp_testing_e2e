@@ -12,6 +12,8 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: ParkingSessionUseFavoriteMachineButton
 - runFlow: './ChooseEndTimeScrollWheel.yaml'
+- scrollUntilVisible:
+    id: ParkingStartSession.*Button
 - tapOn:
     id: ParkingStartSession.*Button
 - tapOn:
