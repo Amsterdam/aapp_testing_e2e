@@ -1,0 +1,13 @@
+appId: nl.amsterdam.app.dev
+---
+- launchApp:
+    clearState: true
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Test
+      MODULE: HeaderUserIcon
+- tapOn:
+    id: UserNavigationToFeedbackButton
+- runFlow:
+    file: ./SubmitDynamicForm.yaml

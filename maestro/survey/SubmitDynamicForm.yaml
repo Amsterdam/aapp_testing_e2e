@@ -1,0 +1,42 @@
+appId: nl.amsterdam.app.dev
+env:
+  FORM_FIELD_ID: SurveyQuestion
+---
+- evalScript: ${output.questionIndex = 0}
+- evalScript: ${output.question_id = FORM_FIELD_ID + output.questionIndex}
+- evalScript: ${output._findLastElement_complete = false}
+- repeat:
+    while:
+      notVisible:
+        id: DynamicFormSubmitButton
+    commands:
+      - runFlow:
+          commands:
+            - scrollUntilVisible:
+                element:
+                  id: ${output.question_id}
+                optional: true
+            - runFlow:
+                file: ./utils/handleFormField.yaml
+            - evalScript: ${output.questionIndex = output.questionIndex + 1}
+            - evalScript: ${output.question_id = FORM_FIELD_ID + (output.questionIndex)}
+- repeat:
+    while:
+      true: ${!output._findLastElement_complete}
+    commands:
+      - runFlow:
+          commands:
+            - runFlow:
+                file: ./utils/handleFormField.yaml
+            - evalScript: ${output.questionIndex = output.questionIndex + 1}
+            - evalScript: ${output.question_id = FORM_FIELD_ID + output.questionIndex}
+      - runFlow:
+          when:
+            notVisible:
+              id: ${output.question_id}
+          commands:
+            - evalScript: ${output._findLastElement_complete = true}]
+- tapOn:
+    id: DynamicFormSubmitButton
+- assertVisible:
+    id: SurveyFeedbackFormSuccessAlert

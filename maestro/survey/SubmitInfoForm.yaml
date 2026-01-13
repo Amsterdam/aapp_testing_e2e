@@ -1,0 +1,27 @@
+appId: nl.amsterdam.app.dev
+---
+- launchApp:
+    clearState: true
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Test
+      MODULE: HomeContactModuleButton
+- scrollUntilVisible:
+    element:
+      id: .*SurveyQuestion.*
+- tapOn:
+    id: SurveySelectionButtonsFormField
+- scrollUntilVisible:
+    element:
+      id: DynamicFormSubmitButton
+- tapOn:
+    id: SurveyTextareaFormFieldInput
+- inputRandomText:
+    length: 20
+- tapOn:
+    point: 98%, 40%
+- tapOn:
+    id: DynamicFormSubmitButton
+- assertVisible:
+    id: SurveyFeedbackFormSuccessAlert

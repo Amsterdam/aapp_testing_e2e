@@ -1,0 +1,87 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    when:
+      visible:
+        id: '.*(Radio|SelectionButtons|Rating).*'
+        childOf:
+          id: ${output.question_id}
+    commands:
+      - tapOn:
+          id: '.*(Radio|SelectionButtons|Rating).*'
+          childOf:
+            id: ${output.question_id}
+- runFlow:
+    when:
+      visible:
+        id: '.*Checkbox.*'
+        childOf:
+          id: ${output.question_id}
+    commands:
+      - tapOn:
+          id: '.*Checkbox.*'
+          index: 1
+          childOf:
+            id: ${output.question_id}
+      - tapOn:
+          id: '.*Checkbox.*'
+          index: 2
+          childOf:
+            id: ${output.question_id}
+- runFlow:
+    when:
+      visible:
+        id: '.*SurveyText.*'
+        childOf:
+          id: ${output.question_id}
+    commands:
+      - tapOn:
+          id: '.*SurveyText.*'
+          childOf:
+            id: ${output.question_id}
+      - inputRandomText
+      - tapOn:
+          point: 10, 200
+- runFlow:
+    when:
+      visible:
+        id: '.*SurveyEmail.*'
+        childOf:
+          id: ${output.question_id}
+    commands:
+      - tapOn:
+          id: '.*SurveyEmail.*'
+          childOf:
+            id: ${output.question_id}
+      - inputRandomEmail
+      - tapOn:
+          point: 10, 200
+- runFlow:
+    when:
+      visible:
+        id: '.*SurveyUrl.*'
+        childOf:
+          id: ${output.question_id}
+    commands:
+      - tapOn:
+          id: '.*SurveyUrl.*'
+          childOf:
+            id: ${output.question_id}
+      - inputText: 'www.amsterdam.nl'
+      - tapOn:
+          point: 10, 200
+- runFlow:
+    when:
+      visible:
+        id: '.*Survey(Numeric|Tel).*'
+        childOf:
+          id: ${output.question_id}
+    commands:
+      - tapOn:
+          id: '.*Survey(Numeric|Tel).*'
+          childOf:
+            id: ${output.question_id}
+      - inputRandomNumber:
+          length: 12
+      - tapOn:
+          point: 10, 200

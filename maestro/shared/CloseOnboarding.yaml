@@ -1,0 +1,12 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    text: 'Allow|Sta toe'
+    optional: true
+- extendedWaitUntil:
+    visible:
+      id: 'OnboardingCloseIcon'
+    timeout: 30000
+- tapOn:
+    id: 'OnboardingCloseIcon'
+    optional: true

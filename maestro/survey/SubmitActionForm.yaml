@@ -1,0 +1,27 @@
+appId: nl.amsterdam.app.dev
+---
+- launchApp:
+    clearState: true
+- runFlow:
+    file: ../shared/CloseOnboarding.yaml
+- tapOn:
+    id: 'HeaderEnvironmentIcon'
+- tapOn:
+    id: 'HomeEnvironmentSelectorTestButton'
+- tapOn:
+    id: 'HeaderBackIcon'
+- tapOn:
+    id: 'HeaderEnvironmentIcon'
+- tapOn:
+    id: AdminScreenShowSurveyButton
+- tapOn:
+    id: SurveyRatingFormFieldIcon
+    index: 4
+- tapOn:
+    id: SurveyTextareaFormFieldInput
+- inputRandomText:
+    length: 20
+- tapOn:
+    id: DynamicFormSubmitButton
+- assertVisible:
+    id: SurveyFeedbackFormSuccessAlert
