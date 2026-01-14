@@ -13,6 +13,7 @@ appId: nl.amsterdam.app.dev
     id: ParkingPermitZoneViewTabsTabZoekenButton
 - tapOn:
     id: ParkingSessionUseFavoriteMachineButton
+    repeat: 2
 - tapOn:
     id: SelectParkingMachineButton
 - runFlow: './ChooseEndTimeScrollWheel.yaml'
