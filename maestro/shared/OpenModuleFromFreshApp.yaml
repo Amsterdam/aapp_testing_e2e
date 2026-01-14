@@ -1,9 +1,17 @@
 appId: nl.amsterdam.app.dev
 ---
+- launchApp:
+    clearState: true
+    clearKeychain: true
+    permissions: { all: deny }
 - runFlow:
     file: ./CloseOnboarding.yaml
 - tapOn:
     id: 'HeaderEnvironmentIcon'
+- scrollUntilVisible:
+    element:
+      id: 'HomeEnvironmentSelector${ENVIRONMENT}Button'
+      optional: true
 - tapOn:
     id: 'HomeEnvironmentSelector${ENVIRONMENT}Button'
 - tapOn:

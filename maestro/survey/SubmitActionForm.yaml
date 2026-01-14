@@ -22,6 +22,11 @@ appId: nl.amsterdam.app.dev
 - inputRandomText:
     length: 20
 - tapOn:
+    point: 98%, 40%
+- scrollUntilVisible:
+    element:
+      id: DynamicFormSubmitButton
+- tapOn:
     id: DynamicFormSubmitButton
 - assertVisible:
     id: SurveyFeedbackFormSuccessAlert
