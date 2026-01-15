@@ -19,8 +19,10 @@ appId: nl.amsterdam.app.dev
     id: SurveyTextareaFormFieldInput
 - inputRandomText:
     length: 20
-- tapOn:
-    point: 98%, 40%
+- runFlow:
+    file: ./utils/tapToCloseKeyboard.yaml
+    env:
+      PARENT_ID: SurveyQuestion2
 - tapOn:
     id: DynamicFormSubmitButton
 - assertVisible:

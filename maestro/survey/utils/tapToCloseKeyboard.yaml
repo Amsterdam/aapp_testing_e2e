@@ -1,0 +1,16 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn:
+          id: TextInputLabel
+          childOf:
+            id: ${PARENT_ID}
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn:
+          point: 98%, 40%
