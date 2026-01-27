@@ -4,10 +4,7 @@ appId: nl.amsterdam.app.dev
     when:
       platform: Android
     commands:
-      - tapOn:
-          id: TextInputLabel
-          childOf:
-            id: ${PARENT_ID}
+      - hideKeyboard
 - runFlow:
     when:
       platform: iOS
