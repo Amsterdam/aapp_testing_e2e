@@ -21,7 +21,7 @@ resources:
             - main
 
 schedules:
-  - cron: "0 1 * * *"   # every night
+  - cron: "0 22 * * *"   # every night
     displayName: Scheduled E2E Test
     branches:
       include:
