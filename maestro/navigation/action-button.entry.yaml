@@ -1,0 +1,21 @@
+appId: nl.amsterdam.app.dev
+---
+- launchApp:
+    clearState: true
+- runScript: ../scripts/credentials.js
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Test
+      MODULE: HomeParkingModuleButton
+- runFlow:
+    file: ../parking/shared/LoginToParking.yaml
+    env:
+      REPORT_CODE: ${output.parkingVisitorReportCode}
+      PIN_CODE: ${output.parkingVisitorPinCode}
+- launchApp:
+    clearState: true
+- tapOn:
+    id: ParkingActionButton
+- runFlow: ../shared/EnterAccessCode.yaml
+- assertVisible: Nieuwe parkeersessie
