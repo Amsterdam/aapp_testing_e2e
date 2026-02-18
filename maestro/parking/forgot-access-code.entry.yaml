@@ -14,7 +14,7 @@ appId: nl.amsterdam.app.dev
       REPORT_CODE: ${output.parkingVisitorReportCode}
       PIN_CODE: ${output.parkingVisitorPinCode}
 - launchApp:
-    clearState: true
+    clearState: false
 - tapOn:
     id: HomeParkingModuleButton
 - tapOn:
