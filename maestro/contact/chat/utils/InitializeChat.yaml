@@ -1,0 +1,23 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: ContactChatButton
+- waitForAnimationToEnd
+
+- extendedWaitUntil:
+    notVisible:
+      id: ChatWaitToStartTitle
+    # one minute timeout in alignment with ChatWaitToStart timeout plus two second margin
+    timeout: 62000
+
+- runFlow:
+    when:
+      visible:
+        id: ChatWaitToStartErrorTitleHeaderTitle
+    commands:
+      - runFlow:
+          file: ./refreshAppAfterFailedChat.yaml
+      - waitForAnimationToEnd
+      - extendedWaitUntil:
+          notVisible:
+            id: ChatWaitToStartTitle

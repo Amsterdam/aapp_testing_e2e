@@ -1,0 +1,12 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../../../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeContactModuleButton
+- scrollUntilVisible:
+    element:
+      id: ContactChatButton
+- tapOn:
+    id: ContactChatButton

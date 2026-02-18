@@ -1,0 +1,13 @@
+appId: nl.amsterdam.app.dev
+---
+- assertNotVisible:
+    id: ${HIDDEN_ELEMENT_ID}
+- tapOn:
+    id: ChatHeaderToggleVisibilityButton
+- extendedWaitUntil:
+    visible:
+      id: ${HIDDEN_ELEMENT_ID}
+    timeout: 10000
+- tapOn:
+    id: ChatHeaderMaximizeButton
+- waitForAnimationToEnd

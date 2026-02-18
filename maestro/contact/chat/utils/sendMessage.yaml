@@ -1,0 +1,15 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: ChatTextInput
+- inputText: ${TEXT}
+
+- runFlow:
+    file: "./hideKeyboard.yaml"
+
+- tapOn:
+    id: ChatTextInputSendButton
+- scrollUntilVisible:
+    direction: "UP"
+    element:
+      text: "^.*${TEXT}.*$"

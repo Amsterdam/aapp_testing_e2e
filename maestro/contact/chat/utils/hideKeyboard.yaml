@@ -1,0 +1,14 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn:
+          point: 98%, 40%
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - hideKeyboard
+- waitForAnimationToEnd

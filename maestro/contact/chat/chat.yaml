@@ -1,0 +1,42 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ./utils/initializeChat.yaml
+
+- extendedWaitUntil:
+    visible:
+      id: ChatStartingTimeEntryPhrase
+
+- scrollUntilVisible:
+    element:
+      id: ChatEntryText
+      index: 1
+      traits: text
+
+- runFlow:
+    file: ./utils/selectLanguage.yaml
+
+- runFlow:
+    file: "./utils/sendMessage.yaml"
+    env:
+      TEXT: "Ik wil een melding doen."
+
+- runFlow:
+    file: "./utils/selectButton.yaml"
+    env:
+      BUTTON_ID: ".*ChatHistoryChoices.*"
+      BUTTON_INDEX: "0" # Ja
+
+- runFlow:
+    file: "./utils/selectButton.yaml"
+    env:
+      BUTTON_ID: ".*ChatHistoryChoices.*"
+      BUTTON_INDEX: "3" # Andere vraag
+
+- runFlow:
+    file: ./utils/toggleVisibility.yaml
+    env:
+      HIDDEN_ELEMENT_ID: ContactContactOptionsTitle
+
+- runFlow:
+    file: ./utils/closeChat.yaml
