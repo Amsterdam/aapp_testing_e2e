@@ -139,6 +139,12 @@ steps:
         -H "Content-Type: application/json" \
         -d "$buildBody")
       build_id=$(echo "$response" | jq -r '.build_id // empty')
+      if [ -z "$build_id" ]; then
+        echo "Error: build_id is empty in BrowserStack API response."
+        echo "API response: $response"
+        echo "##vso[task.logissue type=error]Failed to retrieve build_id from BrowserStack API response."
+        exit 1
+      fi
       echo "Build ID: $build_id"
       echo "##vso[task.setvariable variable=BUILD_ID]$build_id"
     displayName: 'Run Maestro Tests on BrowserStack'
