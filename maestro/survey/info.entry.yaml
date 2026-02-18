@@ -20,7 +20,7 @@ appId: nl.amsterdam.app.dev
 - inputRandomText:
     length: 20
 - runFlow:
-    file: ./utils/tapToCloseKeyboard.yaml
+    file: ../shared/TapToCloseKeyboard.yaml
     env:
       PARENT_ID: SurveyQuestion2
 - tapOn:

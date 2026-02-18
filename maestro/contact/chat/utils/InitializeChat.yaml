@@ -22,7 +22,7 @@ appId: nl.amsterdam.app.dev
         id: ChatWaitToStartErrorTitleHeaderTitle
     commands:
       - runFlow:
-          file: ./refreshAppAfterFailedChat.yaml
+          file: ./RefreshAppAfterFailedChat.yaml
       - waitForAnimationToEnd
       - extendedWaitUntil:
           notVisible:

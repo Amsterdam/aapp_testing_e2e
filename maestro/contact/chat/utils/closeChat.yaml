@@ -10,7 +10,7 @@ appId: nl.amsterdam.app.dev
       # Close and download buttons often don't appear after clicking 'chat stoppen' in menu, so we give it 3 attempts
     commands:
       - runFlow:
-          file: "./selectMenuItem.yaml"
+          file: "./SelectMenuItem.yaml"
           env:
             MENU_ITEM_ID: ChatMenuPressableStopChatMenuItem
 
@@ -28,7 +28,7 @@ appId: nl.amsterdam.app.dev
           commands:
             - tapOn:
                 id: ChatEndedCloseButton
-            - evalScript: ${output.counter = output.counter = 4} # Break out of loop
+            - evalScript: ${output.counter = 4} # Break out of loop
 
       - runFlow:
           when:
@@ -37,13 +37,3 @@ appId: nl.amsterdam.app.dev
           commands:
             - evalScript: ${output.counter = output.counter + 1}
 
-- runFlow:
-    when:
-      true: ${output.counter === 3}
-    commands:
-      - runFlow:
-          # Fresh restart of module to continue other Contact module e2e tests
-          file: ../../../shared/OpenModuleFromFreshApp.yaml
-          env:
-            ENVIRONMENT: Acceptance
-            MODULE: HomeContactModuleButton

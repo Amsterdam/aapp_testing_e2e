@@ -5,7 +5,7 @@ appId: nl.amsterdam.app.dev
 - inputText: ${TEXT}
 
 - runFlow:
-    file: "./hideKeyboard.yaml"
+    file: "../../../shared/TapToCloseKeyboard.yaml"
 
 - tapOn:
     id: ChatTextInputSendButton

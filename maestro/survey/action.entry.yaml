@@ -5,13 +5,13 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../shared/CloseOnboarding.yaml
 - tapOn:
-    id: 'HeaderEnvironmentIcon'
+    id: "HeaderEnvironmentIcon"
 - tapOn:
-    id: 'HomeEnvironmentSelectorTestButton'
+    id: "HomeEnvironmentSelectorTestButton"
 - tapOn:
-    id: 'HeaderBackIcon'
+    id: "HeaderBackIcon"
 - tapOn:
-    id: 'HeaderEnvironmentIcon'
+    id: "HeaderEnvironmentIcon"
 - tapOn:
     id: AdminScreenShowSurveyButton
 - tapOn:
@@ -22,7 +22,7 @@ appId: nl.amsterdam.app.dev
 - inputRandomText:
     length: 20
 - runFlow:
-    file: ./utils/tapToCloseKeyboard.yaml
+    file: ../shared/TapToCloseKeyboard.yaml
     env:
       PARENT_ID: SurveyQuestion2
 - scrollUntilVisible:

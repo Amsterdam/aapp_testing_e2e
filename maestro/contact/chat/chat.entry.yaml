@@ -1,7 +1,7 @@
 appId: nl.amsterdam.app.dev
 ---
 - runFlow:
-    file: ./utils/initializeChat.yaml
+    file: ./utils/InitializeChat.yaml
 
 - extendedWaitUntil:
     visible:
@@ -14,37 +14,26 @@ appId: nl.amsterdam.app.dev
       traits: text
 
 - runFlow:
-    file: ./utils/selectLanguage.yaml
+    file: ./utils/SelectLanguage.yaml
 
 - runFlow:
-    file: "./utils/sendMessage.yaml"
+    file: "./utils/SendMessage.yaml"
     env:
-      TEXT: "Ik wil een melding doen."
+      TEXT: "Ik wil een vergunning aanvragen."
 
 - runFlow:
-    file: "./utils/selectButton.yaml"
-    env:
-      BUTTON_ID: ".*ChatHistoryChoices.*"
-      BUTTON_INDEX: "0" # Ja
-
-- runFlow:
-    file: "./utils/selectButton.yaml"
+    when:
+      visible:
+        id: ".*ChatHistoryChoices.*"
+    file: "./utils/SelectButton.yaml"
     env:
       BUTTON_ID: ".*ChatHistoryChoices.*"
-      BUTTON_INDEX: "3" # Andere vraag
+      BUTTON_INDEX: "0"
 
 - runFlow:
-    file: ./utils/toggleVisibility.yaml
+    file: ./utils/ToggleVisibility.yaml
     env:
       HIDDEN_ELEMENT_ID: ContactChatButton
 
 - runFlow:
-    file: ./utils/closeChat.yaml
-
-# The easiest way to test incoming messages in background using Maestro is to immediately minimize the chat after start. Therefore we start an additional chat below.
-- runFlow:
-    file: ./utils/awaitInitiatingChatInBackground.yaml
-
-# The most reliable close chat action is done immediately after chat start. Therefore we perform another closeChat flow below.
-- runFlow:
-    file: ./utils/closeChat.yaml
+    file: ./utils/CloseChat.yaml

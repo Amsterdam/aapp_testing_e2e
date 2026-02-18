@@ -3,93 +3,93 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     when:
       visible:
-        id: '.*(Radio|SelectionButtons|Rating).*'
+        id: ".*(Radio|SelectionButtons|Rating).*"
         childOf:
           id: ${output.question_id}
     commands:
       - tapOn:
-          id: '.*(Radio|SelectionButtons|Rating).*'
+          id: ".*(Radio|SelectionButtons|Rating).*"
           childOf:
             id: ${output.question_id}
 - runFlow:
     when:
       visible:
-        id: '.*Checkbox.*'
+        id: ".*Checkbox.*"
         childOf:
           id: ${output.question_id}
     commands:
       - tapOn:
-          id: '.*Checkbox.*'
+          id: ".*Checkbox.*"
           index: 1
           childOf:
             id: ${output.question_id}
       - tapOn:
-          id: '.*Checkbox.*'
+          id: ".*Checkbox.*"
           index: 2
           childOf:
             id: ${output.question_id}
 - runFlow:
     when:
       visible:
-        id: '.*SurveyText.*'
+        id: ".*SurveyText.*"
         childOf:
           id: ${output.question_id}
     commands:
       - tapOn:
-          id: '.*SurveyText.*'
+          id: ".*SurveyText.*"
           childOf:
             id: ${output.question_id}
       - inputRandomText
       - runFlow:
-          file: ./tapToCloseKeyboard.yaml
+          file: ../../shared/TapToCloseKeyboard.yaml
           env:
             PARENT_ID: ${output.question_id}
 - runFlow:
     when:
       visible:
-        id: '.*SurveyEmail.*'
+        id: ".*SurveyEmail.*"
         childOf:
           id: ${output.question_id}
     commands:
       - tapOn:
-          id: '.*SurveyEmail.*'
+          id: ".*SurveyEmail.*"
           childOf:
             id: ${output.question_id}
       - inputRandomEmail
       - runFlow:
-          file: ./tapToCloseKeyboard.yaml
+          file: ../../shared/TapToCloseKeyboard.yaml
           env:
             PARENT_ID: ${output.question_id}
 - runFlow:
     when:
       visible:
-        id: '.*SurveyUrl.*'
+        id: ".*SurveyUrl.*"
         childOf:
           id: ${output.question_id}
     commands:
       - tapOn:
-          id: '.*SurveyUrl.*'
+          id: ".*SurveyUrl.*"
           childOf:
             id: ${output.question_id}
-      - inputText: 'www.amsterdam.nl'
+      - inputText: "www.amsterdam.nl"
       - runFlow:
-          file: ./tapToCloseKeyboard.yaml
+          file: ../../shared/TapToCloseKeyboard.yaml
           env:
             PARENT_ID: ${output.question_id}
 - runFlow:
     when:
       visible:
-        id: '.*Survey(Numeric|Tel).*'
+        id: ".*Survey(Numeric|Tel).*"
         childOf:
           id: ${output.question_id}
     commands:
       - tapOn:
-          id: '.*Survey(Numeric|Tel).*'
+          id: ".*Survey(Numeric|Tel).*"
           childOf:
             id: ${output.question_id}
       - inputRandomNumber:
           length: 12
       - runFlow:
-          file: ./tapToCloseKeyboard.yaml
+          file: ../../shared/TapToCloseKeyboard.yaml
           env:
             PARENT_ID: ${output.question_id}
