@@ -1,0 +1,34 @@
+appId: nl.amsterdam.app.dev
+---
+- scrollUntilVisible:
+    element:
+      id: ContactCityOfficesButton
+- tapOn:
+    id: ContactCityOfficesButton
+- waitForAnimationToEnd
+
+- runFlow: ./utils/assertVisibleOpeningHoursCentre.yaml
+
+- runFlow:
+    file: ./utils/handleExternalLinkButton.yaml
+    env:
+      ID: ContactSeeRouteExternalLinkButton
+
+- tapOn:
+    id: ContactCurrentCityOfficeButton
+- waitForAnimationToEnd
+
+- scrollUntilVisible:
+    element:
+      text: "Stadsloket Weesp"
+- tapOn: "Stadsloket Weesp"
+
+- runFlow:
+    file: ./utils/handleExternalLinkButton.yaml
+    env:
+      ID: ContactMakeAppointmentExternalLinkButton
+
+- runFlow: ./utils/assertVisibleOpeningHoursWeesp.yaml
+
+- tapOn:
+    id: HeaderBackButton

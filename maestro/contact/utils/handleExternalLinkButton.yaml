@@ -1,0 +1,21 @@
+appId: nl.amsterdam.app.dev
+---
+- scrollUntilVisible:
+    element:
+      id: ${ID}
+- assertVisible:
+    id: "^${ID}.*Icon$"
+- tapOn:
+    id: ${ID}
+- waitForAnimationToEnd
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn:
+          id: "breadcrumb"
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - back

@@ -1,0 +1,20 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: ContactChatButton
+- runFlow:
+    file: "./awaitMessageInBackground.yaml"
+    env:
+      TIMEOUT: "62000"
+
+- runFlow:
+    when:
+      visible:
+        id: ChatWaitToStartErrorTitleHeaderTitle
+    commands:
+      - runFlow:
+          file: ./refreshAppAfterFailedChat.yaml
+      - runFlow:
+          file: "./awaitMessageInBackground.yaml"
+          env:
+            TIMEOUT: "62000"

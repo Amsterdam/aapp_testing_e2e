@@ -113,40 +113,27 @@ steps:
     displayName: 'Upload App to BrowserStack'
 
   # Run Maestro Tests on BrowserStack
-  - script: |
-      # Find all .entry.yaml and .entry.<platform>.yaml files in maestro directory
-      entry_files=$(find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) | sort | sed 's|^maestro/||')
-      # Convert to JSON array
-      execute_json=$(printf '%s\n' "$entry_files" | jq -R . | jq -s .)
-      # Compose buildBody JSON dynamically
-      buildBody=$(jq -n \
-        --arg app "bs://$(appId)" \
-        --arg testSuite "bs://$(testSuiteId)" \
-        --arg project "Amsterdam App Maestro Tests" \
-        --arg device "${{ parameters.device }}" \
-        --argjson execute "$execute_json" \
-        '{
-          app: $app,
-          testSuite: $testSuite,
-          project: $project,
-          devices: [$device],
-          networkLogs: false,
-          deviceLogs: true,
-          execute: $execute
-        }')
-      response=$(curl -s -X POST "${{ parameters.buildApiUrl }}" \
-        -H "Authorization: Basic $(AUTH_HASH)" \
-        -H "Content-Type: application/json" \
-        -d "$buildBody")
-      build_id=$(echo "$response" | jq -r '.build_id // empty')
-      if [ -z "$build_id" ]; then
-        echo "Error: build_id is empty in BrowserStack API response."
-        echo "API response: $response"
-        echo "##vso[task.logissue type=error]Failed to retrieve build_id from BrowserStack API response."
-        exit 1
-      fi
-      echo "Build ID: $build_id"
-      echo "##vso[task.setvariable variable=BUILD_ID]$build_id"
+  - powershell: |
+      $buildBody = @{
+          app = "bs://$(appId)"
+          testSuite = "bs://$(testSuiteId)"
+          project = "Amsterdam App Maestro Tests"
+          devices = @("${{ parameters.device }}")
+          networkLogs = $false
+          deviceLogs = $true
+          execute = @("navigation/action-button.entry.yaml", "parking/forgot-access-code.entry.yaml", "parking/session/visitor.entry.yaml", "survey/info.entry.yaml", "survey/action.entry.yaml", "survey/feedback-general.entry.yaml", "contact/contact.entry.yaml")
+      }
+      $buildBodyJson = $buildBody | ConvertTo-Json -Depth 10
+      $headers = @{
+          Authorization = "Basic $(AUTH_HASH)"
+          "Content-Type" = "application/json"
+      }
+      $buildResponse = Invoke-RestMethod -Uri "${{ parameters.buildApiUrl }}" `
+          -Method POST `
+          -Headers $headers `
+          -Body $buildBodyJson
+      Write-Host "Build ID: $($buildResponse.build_id)"
+      Write-Host "##vso[task.setvariable variable=BUILD_ID]$($buildResponse.build_id)"
     displayName: 'Run Maestro Tests on BrowserStack'
 
   # Wait for BrowserStack Build and Show Result
