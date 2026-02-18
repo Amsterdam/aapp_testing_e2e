@@ -36,7 +36,15 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ./utils/toggleVisibility.yaml
     env:
-      HIDDEN_ELEMENT_ID: ContactContactOptionsTitle
+      HIDDEN_ELEMENT_ID: ContactChatButton
 
+- runFlow:
+    file: ./utils/closeChat.yaml
+
+# The easiest way to test incoming messages in background using Maestro is to immediately minimize the chat after start. Therefore we start an additional chat below.
+- runFlow:
+    file: ./utils/awaitInitiatingChatInBackground.yaml
+
+# The most reliable close chat action is done immediately after chat start. Therefore we perform another closeChat flow below.
 - runFlow:
     file: ./utils/closeChat.yaml

@@ -1,5 +1,11 @@
 appId: nl.amsterdam.app.dev
 ---
+- runFlow:
+    file: ../../../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeContactModuleButton
+
 - tapOn:
     id: ContactChatButton
 - waitForAnimationToEnd

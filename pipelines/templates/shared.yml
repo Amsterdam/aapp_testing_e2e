@@ -121,7 +121,7 @@ steps:
           devices = @("${{ parameters.device }}")
           networkLogs = $false
           deviceLogs = $true
-          execute = @("navigation/action-button.entry.yaml", "parking/forgot-access-code.entry.yaml", "parking/session/visitor.entry.yaml", "survey/info.entry.yaml", "survey/action.entry.yaml", "survey/feedback-general.entry.yaml", "contact/contact.entry.yaml")
+          execute = @("navigation/action-button.entry.yaml", "parking/forgot-access-code.entry.yaml", "parking/session/visitor.entry.yaml", "survey/info.entry.yaml", "survey/action.entry.yaml", "survey/feedback-general.entry.yaml", "contact/contact.entry.yaml", "contact/city-office.entry.yaml", "contact/chat/chat.entry.yaml")
       }
       $buildBodyJson = $buildBody | ConvertTo-Json -Depth 10
       $headers = @{

@@ -10,6 +10,5 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: ChatTextInputSendButton
 - scrollUntilVisible:
-    direction: "UP"
     element:
       text: "^.*${TEXT}.*$"

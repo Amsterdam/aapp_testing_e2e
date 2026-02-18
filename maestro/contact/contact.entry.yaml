@@ -5,6 +5,7 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeContactModuleButton
+
 - runFlow:
     file: ./utils/handleExternalLinkButton.yaml
     env:
@@ -13,23 +14,16 @@ appId: nl.amsterdam.app.dev
 - assertVisible:
     id: ContactPhoneButton
 
-- runFlow:
-    when:
-      visible:
-        id: ContactChatButton
-    commands:
-      - runFlow:
-          file: ./chat/chat.yaml
-      - runFlow:
-          file: ./chat/chat-extended.yaml
+- assertVisible:
+    id: ContactChatButton
 
 - runFlow:
     file: ./utils/handleExternalLinkButton.yaml
     env:
       ID: ContactWhatsAppButton
 
-- runFlow:
-    file: ./city-office.yaml
+- assertVisible:
+    id: ContactCityOfficesButton
 
 - runFlow:
     file: ./utils/handleExternalLinkButton.yaml

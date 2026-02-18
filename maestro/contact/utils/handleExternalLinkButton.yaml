@@ -7,7 +7,6 @@ appId: nl.amsterdam.app.dev
     id: "^${ID}.*Icon$"
 - tapOn:
     id: ${ID}
-- waitForAnimationToEnd
 - runFlow:
     when:
       platform: iOS
@@ -15,7 +14,7 @@ appId: nl.amsterdam.app.dev
       - tapOn:
           id: "breadcrumb"
 - runFlow:
-    when:
-      platform: Android
-    commands:
-      - back
+    file: "../../shared/HandleBackNavigateAndroid.yaml"
+    env:
+      MAX_TIMES: "3"
+      UNTIL_VISIBLE_ID: ${ID}

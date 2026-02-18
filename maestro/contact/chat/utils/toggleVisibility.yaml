@@ -1,9 +1,18 @@
 appId: nl.amsterdam.app.dev
 ---
-- assertNotVisible:
-    id: ${HIDDEN_ELEMENT_ID}
 - tapOn:
     id: ChatHeaderToggleVisibilityButton
+
+- runFlow:
+    when:
+      notVisible:
+        id: ${HIDDEN_ELEMENT_ID}
+      visible:
+        id: HomeContactModuleButton
+      platform: Android # On Android the Home screen sometimes appears below the chat instead of the Contact screen
+    commands:
+      - tapOn:
+          id: HomeContactModuleButton
 - extendedWaitUntil:
     visible:
       id: ${HIDDEN_ELEMENT_ID}
