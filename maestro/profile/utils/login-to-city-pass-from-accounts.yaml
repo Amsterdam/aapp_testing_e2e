@@ -1,0 +1,25 @@
+appId: nl.amsterdam.app.dev
+---
+- assertVisible:
+    id: UserAccountCityPassModuleTitle
+
+- tapOn:
+    id: UserAccountCityPassLoginButton
+- extendedWaitUntil:
+    visible:
+      id: CityPassDashboardScreen
+
+- assertVisible:
+    id: CityPassLoginButton
+
+- scrollUntilVisible:
+    element:
+      id: CityPassRequestCityPassExternalLinkButton
+
+- runFlow:
+    file: "../../shared/handle-external-link-button.yaml"
+    env:
+      ID: CityPassRequestCityPassExternalLinkButton
+
+- tapOn:
+    id: HeaderBackButton

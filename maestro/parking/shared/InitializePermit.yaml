@@ -10,7 +10,7 @@ appId: nl.amsterdam.app.dev
       ENVIRONMENT: Test
       MODULE: HomeParkingModuleButton
 - runFlow:
-    file: ../shared/LoginToParking.yaml
+    file: ../shared/login-to-parking.yaml
     env:
       REPORT_CODE: ${REPORT_CODE}
       PIN_CODE: ${PIN_CODE}

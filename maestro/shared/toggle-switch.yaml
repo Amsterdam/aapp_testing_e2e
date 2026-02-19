@@ -1,0 +1,8 @@
+appId: nl.amsterdam.app.dev
+---
+- repeat:
+    times: ${2 * (TIMES || 1)}
+    commands:
+      - tapOn:
+          id: ${SWITCH_ID}
+      - waitForAnimationToEnd

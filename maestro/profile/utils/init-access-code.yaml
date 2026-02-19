@@ -6,15 +6,12 @@ appId: nl.amsterdam.app.dev
       ENVIRONMENT: Test
       MODULE: HomeParkingModuleButton
 - runFlow:
-    file: ./login-to-parking.yaml
+    file: ../../parking/shared/login-to-parking.yaml
     env:
       REPORT_CODE: ${REPORT_CODE}
       PIN_CODE: ${PIN_CODE}
-- runFlow:
-    file: ../shared/SelectPermit.yaml
-    env:
-      PERMIT_NAME: ${PERMIT_NAME}
-- scrollUntilVisible:
-    element:
-      text: Start parkeersessie
-- tapOn: Start parkeersessie
+
+- tapOn:
+    id: HeaderBackButton
+- tapOn:
+    id: HeaderUserButton

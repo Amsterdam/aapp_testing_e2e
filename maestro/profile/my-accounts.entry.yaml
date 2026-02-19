@@ -1,0 +1,19 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    label: Clean app start
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Test
+      MODULE: HeaderUserIcon
+
+- tapOn:
+    id: UserNavigationToAccountsButton
+
+- runFlow:
+    label: Check Parking account functionality
+    file: ./utils/login-to-parking-from-accounts.yaml
+
+- runFlow:
+    label: Check City Pass account functionality
+    file: ./utils/login-to-city-pass-from-accounts.yaml

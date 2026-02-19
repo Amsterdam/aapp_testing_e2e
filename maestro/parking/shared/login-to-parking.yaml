@@ -1,0 +1,31 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: ${EXTERNAL_LOGIN_LINK_ID || 'ParkingHomeLoginButton'}
+- tapOn:
+    id: "ParkingLoginFormReportCodeInputFieldInput"
+- inputText: ${REPORT_CODE}
+- tapOn:
+    id: "ParkingLoginFormPinCodeInputFieldInput"
+- inputText: ${PIN_CODE}
+- tapOn:
+    id: "ParkingLoginFormSubmitButton"
+- waitForAnimationToEnd
+- tapOn:
+    id: "ParkingLoginScreenNextButton"
+- repeat:
+    times: 2
+    commands:
+      - runFlow: ../../shared/EnterAccessCode.yaml
+- tapOn:
+    id: "ParkingLoginScreenNextButton"
+- waitForAnimationToEnd
+- runFlow: ../../shared/EnterAccessCode.yaml
+- runFlow:
+    label: Decline biometrics when prompted (if needed)
+    when:
+      visible:
+        id: BiometricsPermissionScreen
+    commands:
+      - tapOn:
+          id: AccessCodeBiometricsPermissionScreenSubmitButton
