@@ -15,7 +15,7 @@ appId: nl.amsterdam.app.dev
 - waitForAnimationToEnd
 
 - runFlow:
-    file: "../../parking/shared/login-to-parking.yaml"
+    file: '../../parking/shared/login-to-parking.yaml'
     env:
       REPORT_CODE: ${REPORT_CODE}
       PIN_CODE: ${PIN_CODE}

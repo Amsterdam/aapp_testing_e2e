@@ -1,9 +1,9 @@
 appId: nl.amsterdam.app.dev
 ---
 - runFlow:
-    file: "./utils/login-to-parking-from-notifications.yaml"
+    file: './utils/login-to-parking-from-notifications.yaml'
 
 - runFlow:
-    file: "../../shared/toggle-switch.yaml"
+    file: '../../shared/toggle-switch.yaml'
     env:
       SWITCH_ID: NotificationSettingparkingSwitch

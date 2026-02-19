@@ -17,7 +17,7 @@ appId: nl.amsterdam.app.dev
       id: CityPassRequestCityPassExternalLinkButton
 
 - runFlow:
-    file: "../../shared/handle-external-link-button.yaml"
+    file: '../../shared/handle-external-link-button.yaml'
     env:
       ID: CityPassRequestCityPassExternalLinkButton
 

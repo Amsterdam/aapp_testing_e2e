@@ -17,28 +17,28 @@ appId: nl.amsterdam.app.dev
 
 - runFlow:
     label: Login to parking to show notification toggle
-    file: "./parking.yaml"
+    file: './parking.yaml'
 
 - runFlow:
     label: Check City Pass notifications
-    file: "./utils/navigate-to-module-and-return.yaml"
+    file: './utils/navigate-to-module-and-return.yaml'
     env:
       MODULE_BUTTON_ID: NotificationSettingcity-passLoginNavigationButton
 
 - runFlow:
     label: Check Waste Guide notifications
-    file: "./utils/navigate-to-module-and-return.yaml"
+    file: './utils/navigate-to-module-and-return.yaml'
     env:
       MODULE_BUTTON_ID: UserNotificationSettingswaste-guideNavigationButton
 
 - runFlow:
     label: Check Burning Guide notifications
-    file: "./utils/navigate-to-module-and-return.yaml"
+    file: './utils/navigate-to-module-and-return.yaml'
     env:
       MODULE_BUTTON_ID: UserNotificationSettingsburning-guideNavigationButton
 
 - runFlow:
     label: Toggle Construction Work notifications
-    file: "../../shared/toggle-switch.yaml"
+    file: '../../shared/toggle-switch.yaml'
     env:
       SWITCH_ID: NotificationSettingconstruction-workSwitch

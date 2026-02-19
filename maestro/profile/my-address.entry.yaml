@@ -12,7 +12,7 @@ appId: nl.amsterdam.app.dev
 
 - runFlow:
     label: Add address
-    file: "./utils/add-address.yaml"
+    file: './utils/add-address.yaml'
     env:
       ADDRESS: Cruquiusweg 5
 

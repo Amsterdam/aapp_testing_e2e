@@ -4,7 +4,7 @@ appId: nl.amsterdam.app.dev
     element:
       id: ${ID}
 - assertVisible:
-    id: "^${ID}.*Icon$"
+    id: '^${ID}.*Icon$'
 
 - runFlow:
     when:
@@ -19,9 +19,9 @@ appId: nl.amsterdam.app.dev
             platform: iOS
           commands:
             - tapOn:
-                id: "breadcrumb"
+                id: 'breadcrumb'
       - runFlow:
-          file: "./handle-back-navigate-android.yaml"
+          file: './handle-back-navigate-android.yaml'
           env:
-            MAX_TIMES: "3"
+            MAX_TIMES: '3'
             UNTIL_VISIBLE_ID: ${ID}

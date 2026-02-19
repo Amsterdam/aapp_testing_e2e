@@ -4,7 +4,7 @@ appId: nl.amsterdam.app.dev
     id: UserNavigationToUserBiometricsButton
 
 - runFlow:
-    file: "../../shared/toggle-switch.yaml"
+    file: '../../shared/toggle-switch.yaml'
     env:
       SWITCH_ID: UserBiometricsScreenSwitch
 

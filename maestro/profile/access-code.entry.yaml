@@ -1,35 +1,35 @@
 appId: nl.amsterdam.app.dev
 ---
 - runFlow:
-    label: "Set up initial access code"
+    label: 'Set up initial access code'
     file: ./utils/init-access-code.yaml
 
 - runFlow:
-    label: "Check biometrics menu item (if possible)"
+    label: 'Check biometrics menu item (if possible)'
     when:
       visible:
         id: UserNavigationToUserBiometricsButton
     file: ./utils/biometrics.yaml
 
 - runFlow:
-    label: "Check access code menu item"
+    label: 'Check access code menu item'
     commands:
       - tapOn:
           id: UserNavigationToAccessCodeButton
 
       - runFlow:
-          label: "Enter initial access code"
-          file: "../shared/EnterAccessCode.yaml"
+          label: 'Enter initial access code'
+          file: '../shared/EnterAccessCode.yaml'
       - waitForAnimationToEnd
 
       - repeat:
-          label: "Enter twice new access code"
+          label: 'Enter twice new access code'
           times: 2
           commands:
             - runFlow: ../shared/EnterAccessCode.yaml
 
       - runFlow:
-          label: "Finish access code flow"
+          label: 'Finish access code flow'
           when:
             visible:
               id: AccessCodeValidScreenScreen

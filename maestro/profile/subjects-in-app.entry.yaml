@@ -3,7 +3,7 @@ appId: nl.amsterdam.app.dev
 - launchApp:
     clearState: true
     clearKeychain: true
-    permissions: { all: deny }
+    permissions: {all: deny}
 - runFlow:
     label: Close onboarding
     file: ../shared/CloseOnboarding.yaml
@@ -12,4 +12,4 @@ appId: nl.amsterdam.app.dev
     label: Toggling Parking module
     file: ./utils/toggle-module.yaml
     env:
-      MODULE_ID: "Parking"
+      MODULE_ID: 'Parking'

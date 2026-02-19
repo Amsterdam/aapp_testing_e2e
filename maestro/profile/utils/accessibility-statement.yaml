@@ -6,7 +6,7 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../../shared/handle-external-link-button.yaml
     env:
-      ID: "AboutAccessibilityStatementExternalLinkButton"
+      ID: 'AboutAccessibilityStatementExternalLinkButton'
 
 - scrollUntilVisible:
     element:
@@ -14,7 +14,7 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../../shared/handle-external-link-button.yaml
     env:
-      ID: "AboutAccessibilityStatementReportAndroidExternalLinkButton"
+      ID: 'AboutAccessibilityStatementReportAndroidExternalLinkButton'
 
 - scrollUntilVisible:
     element:
@@ -22,7 +22,7 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../../shared/handle-external-link-button.yaml
     env:
-      ID: "AboutAccessibilityStatementReportIosExternalLinkButton"
+      ID: 'AboutAccessibilityStatementReportIosExternalLinkButton'
 
 - scrollUntilVisible:
     element:

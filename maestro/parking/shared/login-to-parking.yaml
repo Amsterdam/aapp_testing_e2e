@@ -3,22 +3,22 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: ${EXTERNAL_LOGIN_LINK_ID || 'ParkingHomeLoginButton'}
 - tapOn:
-    id: "ParkingLoginFormReportCodeInputFieldInput"
+    id: 'ParkingLoginFormReportCodeInputFieldInput'
 - inputText: ${REPORT_CODE}
 - tapOn:
-    id: "ParkingLoginFormPinCodeInputFieldInput"
+    id: 'ParkingLoginFormPinCodeInputFieldInput'
 - inputText: ${PIN_CODE}
 - tapOn:
-    id: "ParkingLoginFormSubmitButton"
+    id: 'ParkingLoginFormSubmitButton'
 - waitForAnimationToEnd
 - tapOn:
-    id: "ParkingLoginScreenNextButton"
+    id: 'ParkingLoginScreenNextButton'
 - repeat:
     times: 2
     commands:
       - runFlow: ../../shared/EnterAccessCode.yaml
 - tapOn:
-    id: "ParkingLoginScreenNextButton"
+    id: 'ParkingLoginScreenNextButton'
 - waitForAnimationToEnd
 - runFlow: ../../shared/EnterAccessCode.yaml
 - runFlow:

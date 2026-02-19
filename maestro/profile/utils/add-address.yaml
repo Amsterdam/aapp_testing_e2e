@@ -13,10 +13,10 @@ appId: nl.amsterdam.app.dev
 
 - extendedWaitUntil:
     visible:
-      id: "^AddressSearchResult.*ButtonText$"
+      id: '^AddressSearchResult.*ButtonText$'
 
 - tapOn:
-    id: "^AddressSearchResult.*ButtonText$"
+    id: '^AddressSearchResult.*ButtonText$'
     text: ${ADDRESS}
 
 - waitForAnimationToEnd
