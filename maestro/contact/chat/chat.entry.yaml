@@ -1,0 +1,39 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ./utils/initialize-chat.yaml
+
+- extendedWaitUntil:
+    visible:
+      id: ChatStartingTimeEntryPhrase
+
+- scrollUntilVisible:
+    element:
+      id: ChatEntryText
+      index: 1
+      traits: text
+
+- runFlow:
+    file: ./utils/select-language.yaml
+
+- runFlow:
+    file: './utils/send-message.yaml'
+    env:
+      TEXT: 'Ik wil een vergunning aanvragen.'
+
+- runFlow:
+    when:
+      visible:
+        id: '.*ChatHistoryChoices.*'
+    file: './utils/select-button.yaml'
+    env:
+      BUTTON_ID: '.*ChatHistoryChoices.*'
+      BUTTON_INDEX: '0'
+
+- runFlow:
+    file: ./utils/toggle-visibility.yaml
+    env:
+      HIDDEN_ELEMENT_ID: ContactChatButton
+
+- runFlow:
+    file: ./utils/close-chat.yaml

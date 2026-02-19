@@ -41,7 +41,7 @@ appId: nl.amsterdam.app.dev
             id: ${output.question_id}
       - inputRandomText
       - runFlow:
-          file: ./tapToCloseKeyboard.yaml
+          file: ../../shared/TapToCloseKeyboard.yaml
           env:
             PARENT_ID: ${output.question_id}
 - runFlow:
@@ -57,7 +57,7 @@ appId: nl.amsterdam.app.dev
             id: ${output.question_id}
       - inputRandomEmail
       - runFlow:
-          file: ./tapToCloseKeyboard.yaml
+          file: ../../shared/TapToCloseKeyboard.yaml
           env:
             PARENT_ID: ${output.question_id}
 - runFlow:
@@ -73,7 +73,7 @@ appId: nl.amsterdam.app.dev
             id: ${output.question_id}
       - inputText: 'www.amsterdam.nl'
       - runFlow:
-          file: ./tapToCloseKeyboard.yaml
+          file: ../../shared/TapToCloseKeyboard.yaml
           env:
             PARENT_ID: ${output.question_id}
 - runFlow:
@@ -90,6 +90,6 @@ appId: nl.amsterdam.app.dev
       - inputRandomNumber:
           length: 12
       - runFlow:
-          file: ./tapToCloseKeyboard.yaml
+          file: ../../shared/TapToCloseKeyboard.yaml
           env:
             PARENT_ID: ${output.question_id}

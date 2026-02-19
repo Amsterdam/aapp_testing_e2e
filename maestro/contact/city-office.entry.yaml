@@ -1,0 +1,40 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeContactModuleButton
+
+- scrollUntilVisible:
+    element:
+      id: ContactCityOfficesButton
+- tapOn:
+    id: ContactCityOfficesButton
+- waitForAnimationToEnd
+
+- runFlow: ./utils/assert-visible-opening-hours-centre.yaml
+
+- runFlow:
+    file: ../shared/handle-external-link-button.yaml
+    env:
+      ID: ContactSeeRouteExternalLinkButton
+
+- tapOn:
+    id: ContactCurrentCityOfficeButton
+- waitForAnimationToEnd
+
+- scrollUntilVisible:
+    element:
+      text: 'Stadsloket Weesp'
+- tapOn: 'Stadsloket Weesp'
+
+- runFlow:
+    file: ../shared/handle-external-link-button.yaml
+    env:
+      ID: ContactMakeAppointmentExternalLinkButton
+
+- runFlow: ./utils/assert-visible-opening-hours-weesp.yaml
+
+- tapOn:
+    id: HeaderBackButton

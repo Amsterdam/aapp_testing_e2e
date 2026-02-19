@@ -1,0 +1,20 @@
+appId: nl.amsterdam.app.dev
+---
+- assertVisible:
+    id: ContactCurrentCityOfficeButton
+    containsDescendants:
+      - text: Stadsloket Centrum
+- assertVisible:
+    text: "Openingstijden"
+- assertVisible:
+    text: "Maandag van 09.00 tot 16.00 uur"
+    below: "Openingstijden"
+- assertVisible:
+    text: "Dinsdag en vrijdag van 09.00 tot 17.00 uur"
+    below: "Maandag van 09.00 tot 16.00 uur"
+- assertVisible:
+    text: "Woensdag van 09.00 tot 18.00 uur"
+    below: "Dinsdag en vrijdag van 09.00 tot 17.00 uur"
+- assertVisible:
+    text: "Donderdag van 09.00 tot 20.00 uur"
+    below: "Woensdag van 09.00 tot 18.00 uur"

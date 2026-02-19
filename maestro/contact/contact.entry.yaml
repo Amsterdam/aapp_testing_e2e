@@ -1,0 +1,35 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeContactModuleButton
+
+- runFlow:
+    file: ../shared/handle-external-link-button.yaml
+    env:
+      ID: ContactContactFormButton
+
+- assertVisible:
+    id: ContactPhoneButton
+
+- assertVisible:
+    id: ContactChatButton
+
+- runFlow:
+    file: ../shared/handle-external-link-button.yaml
+    env:
+      ID: ContactWhatsAppButton
+
+- assertVisible:
+    id: ContactCityOfficesButton
+
+- runFlow:
+    file: ../shared/handle-external-link-button.yaml
+    env:
+      ID: ContactMijnAmsterdamButton
+- runFlow:
+    file: ../shared/handle-external-link-button.yaml
+    env:
+      ID: ContactNewsletterSignupExternalLinkButton

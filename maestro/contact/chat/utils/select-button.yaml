@@ -1,0 +1,11 @@
+appId: nl.amsterdam.app.dev
+---
+- evalScript: ${output.index = Number(BUTTON_INDEX)}
+
+- scrollUntilVisible:
+    element:
+      id: ${BUTTON_ID}
+      index: ${output.index}
+- tapOn:
+    id: ${BUTTON_ID}
+    index: ${output.index}

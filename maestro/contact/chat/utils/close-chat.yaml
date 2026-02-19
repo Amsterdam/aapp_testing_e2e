@@ -1,0 +1,38 @@
+appId: nl.amsterdam.app.dev
+---
+- evalScript: ${output.counter = 0}
+
+- repeat:
+    while:
+      notVisible:
+        id: ChatEndedCloseButton
+      true: ${output.counter < 3}
+      # Close and download buttons often don't appear after clicking 'chat stoppen' in menu, so we give it 3 attempts
+    commands:
+      - runFlow:
+          file: './select-menu-item.yaml'
+          env:
+            MENU_ITEM_ID: ChatMenuPressableStopChatMenuItem
+
+      # We wait 10 seconds for the buttons to appear
+      - extendedWaitUntil:
+          optional: true # non-blocking due to being fail prone
+          visible:
+            id: ChatEndedCloseButton
+          timeout: 10000
+
+      - runFlow:
+          when:
+            visible:
+              id: ChatEndedCloseButton
+          commands:
+            - tapOn:
+                id: ChatEndedCloseButton
+            - evalScript: ${output.counter = 4} # Break out of loop
+
+      - runFlow:
+          when:
+            notVisible:
+              id: ChatEndedCloseButton
+          commands:
+            - evalScript: ${output.counter = output.counter + 1}

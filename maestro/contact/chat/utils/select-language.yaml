@@ -1,0 +1,10 @@
+appId: nl.amsterdam.app.dev
+---
+- scrollUntilVisible:
+    element:
+      id: ChatHistoryChoicesEnglishButton
+- tapOn:
+    id: ChatHistoryChoicesNederlandsButton
+- waitForAnimationToEnd
+- assertNotVisible:
+    id: ChatHistoryChoicesEnglishButton

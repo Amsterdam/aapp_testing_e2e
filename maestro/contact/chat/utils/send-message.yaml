@@ -1,0 +1,14 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: ChatTextInput
+- inputText: ${TEXT}
+
+- runFlow:
+    file: "../../../shared/TapToCloseKeyboard.yaml"
+
+- tapOn:
+    id: ChatTextInputSendButton
+- scrollUntilVisible:
+    element:
+      text: "^.*${TEXT}.*$"

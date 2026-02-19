@@ -1,0 +1,16 @@
+appId: nl.amsterdam.app.dev
+---
+- evalScript: ${output.counter = 0}
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - repeat:
+          while:
+            true: ${output.counter < Number(MAX_TIMES)}
+            notVisible:
+              id: ${UNTIL_VISIBLE_ID}
+          commands:
+            - back
+            - evalScript: ${output.counter = output.counter + 1}

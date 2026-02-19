@@ -1,0 +1,27 @@
+appId: nl.amsterdam.app.dev
+---
+- scrollUntilVisible:
+    element:
+      id: ${ID}
+- assertVisible:
+    id: '^${ID}.*Icon$'
+
+- runFlow:
+    when:
+      # Hard skip testing external link redirects
+      true: false
+    label: Skip testing redirect external link
+    commands:
+      - tapOn:
+          id: ${ID}
+      - runFlow:
+          when:
+            platform: iOS
+          commands:
+            - tapOn:
+                id: 'breadcrumb'
+      - runFlow:
+          file: './handle-back-navigate-android.yaml'
+          env:
+            MAX_TIMES: '3'
+            UNTIL_VISIBLE_ID: ${ID}

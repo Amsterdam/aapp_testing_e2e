@@ -1,0 +1,6 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: ChatHeaderMeatballsMenuButton
+- tapOn:
+    id: ${MENU_ITEM_ID}
