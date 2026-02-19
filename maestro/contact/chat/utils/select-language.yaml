@@ -8,6 +8,3 @@ appId: nl.amsterdam.app.dev
 - waitForAnimationToEnd
 - assertNotVisible:
     id: ChatHistoryChoicesEnglishButton
-- scrollUntilVisible:
-    element:
-      text: "^Waarmee kan ik u helpen?.*$"

@@ -1,7 +1,7 @@
 appId: nl.amsterdam.app.dev
 ---
 - runFlow:
-    file: ./utils/InitializeChat.yaml
+    file: ./utils/initialize-chat.yaml
 
 - extendedWaitUntil:
     visible:
@@ -14,26 +14,26 @@ appId: nl.amsterdam.app.dev
       traits: text
 
 - runFlow:
-    file: ./utils/SelectLanguage.yaml
+    file: ./utils/select-language.yaml
 
 - runFlow:
-    file: "./utils/SendMessage.yaml"
+    file: './utils/send-message.yaml'
     env:
-      TEXT: "Ik wil een vergunning aanvragen."
+      TEXT: 'Ik wil een vergunning aanvragen.'
 
 - runFlow:
     when:
       visible:
-        id: ".*ChatHistoryChoices.*"
-    file: "./utils/SelectButton.yaml"
+        id: '.*ChatHistoryChoices.*'
+    file: './utils/select-button.yaml'
     env:
-      BUTTON_ID: ".*ChatHistoryChoices.*"
-      BUTTON_INDEX: "0"
+      BUTTON_ID: '.*ChatHistoryChoices.*'
+      BUTTON_INDEX: '0'
 
 - runFlow:
-    file: ./utils/ToggleVisibility.yaml
+    file: ./utils/toggle-visibility.yaml
     env:
       HIDDEN_ELEMENT_ID: ContactChatButton
 
 - runFlow:
-    file: ./utils/CloseChat.yaml
+    file: ./utils/close-chat.yaml

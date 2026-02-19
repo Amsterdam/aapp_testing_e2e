@@ -10,7 +10,7 @@ appId: nl.amsterdam.app.dev
       # Close and download buttons often don't appear after clicking 'chat stoppen' in menu, so we give it 3 attempts
     commands:
       - runFlow:
-          file: "./SelectMenuItem.yaml"
+          file: './select-menu-item.yaml'
           env:
             MENU_ITEM_ID: ChatMenuPressableStopChatMenuItem
 
@@ -36,4 +36,3 @@ appId: nl.amsterdam.app.dev
               id: ChatEndedCloseButton
           commands:
             - evalScript: ${output.counter = output.counter + 1}
-

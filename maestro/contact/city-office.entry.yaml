@@ -13,10 +13,10 @@ appId: nl.amsterdam.app.dev
     id: ContactCityOfficesButton
 - waitForAnimationToEnd
 
-- runFlow: ./utils/assertVisibleOpeningHoursCentre.yaml
+- runFlow: ./utils/assert-visible-opening-hours-centre.yaml
 
 - runFlow:
-    file: ./utils/handleExternalLinkButton.yaml
+    file: ../shared/handle-external-link-button.yaml
     env:
       ID: ContactSeeRouteExternalLinkButton
 
@@ -26,15 +26,15 @@ appId: nl.amsterdam.app.dev
 
 - scrollUntilVisible:
     element:
-      text: "Stadsloket Weesp"
-- tapOn: "Stadsloket Weesp"
+      text: 'Stadsloket Weesp'
+- tapOn: 'Stadsloket Weesp'
 
 - runFlow:
-    file: ./utils/handleExternalLinkButton.yaml
+    file: ../shared/handle-external-link-button.yaml
     env:
       ID: ContactMakeAppointmentExternalLinkButton
 
-- runFlow: ./utils/assertVisibleOpeningHoursWeesp.yaml
+- runFlow: ./utils/assert-visible-opening-hours-weesp.yaml
 
 - tapOn:
     id: HeaderBackButton

@@ -7,7 +7,7 @@ appId: nl.amsterdam.app.dev
       MODULE: HomeContactModuleButton
 
 - runFlow:
-    file: ./utils/handleExternalLinkButton.yaml
+    file: ../shared/handle-external-link-button.yaml
     env:
       ID: ContactContactFormButton
 
@@ -18,7 +18,7 @@ appId: nl.amsterdam.app.dev
     id: ContactChatButton
 
 - runFlow:
-    file: ./utils/handleExternalLinkButton.yaml
+    file: ../shared/handle-external-link-button.yaml
     env:
       ID: ContactWhatsAppButton
 
@@ -26,10 +26,10 @@ appId: nl.amsterdam.app.dev
     id: ContactCityOfficesButton
 
 - runFlow:
-    file: ./utils/handleExternalLinkButton.yaml
+    file: ../shared/handle-external-link-button.yaml
     env:
       ID: ContactMijnAmsterdamButton
 - runFlow:
-    file: ./utils/handleExternalLinkButton.yaml
+    file: ../shared/handle-external-link-button.yaml
     env:
       ID: ContactNewsletterSignupExternalLinkButton
