@@ -1,0 +1,46 @@
+appId: nl.amsterdam.app.dev
+---
+- assertVisible:
+    id: 'Home${MODULE_ID}ModuleButton'
+
+- tapOn:
+    id: HeaderUserIcon
+
+- tapOn:
+    id: UserNavigationToModuleSettingsButton
+
+- tapOn:
+    id: 'UserModuleSettings${MODULE_ID}Box'
+- waitForAnimationToEnd
+
+- tapOn:
+    id: HeaderBackButton
+- waitForAnimationToEnd
+
+- tapOn:
+    id: HeaderBackButton
+- waitForAnimationToEnd
+
+- assertNotVisible:
+    id: 'Home${MODULE_ID}ModuleButton'
+
+- tapOn:
+    id: HeaderUserIcon
+
+- tapOn:
+    id: UserNavigationToModuleSettingsButton
+
+- tapOn:
+    id: 'UserModuleSettings${MODULE_ID}Box'
+- waitForAnimationToEnd
+
+- tapOn:
+    id: HeaderBackButton
+- waitForAnimationToEnd
+
+- tapOn:
+    id: HeaderBackButton
+- waitForAnimationToEnd
+
+- assertVisible:
+    id: 'Home${MODULE_ID}ModuleButton'

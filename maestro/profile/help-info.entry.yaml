@@ -1,0 +1,65 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    label: Clean start app
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Test
+      MODULE: HeaderUserIcon
+
+- runFlow:
+    label: Check "Over deze app"
+    commands:
+      - tapOn:
+          label: Check "Over deze app"
+          id: UserNavigationToAppSummaryButton
+      - scrollUntilVisible:
+          element:
+            id: AboutAboutTheAppDutchFeedbackExternalLinkButton
+      - runFlow:
+          label: Test external button "Uw mening"
+          file: ../shared/handle-external-link-button.yaml
+          env:
+            ID: 'AboutAboutTheAppDutchFeedbackExternalLinkButton'
+      - tapOn:
+          id: HeaderBackButton
+
+- runFlow:
+    label: Check "About this app"
+    commands:
+      - tapOn:
+          id: UserNavigationToAboutEnglishButton
+      - scrollUntilVisible:
+          element:
+            id: AboutAboutTheAppEnglishFeedbackExternalLinkButton
+      - runFlow:
+          label: Test external button "Your opinion"
+          file: ../shared/handle-external-link-button.yaml
+          env:
+            ID: 'AboutAboutTheAppEnglishFeedbackExternalLinkButton'
+      - tapOn:
+          id: HeaderBackButton
+
+- runFlow:
+    label: Check "Privacyverklaring"
+    commands:
+      - tapOn:
+          id: UserNavigationToPrivacyStatementButton
+      - waitForAnimationToEnd
+      - tapOn:
+          id: HeaderBackButton
+
+- runFlow:
+    label: Check "Toegankelijkheidsverklaring"
+    file: ./utils/accessibility-statement.yaml
+
+- runFlow:
+    label: 'Check copy buttons'
+    commands:
+      - tapOn:
+          id: AboutVersionNumberText
+      - assertVisible: Gekopieerd
+
+      - tapOn:
+          id: AboutInstallationIdText
+      - assertVisible: Gekopieerd

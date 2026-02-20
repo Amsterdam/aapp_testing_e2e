@@ -1,0 +1,8 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: ${MODULE_BUTTON_ID}
+- waitForAnimationToEnd
+- tapOn:
+    id: HeaderBackButton
+- waitForAnimationToEnd

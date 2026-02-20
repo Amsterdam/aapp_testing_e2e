@@ -1,0 +1,27 @@
+appId: nl.amsterdam.app.dev
+---
+- assertVisible: Log in als vergunninghouder of bezoeker om de parkeersessie te starten en te betalen.
+
+- tapOn:
+    id: UserAccountParkingLoginButton
+- extendedWaitUntil:
+    visible:
+      id: ParkingLoginScreen
+- tapOn:
+    id: HeaderBackButton
+
+- tapOn:
+    id: UserAccountParkingModuleTitle
+- waitForAnimationToEnd
+
+- runFlow:
+    file: '../../parking/shared/login-to-parking.yaml'
+    env:
+      REPORT_CODE: ${REPORT_CODE}
+      PIN_CODE: ${PIN_CODE}
+
+- tapOn:
+    id: HeaderBackButton
+- waitForAnimationToEnd
+- assertVisible:
+    text: '^U bent ingelogd met \d+ accounts?\.$'

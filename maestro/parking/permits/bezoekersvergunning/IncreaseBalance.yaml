@@ -8,7 +8,7 @@ appId: nl.amsterdam.app.dev
       ENVIRONMENT: Test
       MODULE: HomeParkingModuleButton
 - runFlow:
-    file: parking/shared/LoginToParking.yaml
+    file: parking/shared/login-to-parking.yaml
     env:
       REPORT_CODE: '__PARKING_ACCOUNT_KRASKAART_REPORT_CODE__'
       PIN_CODE: '__PARKING_ACCOUNT_KRASKAART_PIN_CODE__'

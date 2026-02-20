@@ -1,0 +1,44 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    label: Clean app start
+    file: ../../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Test
+      MODULE: HeaderUserIcon
+
+- setPermissions:
+    permissions:
+      all: allow
+
+- tapOn:
+    id: UserNavigationToNotificationSettingsButton
+- waitForAnimationToEnd
+
+- runFlow:
+    label: Login to parking to show notification toggle
+    file: './parking.yaml'
+
+- runFlow:
+    label: Check City Pass notifications
+    file: './utils/navigate-to-module-and-return.yaml'
+    env:
+      MODULE_BUTTON_ID: NotificationSettingcity-passLoginNavigationButton
+
+- runFlow:
+    label: Check Waste Guide notifications
+    file: './utils/navigate-to-module-and-return.yaml'
+    env:
+      MODULE_BUTTON_ID: UserNotificationSettingswaste-guideNavigationButton
+
+- runFlow:
+    label: Check Burning Guide notifications
+    file: './utils/navigate-to-module-and-return.yaml'
+    env:
+      MODULE_BUTTON_ID: UserNotificationSettingsburning-guideNavigationButton
+
+- runFlow:
+    label: Toggle Construction Work notifications
+    file: '../../shared/toggle-switch.yaml'
+    env:
+      SWITCH_ID: NotificationSettingconstruction-workSwitch

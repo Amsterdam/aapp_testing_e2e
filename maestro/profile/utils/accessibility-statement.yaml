@@ -1,0 +1,36 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: UserNavigationToAccessibilityStatementButton
+- waitForAnimationToEnd
+- runFlow:
+    file: ../../shared/handle-external-link-button.yaml
+    env:
+      ID: 'AboutAccessibilityStatementExternalLinkButton'
+
+- scrollUntilVisible:
+    element:
+      id: AboutAccessibilityStatementReportAndroidExternalLinkButton
+- runFlow:
+    file: ../../shared/handle-external-link-button.yaml
+    env:
+      ID: 'AboutAccessibilityStatementReportAndroidExternalLinkButton'
+
+- scrollUntilVisible:
+    element:
+      id: AboutAccessibilityStatementReportIosExternalLinkButton
+- runFlow:
+    file: ../../shared/handle-external-link-button.yaml
+    env:
+      ID: 'AboutAccessibilityStatementReportIosExternalLinkButton'
+
+- scrollUntilVisible:
+    element:
+      id: AboutAccessibilityStatementContactButton
+- tapOn:
+    id: AboutAccessibilityStatementContactButton
+- tapOn:
+    id: HeaderBackButton
+- waitForAnimationToEnd
+- tapOn:
+    id: HeaderBackButton

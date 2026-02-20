@@ -1,0 +1,19 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: UserNavigationToUserBiometricsButton
+
+- runFlow:
+    file: '../../shared/toggle-switch.yaml'
+    env:
+      SWITCH_ID: UserBiometricsScreenSwitch
+
+- runFlow:
+    when:
+      visible: Toegang met Face ID staat aan
+    commands:
+      - tapOn:
+          id: UserBiometricsScreenSwitch
+
+- tapOn:
+    id: HeaderBackButton

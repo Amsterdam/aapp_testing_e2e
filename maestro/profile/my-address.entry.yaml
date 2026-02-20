@@ -1,0 +1,48 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    label: Clean app start
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Test
+      MODULE: HeaderUserIcon
+
+- tapOn:
+    id: UserNavigationToAddressButton
+
+- runFlow:
+    label: Add address
+    file: './utils/add-address.yaml'
+    env:
+      ADDRESS: Cruquiusweg 5
+
+- runFlow:
+    label: Test Address Add Alert
+    commands:
+      - assertVisible:
+          id: AddressAddedAlert
+      - tapOn:
+          id: AddressAddedAlertCloseIcon
+      - waitForAnimationToEnd
+
+- tapOn:
+    label: Delete Address
+    id: AddressDeleteButton
+
+- runFlow:
+    label: Test Address Delete Alert
+    commands:
+      - assertVisible:
+          id: AddressDeletedAlert
+      - tapOn:
+          id: AddressDeletedAlertCloseIcon
+      - waitForAnimationToEnd
+
+- runFlow:
+    label: Test privacy info modal link
+    commands:
+      - tapOn:
+          id: AddressUseOfLocationLink
+      - waitForAnimationToEnd
+      - tapOn:
+          id: AddressPrivacyInfoModalCloseButton

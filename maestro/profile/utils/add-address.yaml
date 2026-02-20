@@ -1,0 +1,22 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: AddressAddButton
+- waitForAnimationToEnd
+
+- setClipboard: ${ADDRESS}
+- pasteText
+
+- assertVisible:
+    id: AddressStreetInputSearchField
+    text: ${ADDRESS}
+
+- extendedWaitUntil:
+    visible:
+      id: '^AddressSearchResult.*ButtonText$'
+
+- tapOn:
+    id: '^AddressSearchResult.*ButtonText$'
+    text: ${ADDRESS}
+
+- waitForAnimationToEnd
