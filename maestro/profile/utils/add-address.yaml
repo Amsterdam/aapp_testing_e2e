@@ -4,8 +4,7 @@ appId: nl.amsterdam.app.dev
     id: AddressAddButton
 - waitForAnimationToEnd
 
-- inputText:
-    text: ${ADDRESS}
+- inputText: ${ADDRESS}
 
 - extendedWaitUntil:
     visible:
