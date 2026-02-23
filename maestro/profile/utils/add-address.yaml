@@ -4,11 +4,7 @@ appId: nl.amsterdam.app.dev
     id: AddressAddButton
 - waitForAnimationToEnd
 
-- setClipboard: ${ADDRESS}
-- pasteText
-
-- assertVisible:
-    id: AddressStreetInputSearchField
+- inputText:
     text: ${ADDRESS}
 
 - extendedWaitUntil:
