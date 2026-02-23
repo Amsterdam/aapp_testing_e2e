@@ -7,10 +7,6 @@ appId: nl.amsterdam.app.dev
       ENVIRONMENT: Test
       MODULE: HeaderUserIcon
 
-- setPermissions:
-    permissions:
-      all: allow
-
 - tapOn:
     id: UserNavigationToNotificationSettingsButton
 - waitForAnimationToEnd
