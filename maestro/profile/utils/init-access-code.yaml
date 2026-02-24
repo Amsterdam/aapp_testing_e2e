@@ -1,6 +1,6 @@
 appId: nl.amsterdam.app.dev
 ---
-- runScript: ../scripts/credentials.js
+- runScript: ../../scripts/credentials.js
 - runFlow:
     file: ../../shared/OpenModuleFromFreshApp.yaml
     env:
