@@ -3,13 +3,13 @@ appId: nl.amsterdam.app.dev
 - launchApp:
     clearState: true
     clearKeychain: true
-    permissions: {all: deny}
+    permissions: { all: deny }
 - runFlow:
     label: Close onboarding
     file: ../shared/CloseOnboarding.yaml
 
 - runFlow:
-    label: Toggling Parking module
+    label: Toggling Construction-work module
     file: ./utils/toggle-module.yaml
     env:
-      MODULE_ID: 'Parking'
+      MODULE_ID: 'ConstructionWork'
