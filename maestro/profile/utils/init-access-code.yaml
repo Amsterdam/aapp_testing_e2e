@@ -1,5 +1,6 @@
 appId: nl.amsterdam.app.dev
 ---
+- runScript: ../scripts/credentials.js
 - runFlow:
     file: ../../shared/OpenModuleFromFreshApp.yaml
     env:
@@ -8,8 +9,8 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../../parking/shared/login-to-parking.yaml
     env:
-      REPORT_CODE: ${REPORT_CODE}
-      PIN_CODE: ${PIN_CODE}
+      REPORT_CODE: ${output.parkingVisitorReportCode}
+      PIN_CODE: ${output.parkingVisitorPinCode}
 
 - tapOn:
     id: HeaderBackButton
