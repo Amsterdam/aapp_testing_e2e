@@ -14,7 +14,7 @@ appId: nl.amsterdam.app.dev
     id: UserAccountParkingModuleTitle
 - waitForAnimationToEnd
 
-- runScript: ../scripts/credentials.js
+- runScript: ../../scripts/credentials.js
 - runFlow:
     file: '../../parking/shared/login-to-parking.yaml'
     env:
