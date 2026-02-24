@@ -6,6 +6,9 @@ appId: nl.amsterdam.app.dev
 
 - inputText: ${ADDRESS}
 
+- assertVisible:
+    id: AddressStreetInputSearchField
+
 - extendedWaitUntil:
     visible:
       id: '^AddressSearchResult.*ButtonText$'
