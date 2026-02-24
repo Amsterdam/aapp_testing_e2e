@@ -9,7 +9,12 @@ appId: nl.amsterdam.app.dev
 
 - tapOn:
     id: UserNavigationToNotificationSettingsButton
+
 - waitForAnimationToEnd
+
+- tapOn:
+    text: 'Sta toe|Allow'
+    optional: true
 
 - runFlow:
     label: Login to parking to show notification toggle
