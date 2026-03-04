@@ -28,11 +28,8 @@ appId: nl.amsterdam.app.dev
     text: Verlaat en verwijder antwoorden
 
 # Recyclepunten
-- scrollUntilVisible:
-    element:
-      id: WasteGuideRecyclingButton
-- tapOn:
-    id: WasteGuideRecyclingButton
+- runFlow:
+    file: ./utils/RecyclingPoints.yaml
 
 # Alles over afval
 - scrollUntilVisible:
