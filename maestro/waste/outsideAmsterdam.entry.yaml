@@ -12,10 +12,8 @@ appId: nl.amsterdam.app.dev
     file: '../shared/EnterAddress.yaml'
     env:
       ADDRESS: Meteorenlaan 123, Amsterdam-Duivendrecht
-- assertVisible:
-    id: WasteGuideAddressAddressSwitchMapMarkerIcon
-- tapOn:
-    id: AddressSwitchDeclineMyAddressButton
+      ID: WasteGuideAddress
+      SAVEASMYADDRESS: No
 - assertVisible:
     id: WasteGuideAddressOutsideAmsterdamTitle
 - assertVisible:

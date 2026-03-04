@@ -11,40 +11,34 @@ appId: nl.amsterdam.app.dev
     label: Enter address
     file: '../shared/EnterAddress.yaml'
     env:
-      ADDRESS: Cruquiusweg 5
+      ADDRESS: Rokin 8-3
       ID: WasteGuideAddress
       SAVEASMYADDRESS: Yes
-- assertVisible:
-    id: WasteGuideReportWrongBuildingTypeIntroPhrase
-- assertVisible:
-    id: WasteGuideReportWrongBuildingTypeLink
-
-#zonder afvalcontract
-- tapOn:
-    id: WasteGuideSelectContractRadioGroupfalseRadioButton
-- assertVisible:
-    id: WasteGuideTitle
-- assertNotVisible:
-    id: WasteGuideWasteGuideCalendarButton
 
 - runFlow:
     label: Restafval
     file: './utils/VerifyFraction.yaml'
     env:
       FRACTION: Rest
-      HOW: In de container voor restafval
+      HOW: In witte afvalzak
+      DAY: Dinsdag en vrijdag
+      OUTSIDE: Tussen 17.00 en 18.00 uur
+      WHERE: Aan de rand van de stoep of op de vaste plek
 - runFlow:
     label: Grofafval
     file: './utils/VerifyFraction.yaml'
     env:
       FRACTION: GA
-      HOW: Laat uw grof afval ophalen door een erkend afvalbedrijf
+      HOW: Appointment
 - runFlow:
     label: Papier en karton
     file: './utils/VerifyFraction.yaml'
     env:
       FRACTION: Papier
-      HOW: In de container voor papier
+      HOW: Maak vast tot 1 pakket
+      DAY: Dinsdag en vrijdag
+      OUTSIDE: Tussen 17.00 en 18.00 uur
+      WHERE: Leg uw pakket op de stoep
 - runFlow:
     label: GFE/t
     file: './utils/VerifyFraction.yaml'
@@ -63,19 +57,3 @@ appId: nl.amsterdam.app.dev
     env:
       FRACTION: Textiel
       HOW: In de container voor textiel
-- scrollUntilVisible:
-    element:
-      id: WasteGuideWrongCollectionInformationButton
-
-- scrollUntilVisible:
-    element:
-      id: WasteGuideSelectContractRadioGrouptrueRadioButtonPhrase
-    direction: UP
-
-# met afval contract
-- tapOn:
-    id: WasteGuideSelectContractRadioGrouptrueRadioButtonPhrase
-- assertNotVisible:
-    id: WasteGuideTitle
-- assertVisible:
-    id: WasteGuideBusinessesInfoPhrase

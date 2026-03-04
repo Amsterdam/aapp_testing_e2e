@@ -13,3 +13,31 @@ appId: nl.amsterdam.app.dev
     text: ${ADDRESS}
 
 - waitForAnimationToEnd
+
+- runFlow:
+    when:
+      true: ${!!ID && SAVEASMYADDRESS === 'Yes'}
+    label: Save as my address
+    commands:
+      - assertVisible:
+          id: ${ID}AddressSwitchMapMarkerIcon
+      - tapOn:
+          id: AddressSwitchSaveMyAddressButton
+      - assertVisible:
+          id: ${ID}AddressSwitchHouseIcon
+      - tapOn:
+          id: AddressSaveMyAddressSuccessAlertCloseIcon
+
+- runFlow:
+    when:
+      true: ${!!ID && SAVEASMYADDRESS === 'No'}
+    label: Do not save as my address
+    commands:
+      - assertVisible:
+          id: ${ID}AddressSwitchMapMarkerIcon
+      - tapOn:
+          id: AddressSwitchDeclineMyAddressButton
+      - assertVisible:
+          id: ${ID}AddressSwitchMapMarkerIcon
+      - assertNotVisible:
+          id: AddressSaveMyAddressSuccessAlertCloseIcon

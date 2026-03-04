@@ -11,21 +11,9 @@ appId: nl.amsterdam.app.dev
     label: Enter address
     file: '../shared/EnterAddress.yaml'
     env:
-      ADDRESS: Cruquiusweg 5
+      ADDRESS: Balistraat 1-1
       ID: WasteGuideAddress
       SAVEASMYADDRESS: Yes
-- assertVisible:
-    id: WasteGuideReportWrongBuildingTypeIntroPhrase
-- assertVisible:
-    id: WasteGuideReportWrongBuildingTypeLink
-
-#zonder afvalcontract
-- tapOn:
-    id: WasteGuideSelectContractRadioGroupfalseRadioButton
-- assertVisible:
-    id: WasteGuideTitle
-- assertNotVisible:
-    id: WasteGuideWasteGuideCalendarButton
 
 - runFlow:
     label: Restafval
@@ -38,7 +26,10 @@ appId: nl.amsterdam.app.dev
     file: './utils/VerifyFraction.yaml'
     env:
       FRACTION: GA
-      HOW: Laat uw grof afval ophalen door een erkend afvalbedrijf
+      HOW: Breng uw grof afval naar een Recyclepunt of buiten zetten
+      DAY: Maandag en vrijdag
+      OUTSIDE: Zondag vanaf 21.00 tot maandag 07.00 uur en donderdag vanaf 21.00 tot vrijdag 07.00 uur
+      WHERE: Aan de rand van de stoep of op de vaste plek
 - runFlow:
     label: Papier en karton
     file: './utils/VerifyFraction.yaml'
@@ -63,19 +54,3 @@ appId: nl.amsterdam.app.dev
     env:
       FRACTION: Textiel
       HOW: In de container voor textiel
-- scrollUntilVisible:
-    element:
-      id: WasteGuideWrongCollectionInformationButton
-
-- scrollUntilVisible:
-    element:
-      id: WasteGuideSelectContractRadioGrouptrueRadioButtonPhrase
-    direction: UP
-
-# met afval contract
-- tapOn:
-    id: WasteGuideSelectContractRadioGrouptrueRadioButtonPhrase
-- assertNotVisible:
-    id: WasteGuideTitle
-- assertVisible:
-    id: WasteGuideBusinessesInfoPhrase
