@@ -20,8 +20,7 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: WasteGuideReportWasteProblemButton
 - assertVisible:
-    text: Melding doen
-    id: HeaderTitle
+    id: ReportProblemWebViewScreen
 - tapOn:
     id: HeaderBackIcon
 - tapOn:
