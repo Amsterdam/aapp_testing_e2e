@@ -1,0 +1,46 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeWasteGuideModuleButton
+- assertVisible:
+    id: WasteGuideAddressAddressSwitchNoAddressTitle
+- assertVisible:
+    id: WasteGuideAddressAddressSwitchNoAddressText
+- assertVisible:
+    id: WasteGuideAddressAddressSwitchChooseAddressButton
+
+# Meer opties
+# Meld een afvalprobleem
+- scrollUntilVisible:
+    element:
+      id: WasteGuideReportWasteProblemButton
+- tapOn:
+    id: WasteGuideReportWasteProblemButton
+- assertVisible:
+    text: Melding doen
+    id: HeaderTitle
+- tapOn:
+    id: HeaderBackIcon
+- tapOn:
+    text: Verlaat en verwijder antwoorden
+
+# Recyclepunten
+- scrollUntilVisible:
+    element:
+      id: WasteGuideRecyclingButton
+- tapOn:
+    id: WasteGuideRecyclingButton
+
+# Alles over afval
+- scrollUntilVisible:
+    element:
+      id: WasteGuideInformationButton
+- assertVisible:
+    id: WasteGuideInformationTitle
+- runFlow:
+    file: ../shared/handle-external-link-button.yaml
+    env:
+      ID: WasteGuideInformationButton

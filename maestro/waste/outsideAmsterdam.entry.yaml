@@ -1,0 +1,22 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeWasteGuideModuleButton
+- tapOn:
+    id: WasteGuideAddressAddressSwitch
+- runFlow:
+    label: Enter address
+    file: '../shared/EnterAddress.yaml'
+    env:
+      ADDRESS: Meteorenlaan 123, Amsterdam-Duivendrecht
+- assertVisible:
+    id: WasteGuideAddressAddressSwitchMapMarkerIcon
+- tapOn:
+    id: AddressSwitchDeclineMyAddressButton
+- assertVisible:
+    id: WasteGuideAddressOutsideAmsterdamTitle
+- assertVisible:
+    id: WasteGuideNotFoundMistakeButton

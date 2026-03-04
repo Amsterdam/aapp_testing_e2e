@@ -1,0 +1,35 @@
+appId: nl.amsterdam.app.dev
+---
+- scrollUntilVisible:
+    element:
+      id: WasteGuide${FRACTION}FractionNavigationButton
+- tapOn:
+    id: WasteGuide${FRACTION}FractionNavigationButton
+- runFlow:
+    when:
+      true: ${!!HOW}
+    label: Test hoe
+    commands:
+      - assertVisible:
+          text: 'Hoe: ${HOW}'
+          id: WasteGuideFractionHowSection
+- runFlow:
+    when:
+      true: ${!!WHERE}
+    label: Test waar
+    commands:
+      - assertVisible:
+          text: 'Waar: ${WHERE}'
+          id: WasteGuideFractionWhereSection
+- runFlow:
+    when:
+      true: ${!!WHAT}
+    label: Test wat
+    commands:
+      - assertVisible:
+          text: 'Wat: ${WHAT}'
+          id: WasteGuideFractionWhatSection
+- assertVisible:
+    id: WasteGuideFractionWhatSection
+- tapOn:
+    id: HeaderBackIcon
