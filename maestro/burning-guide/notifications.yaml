@@ -4,29 +4,29 @@ appId: nl.amsterdam.app.dev
     file: ../shared/OpenModuleFromFreshApp.yaml
     env:
       ENVIRONMENT: Acceptance
-      MODULE: HomeWasteGuideModuleButton
+      MODULE: HomeBurningGuideModuleButton
 - tapOn:
-    id: WasteGuideAddressAddressSwitch
+    id: BurningGuideAddressSwitch
 - runFlow:
     label: Enter address
     file: '../shared/EnterAddress.yaml'
     env:
       ADDRESS: Cruquiusweg 5
-      ID: WasteGuideAddress
+      ID: BurningGuide
       SAVEASMYADDRESS: Yes
 
 - scrollUntilVisible:
     element:
-      id: WasteGuideNotificationSwitchSwitch
+      id: BurningGuideNotificationSwitchSwitch
 - tapOn:
     text: '.* staat uit'
-    id: WasteGuideNotificationSwitchSwitch
+    id: BurningGuideNotificationSwitchSwitch
 - tapOn:
     text: 'Sta toe|Allow'
     optional: true
 - tapOn:
     text: '.* staat aan'
-    id: WasteGuideNotificationSwitchSwitch
+    id: BurningGuideNotificationSwitchSwitch
 - assertVisible:
     text: '.* staat uit'
-    id: WasteGuideNotificationSwitchSwitch
+    id: BurningGuideNotificationSwitchSwitch

@@ -6,7 +6,7 @@ appId: nl.amsterdam.app.dev
       ENVIRONMENT: Acceptance
       MODULE: HomeWasteGuideModuleButton
 - tapOn:
-    id: WasteGuideAddressAddressSwitch
+    id: WasteGuideAddressSwitch
 - runFlow:
     label: Enter address
     file: '../shared/EnterAddress.yaml'

@@ -6,11 +6,11 @@ appId: nl.amsterdam.app.dev
       ENVIRONMENT: Acceptance
       MODULE: HomeWasteGuideModuleButton
 - assertVisible:
-    id: WasteGuideAddressAddressSwitchNoAddressTitle
+    id: WasteGuideAddressSwitchNoAddressTitle
 - assertVisible:
-    id: WasteGuideAddressAddressSwitchNoAddressText
+    id: WasteGuideAddressSwitchNoAddressText
 - assertVisible:
-    id: WasteGuideAddressAddressSwitchChooseAddressButton
+    id: WasteGuideAddressSwitchChooseAddressButton
 
 # Meer opties
 # Meld een afvalprobleem
