@@ -12,7 +12,7 @@ appId: nl.amsterdam.app.dev
     file: '../shared/EnterAddress.yaml'
     env:
       ADDRESS: Cruquiusweg 5
-      ID: WasteGuideAddress
+      ID: WasteGuide
       SAVEASMYADDRESS: Yes
 
 - scrollUntilVisible:

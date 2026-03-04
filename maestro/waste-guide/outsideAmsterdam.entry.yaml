@@ -12,7 +12,7 @@ appId: nl.amsterdam.app.dev
     file: '../shared/EnterAddress.yaml'
     env:
       ADDRESS: Meteorenlaan 123, Amsterdam-Duivendrecht
-      ID: WasteGuideAddress
+      ID: WasteGuide
       SAVEASMYADDRESS: No
 - assertVisible:
     id: WasteGuideAddressOutsideAmsterdamTitle

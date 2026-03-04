@@ -12,7 +12,7 @@ appId: nl.amsterdam.app.dev
     file: '../shared/EnterAddress.yaml'
     env:
       ADDRESS: Stoombootweg 14
-      ID: WasteGuideAddress
+      ID: WasteGuide
       SAVEASMYADDRESS: No
 
 - runFlow:
