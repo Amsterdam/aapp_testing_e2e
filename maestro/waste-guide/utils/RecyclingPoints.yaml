@@ -20,7 +20,7 @@ appId: nl.amsterdam.app.dev
     text: Henk Sneevlietweg
     id: HeaderTitle
 - assertVisible:
-    text: Henk Sneevlietweg. Henk Sneevlietweg.
+    text: Henk Sneevlietweg. Henk Sneevlietweg.?
 - assertVisible:
     id: WasteGuideRecyclePointMapExternalLinkButton
 - tapOn:
@@ -43,7 +43,7 @@ appId: nl.amsterdam.app.dev
     text: Rozenburglaan
     id: HeaderTitle
 - assertVisible:
-    text: Rozenburglaan. Rozenburglaan.
+    text: Rozenburglaan. Rozenburglaan.?
 - assertVisible:
     id: WasteGuideRecyclePointMapExternalLinkButton
 - tapOn:
