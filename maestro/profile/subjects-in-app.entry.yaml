@@ -3,7 +3,7 @@ appId: nl.amsterdam.app.dev
 - launchApp:
     clearState: true
     clearKeychain: true
-    permissions: 
+    permissions:
       all: allow
 - runFlow:
     label: Close onboarding
