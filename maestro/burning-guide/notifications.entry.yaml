@@ -1,0 +1,29 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeBurningGuideModuleButton
+- tapOn:
+    id: BurningGuideAddressSwitch
+- runFlow:
+    label: Enter address
+    file: '../shared/EnterAddress.yaml'
+    env:
+      ADDRESS: Cruquiusweg 5
+      ID: BurningGuide
+      SAVEASMYADDRESS: Yes
+
+- scrollUntilVisible:
+    element:
+      id: BurningGuideNotificationSwitchSwitch
+- tapOn:
+    text: '.* staat uit'
+    id: BurningGuideNotificationSwitchSwitch
+- tapOn:
+    text: '.* staat aan'
+    id: BurningGuideNotificationSwitchSwitch
+- assertVisible:
+    text: '.* staat uit'
+    id: BurningGuideNotificationSwitchSwitch

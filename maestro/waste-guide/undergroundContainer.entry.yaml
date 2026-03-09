@@ -1,0 +1,56 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeWasteGuideModuleButton
+- tapOn:
+    id: WasteGuideAddressSwitch
+- runFlow:
+    label: Enter address
+    file: '../shared/EnterAddress.yaml'
+    env:
+      ADDRESS: Balistraat 1-1
+      ID: WasteGuide
+      SAVEASMYADDRESS: Yes
+
+- runFlow:
+    label: Restafval
+    file: './utils/VerifyFraction.yaml'
+    env:
+      FRACTION: Rest
+      HOW: In de container voor restafval
+- runFlow:
+    label: Grofafval
+    file: './utils/VerifyFraction.yaml'
+    env:
+      FRACTION: GA
+      HOW: Breng uw grof afval naar een Recyclepunt of buiten zetten
+      DAY: Maandag en vrijdag
+      OUTSIDE: Zondag vanaf 21.00 tot maandag 07.00 uur en donderdag vanaf 21.00 tot vrijdag 07.00 uur
+      WHERE: Aan de rand van de stoep of op de vaste plek
+- runFlow:
+    label: Papier en karton
+    file: './utils/VerifyFraction.yaml'
+    env:
+      FRACTION: Papier
+      HOW: In de container voor papier
+- runFlow:
+    label: GFE/t
+    file: './utils/VerifyFraction.yaml'
+    env:
+      FRACTION: GFT
+      HOW: Bij het restafval
+- runFlow:
+    label: Glas
+    file: './utils/VerifyFraction.yaml'
+    env:
+      FRACTION: Glas
+      HOW: In de container voor glas
+- runFlow:
+    label: Textiel
+    file: './utils/VerifyFraction.yaml'
+    env:
+      FRACTION: Textiel
+      HOW: In de container voor textiel

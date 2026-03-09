@@ -1,0 +1,63 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeBurningGuideModuleButton
+- tapOn:
+    id: BurningGuideAddressSwitch
+- runFlow:
+    label: Enter address
+    file: '../shared/EnterAddress.yaml'
+    env:
+      ADDRESS: Cruquiusweg 5
+      ID: BurningGuide
+      SAVEASMYADDRESS: No
+
+- scrollUntilVisible:
+    element:
+      id: BurningGuideRecommendationNavigationButton
+- tapOn:
+    id: BurningGuideRecommendationNavigationButton
+- assertVisible:
+    id: BurningGuideCodeInfoScreen
+- tapOn:
+    id: HeaderBackIcon
+
+- scrollUntilVisible:
+    element:
+      id: BurningGuideTipsButton
+- tapOn:
+    id: BurningGuideTipsButton
+- assertVisible:
+    id: BurningGuideTipsScreen
+- tapOn:
+    id: HeaderBackIcon
+
+- scrollUntilVisible:
+    element:
+      id: BurningGuideRisksButton
+- tapOn:
+    id: BurningGuideRisksButton
+- assertVisible:
+    id: BurningGuideRisksScreen
+- tapOn:
+    id: HeaderBackIcon
+
+- scrollUntilVisible:
+    element:
+      id: BurningGuideReportButton
+- tapOn:
+    id: BurningGuideReportButton
+- assertVisible:
+    id: BurningGuideNuisanceScreen
+- assertVisible:
+    id: BurningGuideNuisanceReportRIVMButton
+- scrollUntilVisible:
+    element:
+      id: BurningGuideNuisanceReportProblemButton
+- tapOn:
+    id: BurningGuideNuisanceReportProblemButton
+- assertVisible:
+    id: ReportProblemWebViewScreen

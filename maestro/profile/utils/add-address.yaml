@@ -12,6 +12,7 @@ appId: nl.amsterdam.app.dev
 - extendedWaitUntil:
     visible:
       id: '^AddressSearchResult.*ButtonText$'
+      text: ${ADDRESS}
 
 - tapOn:
     id: '^AddressSearchResult.*ButtonText$'

@@ -1,0 +1,81 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeWasteGuideModuleButton
+- tapOn:
+    id: WasteGuideAddressSwitch
+- runFlow:
+    label: Enter address
+    file: '../shared/EnterAddress.yaml'
+    env:
+      ADDRESS: Cruquiusweg 5
+      ID: WasteGuide
+      SAVEASMYADDRESS: Yes
+- assertVisible:
+    id: WasteGuideReportWrongBuildingTypeIntroPhrase
+- assertVisible:
+    id: WasteGuideReportWrongBuildingTypeLink
+
+# zonder afvalcontract
+- tapOn:
+    id: WasteGuideSelectContractRadioGroupfalseRadioButton
+- assertVisible:
+    id: WasteGuideTitle
+- assertNotVisible:
+    id: WasteGuideWasteGuideCalendarButton
+
+- runFlow:
+    label: Restafval
+    file: './utils/VerifyFraction.yaml'
+    env:
+      FRACTION: Rest
+      HOW: In de container voor restafval
+- runFlow:
+    label: Grofafval
+    file: './utils/VerifyFraction.yaml'
+    env:
+      FRACTION: GA
+      HOW: Laat uw grof afval ophalen door een erkend afvalbedrijf
+- runFlow:
+    label: Papier en karton
+    file: './utils/VerifyFraction.yaml'
+    env:
+      FRACTION: Papier
+      HOW: In de container voor papier
+- runFlow:
+    label: GFE/t
+    file: './utils/VerifyFraction.yaml'
+    env:
+      FRACTION: GFT
+      HOW: Bij het restafval
+- runFlow:
+    label: Glas
+    file: './utils/VerifyFraction.yaml'
+    env:
+      FRACTION: Glas
+      HOW: In de container voor glas
+- runFlow:
+    label: Textiel
+    file: './utils/VerifyFraction.yaml'
+    env:
+      FRACTION: Textiel
+      HOW: In de container voor textiel
+- scrollUntilVisible:
+    element:
+      id: WasteGuideWrongCollectionInformationButton
+
+- scrollUntilVisible:
+    element:
+      id: WasteGuideSelectContractRadioGrouptrueRadioButtonPhrase
+    direction: UP
+
+# met afval contract
+- tapOn:
+    id: WasteGuideSelectContractRadioGrouptrueRadioButtonPhrase
+- assertNotVisible:
+    id: WasteGuideTitle
+- assertVisible:
+    id: WasteGuideBusinessesInfoPhrase

@@ -1,0 +1,56 @@
+appId: nl.amsterdam.app.dev
+---
+- scrollUntilVisible:
+    element:
+      id: WasteGuide${FRACTION}FractionNavigationButton
+- tapOn:
+    id: WasteGuide${FRACTION}FractionNavigationButton
+- runFlow:
+    when:
+      true: ${!!HOW && HOW !== 'Appointment'}
+    label: Test hoe
+    commands:
+      - assertVisible:
+          text: 'Hoe: ${HOW}'
+          id: WasteGuideFractionHowSection
+- runFlow:
+    when:
+      true: ${!!HOW && HOW === 'Appointment'}
+    label: Test hoe (maak een afspraak)
+    commands:
+      - assertVisible:
+          id: WasteGuideFractionHowSectionButton
+      - assertVisible:
+          id: WasteGuideFractionHowSectionPhoneButton
+- runFlow:
+    when:
+      true: ${!!DAY}
+    label: Test dag
+    commands:
+      - assertVisible:
+          text: 'Ophaaldag: ${DAY}'
+          id: WasteGuideFractionDAYSection
+      - assertVisible:
+          id: WasteGuideFractionNextCollectionSection
+      - assertVisible:
+          id: WasteGuideWasteGuideCalendarButton
+- runFlow:
+    when:
+      true: ${!!OUTSIDE}
+    label: Test buitenzetten
+    commands:
+      - assertVisible:
+          text: 'Buitenzetten: ${OUTSIDE}'
+          id: WasteGuideFractionOutsideSection
+- runFlow:
+    when:
+      true: ${!!WHERE}
+    label: Test waar
+    commands:
+      - assertVisible:
+          text: 'Waar: ${WHERE}'
+          id: WasteGuideFractionWhereSection
+- assertVisible:
+    id: WasteGuideFractionWhatSection
+- tapOn:
+    id: HeaderBackIcon
