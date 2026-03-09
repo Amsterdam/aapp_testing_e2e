@@ -22,9 +22,6 @@ appId: nl.amsterdam.app.dev
     text: '.* staat uit'
     id: WasteGuideNotificationSwitchSwitch
 - tapOn:
-    text: 'Sta toe|Allow'
-    optional: true
-- tapOn:
     text: '.* staat aan'
     id: WasteGuideNotificationSwitchSwitch
 - assertVisible:
