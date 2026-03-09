@@ -19,7 +19,7 @@ appId: nl.amsterdam.app.dev
 - assertVisible:
     id: WasteGuideReportWrongBuildingTypeLink
 
-#zonder afvalcontract
+# zonder afvalcontract
 - tapOn:
     id: WasteGuideSelectContractRadioGroupfalseRadioButton
 - assertVisible:
