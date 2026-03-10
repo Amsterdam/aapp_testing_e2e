@@ -22,11 +22,9 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     text: '.* staat uit'
     id: WasteGuideNotificationSwitchSwitch
-- waitForAnimationToEnd
 - tapOn:
     text: '.* staat aan'
     id: WasteGuideNotificationSwitchSwitch
-- waitForAnimationToEnd
 - assertVisible:
     text: '.* staat uit'
     id: WasteGuideNotificationSwitchSwitch
