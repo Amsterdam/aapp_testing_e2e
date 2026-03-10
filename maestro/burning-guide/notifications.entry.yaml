@@ -22,9 +22,11 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     text: '.* staat uit'
     id: BurningGuideNotificationSwitchSwitch
+- waitForAnimationToEnd
 - tapOn:
     text: '.* staat aan'
     id: BurningGuideNotificationSwitchSwitch
+- waitForAnimationToEnd
 - assertVisible:
     text: '.* staat uit'
     id: BurningGuideNotificationSwitchSwitch
