@@ -12,6 +12,7 @@ appId: nl.amsterdam.app.dev
     file: '../shared/EnterAddress.yaml'
     env:
       ADDRESS: Balistraat 1-1
+      BAGID: '0363200000038242'
       ID: WasteGuide
       SAVEASMYADDRESS: Yes
 

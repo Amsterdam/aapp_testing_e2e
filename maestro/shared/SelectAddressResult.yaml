@@ -1,0 +1,28 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    when:
+      true: ${!!BAGID}
+    label: Select address with bagid
+    commands:
+      - extendedWaitUntil:
+          visible:
+            id: '^AddressSearchResult${BAGID}ButtonText$'
+      - tapOn:
+          id: '^AddressSearchResult${BAGID}ButtonText$'
+
+- runFlow:
+    when:
+      true: ${!BAGID}
+    label: Select address without bagid
+    commands:
+      - extendedWaitUntil:
+          visible:
+            id: '^AddressSearchResult.*ButtonText$'
+            text: ${ADDRESS}
+
+      - tapOn:
+          id: '^AddressSearchResult.*ButtonText$'
+          text: ${ADDRESS}
+
+- waitForAnimationToEnd

@@ -12,6 +12,7 @@ appId: nl.amsterdam.app.dev
     file: '../shared/EnterAddress.yaml'
     env:
       ADDRESS: Rokin 8-3
+      BAGID: '0363200000254673'
       ID: WasteGuide
       SAVEASMYADDRESS: Yes
 

@@ -12,6 +12,7 @@ appId: nl.amsterdam.app.dev
     file: '../shared/EnterAddress.yaml'
     env:
       ADDRESS: Stoombootweg 14
+      BAGID: '0363200000280799'
       ID: WasteGuide
       SAVEASMYADDRESS: No
 

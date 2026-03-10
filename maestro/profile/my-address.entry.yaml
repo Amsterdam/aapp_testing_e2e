@@ -15,6 +15,7 @@ appId: nl.amsterdam.app.dev
     file: './utils/add-address.yaml'
     env:
       ADDRESS: Cruquiusweg 5
+      BAGID: '0363200000406068'
 
 - runFlow:
     label: Test Address Add Alert
