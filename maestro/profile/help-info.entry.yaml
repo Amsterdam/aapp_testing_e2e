@@ -6,6 +6,7 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Test
       MODULE: HeaderUserIcon
+      PERMISSION: 'allow'
 
 - runFlow:
     label: Check "Over deze app"
