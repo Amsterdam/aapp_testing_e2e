@@ -9,13 +9,9 @@ appId: nl.amsterdam.app.dev
 - assertVisible:
     id: AddressStreetInputSearchField
 
-- extendedWaitUntil:
-    visible:
-      id: '^AddressSearchResult.*ButtonText$'
-      text: ${ADDRESS}
-
-- tapOn:
-    id: '^AddressSearchResult.*ButtonText$'
-    text: ${ADDRESS}
-
-- waitForAnimationToEnd
+- runFlow:
+    label: Enter address
+    file: '../../shared/SelectAddressResult.yaml'
+    env:
+      ADDRESS: ${ADDRESS}
+      BAGID: ${BAGID}

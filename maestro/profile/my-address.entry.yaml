@@ -6,6 +6,7 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Test
       MODULE: HeaderUserIcon
+      PERMISSION: 'allow'
 
 - tapOn:
     id: UserNavigationToAddressButton
@@ -15,6 +16,7 @@ appId: nl.amsterdam.app.dev
     file: './utils/add-address.yaml'
     env:
       ADDRESS: Cruquiusweg 5
+      BAGID: '0363200000406068'
 
 - runFlow:
     label: Test Address Add Alert

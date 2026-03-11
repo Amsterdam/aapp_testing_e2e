@@ -8,6 +8,7 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Test
       MODULE: HomeParkingModuleButton
+      PERMISSION: 'allow'
 - runFlow:
     file: ../parking/shared/login-to-parking.yaml
     env:

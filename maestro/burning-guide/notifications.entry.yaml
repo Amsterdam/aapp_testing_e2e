@@ -5,6 +5,7 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeBurningGuideModuleButton
+      PERMISSION: 'allow'
 - tapOn:
     id: BurningGuideAddressSwitch
 - runFlow:
@@ -12,6 +13,7 @@ appId: nl.amsterdam.app.dev
     file: '../shared/EnterAddress.yaml'
     env:
       ADDRESS: Cruquiusweg 5
+      BAGID: '0363200000406068'
       ID: BurningGuide
       SAVEASMYADDRESS: Yes
 

@@ -5,6 +5,7 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeWasteGuideModuleButton
+      PERMISSION: deny
 - assertVisible:
     id: WasteGuideAddressSwitchNoAddressTitle
 - assertVisible:

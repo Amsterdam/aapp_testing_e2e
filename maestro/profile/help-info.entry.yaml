@@ -6,6 +6,7 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Test
       MODULE: HeaderUserIcon
+      PERMISSION: 'allow'
 
 - runFlow:
     label: Check "Over deze app"
@@ -20,7 +21,7 @@ appId: nl.amsterdam.app.dev
           label: Test external button "Uw mening"
           file: ../shared/handle-external-link-button.yaml
           env:
-            ID: 'AboutAboutTheAppDutchFeedbackExternalLinkButton'
+            ID: "AboutAboutTheAppDutchFeedbackExternalLinkButton"
       - tapOn:
           id: HeaderBackButton
 
@@ -36,7 +37,7 @@ appId: nl.amsterdam.app.dev
           label: Test external button "Your opinion"
           file: ../shared/handle-external-link-button.yaml
           env:
-            ID: 'AboutAboutTheAppEnglishFeedbackExternalLinkButton'
+            ID: "AboutAboutTheAppEnglishFeedbackExternalLinkButton"
       - tapOn:
           id: HeaderBackButton
 
@@ -54,7 +55,7 @@ appId: nl.amsterdam.app.dev
     file: ./utils/accessibility-statement.yaml
 
 - runFlow:
-    label: 'Check copy buttons'
+    label: "Check copy buttons"
     commands:
       - tapOn:
           id: AboutVersionNumberText

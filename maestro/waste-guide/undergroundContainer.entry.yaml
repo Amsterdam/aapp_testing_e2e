@@ -5,6 +5,7 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeWasteGuideModuleButton
+      PERMISSION: 'allow'
 - tapOn:
     id: WasteGuideAddressSwitch
 - runFlow:
@@ -12,6 +13,7 @@ appId: nl.amsterdam.app.dev
     file: '../shared/EnterAddress.yaml'
     env:
       ADDRESS: Balistraat 1-1
+      BAGID: '0363200000038242'
       ID: WasteGuide
       SAVEASMYADDRESS: Yes
 
@@ -21,6 +23,9 @@ appId: nl.amsterdam.app.dev
     env:
       FRACTION: Rest
       HOW: In de container voor restafval
+      DAY: ''
+      OUTSIDE: ''
+      WHERE: ''
 - runFlow:
     label: Grofafval
     file: './utils/VerifyFraction.yaml'
@@ -36,21 +41,33 @@ appId: nl.amsterdam.app.dev
     env:
       FRACTION: Papier
       HOW: In de container voor papier
+      DAY: ''
+      OUTSIDE: ''
+      WHERE: ''
 - runFlow:
     label: GFE/t
     file: './utils/VerifyFraction.yaml'
     env:
       FRACTION: GFT
       HOW: Bij het restafval
+      DAY: ''
+      OUTSIDE: ''
+      WHERE: ''
 - runFlow:
     label: Glas
     file: './utils/VerifyFraction.yaml'
     env:
       FRACTION: Glas
       HOW: In de container voor glas
+      DAY: ''
+      OUTSIDE: ''
+      WHERE: ''
 - runFlow:
     label: Textiel
     file: './utils/VerifyFraction.yaml'
     env:
       FRACTION: Textiel
       HOW: In de container voor textiel
+      DAY: ''
+      OUTSIDE: ''
+      WHERE: ''

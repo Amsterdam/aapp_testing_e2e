@@ -3,16 +3,12 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: AddressStreetInputSearchField
 - inputText: ${ADDRESS}
-- extendedWaitUntil:
-    visible:
-      id: '^AddressSearchResult.*ButtonText$'
-      text: ${ADDRESS}
-
-- tapOn:
-    id: '^AddressSearchResult.*ButtonText$'
-    text: ${ADDRESS}
-
-- waitForAnimationToEnd
+- runFlow:
+    label: Enter address
+    file: './SelectAddressResult.yaml'
+    env:
+      ADDRESS: ${ADDRESS}
+      BAGID: ${BAGID}
 
 - runFlow:
     when:
