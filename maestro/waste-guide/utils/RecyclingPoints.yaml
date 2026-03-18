@@ -21,8 +21,8 @@ appId: nl.amsterdam.app.dev
     id: HeaderTitle
 - extendedWaitUntil:
     visible:
-        text: Henk Sneevlietweg. Henk Sneevlietweg.?
-        timeout: 30000
+      text: Henk Sneevlietweg. Henk Sneevlietweg.?
+    timeout: 30000
 - assertVisible:
     text: Henk Sneevlietweg. Henk Sneevlietweg.?
 - assertVisible:
