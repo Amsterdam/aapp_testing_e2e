@@ -10,7 +10,7 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: ParkingChooseParkingMachineButton
 - tapOn:
-    id: ParkingPermitZoneViewTabsTabZoekenButton
+    id: ParkingPermitZoneHeaderButton
 - tapOn:
     id: ParkingSessionUseFavoriteMachineButton
     repeat: 2
