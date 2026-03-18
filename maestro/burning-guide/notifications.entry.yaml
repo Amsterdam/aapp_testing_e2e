@@ -24,6 +24,9 @@ appId: nl.amsterdam.app.dev
     text: '.* staat uit'
     id: BurningGuideNotificationSwitchSwitch
 - tapOn:
+    text: 'Sta toe|Allow'
+    optional: true
+- tapOn:
     text: '.* staat aan'
     id: BurningGuideNotificationSwitchSwitch
 - assertVisible:
