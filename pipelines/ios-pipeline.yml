@@ -40,7 +40,6 @@ steps:
       "iPhone 17-26.2"
       "iPhone 16 Pro Max-18.0"
       "iPhone 15-17.0"
-      "iPhone SE 2020-16.0"
     )
     $random = Get-Random -Minimum 0 -Maximum $devices.Length
     $randomDevice = $devices[$random]
