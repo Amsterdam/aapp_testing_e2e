@@ -19,6 +19,10 @@ appId: nl.amsterdam.app.dev
 - assertVisible:
     text: Henk Sneevlietweg
     id: HeaderTitle
+- extendedWaitUntil:
+    visible:
+      text: Henk Sneevlietweg. Henk Sneevlietweg.?
+    timeout: 30000
 - assertVisible:
     text: Henk Sneevlietweg. Henk Sneevlietweg.?
 - assertVisible:
@@ -42,6 +46,10 @@ appId: nl.amsterdam.app.dev
 - assertVisible:
     text: Rozenburglaan
     id: HeaderTitle
+- extendedWaitUntil:
+    visible:
+      text: Rozenburglaan. Rozenburglaan.?
+    timeout: 30000
 - assertVisible:
     text: Rozenburglaan. Rozenburglaan.?
 - assertVisible:
