@@ -24,8 +24,6 @@ appId: nl.amsterdam.app.dev
       text: Henk Sneevlietweg. Henk Sneevlietweg.?
     timeout: 30000
 - assertVisible:
-    text: Henk Sneevlietweg. Henk Sneevlietweg.?
-- assertVisible:
     id: WasteGuideRecyclePointMapExternalLinkButton
 - tapOn:
     id: HeaderBackIcon
@@ -50,8 +48,6 @@ appId: nl.amsterdam.app.dev
     visible:
       text: Rozenburglaan. Rozenburglaan.?
     timeout: 30000
-- assertVisible:
-    text: Rozenburglaan. Rozenburglaan.?
 - assertVisible:
     id: WasteGuideRecyclePointMapExternalLinkButton
 - tapOn:
