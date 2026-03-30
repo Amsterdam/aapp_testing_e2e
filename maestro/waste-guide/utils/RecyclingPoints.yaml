@@ -10,10 +10,8 @@ appId: nl.amsterdam.app.dev
     id: RecyclePointTopTaskButton
 - assertVisible:
     text: Maandag, dinsdag, woensdag, donderdag, vrijdag en zaterdag van 08.00 tot 17.00 uur
-    id: WasteGuideRecyclePointsVisitingHoursList0ItemText
 - assertVisible:
     text: Zondag van 10.00 tot 16.00 uur
-    id: WasteGuideRecyclePointsVisitingHoursList1ItemText
 - tapOn:
     id: WasteGuideRecyclePointsSeeMapButton
 - assertVisible:
@@ -36,7 +34,6 @@ appId: nl.amsterdam.app.dev
     id: RecyclePointTopTaskButton
 - assertVisible:
     text: Maandag, dinsdag, woensdag, donderdag, vrijdag en zaterdag van 08.00 tot 17.00 uur
-    id: WasteGuideRecyclePointsVisitingHoursList0ItemText
 - assertNotVisible:
     id: WasteGuideRecyclePointsVisitingHoursList1ItemText
 - tapOn:
