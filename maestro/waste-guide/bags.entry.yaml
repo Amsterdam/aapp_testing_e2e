@@ -79,29 +79,23 @@ appId: nl.amsterdam.app.dev
     index: 0
 - assertVisible:
     text: Restafval
-    id: HeaderTitle
 - tapOn:
     id: HeaderBackIcon
 - tapOn:
     text: Toon ophaaldagen als lijst
-    id: WasteGuideToggleCalendarViewButton
 - assertVisible:
     text: Toon ophaaldagen als kalender
-    id: WasteGuideToggleCalendarViewButton
 - tapOn:
     text: Restafval
     index: 0
 - assertVisible:
     text: Restafval
-    id: HeaderTitle
 - tapOn:
     id: HeaderBackIcon
 - tapOn:
     text: Toon ophaaldagen als kalender
-    id: WasteGuideToggleCalendarViewButton
 - assertVisible:
     text: Toon ophaaldagen als lijst
-    id: WasteGuideToggleCalendarViewButton
 - tapOn:
     id: WasteGuideCalendarHeaderMenuButton
 - assertVisible:
