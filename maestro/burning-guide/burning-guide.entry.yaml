@@ -35,7 +35,6 @@ appId: nl.amsterdam.app.dev
     id: BurningGuideTipsScreen
 - tapOn:
     id: HeaderBackIcon
-
 - scrollUntilVisible:
     element:
       id: BurningGuideRisksButton
@@ -45,7 +44,6 @@ appId: nl.amsterdam.app.dev
     id: BurningGuideRisksScreen
 - tapOn:
     id: HeaderBackIcon
-
 - scrollUntilVisible:
     element:
       id: BurningGuideReportButton
@@ -60,5 +58,8 @@ appId: nl.amsterdam.app.dev
       id: BurningGuideNuisanceReportProblemButton
 - tapOn:
     id: BurningGuideNuisanceReportProblemButton
+- tapOn:
+    text: 'Sta toe|Allow|While using the app'
+    optional: true
 - assertVisible:
     id: ReportProblemWebViewScreen

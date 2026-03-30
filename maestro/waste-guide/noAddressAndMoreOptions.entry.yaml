@@ -20,6 +20,9 @@ appId: nl.amsterdam.app.dev
       id: WasteGuideReportWasteProblemButton
 - tapOn:
     id: WasteGuideReportWasteProblemButton
+- tapOn:
+    text: 'Sta toe|Allow|While using the app'
+    optional: true
 - assertVisible:
     id: ReportProblemWebViewScreen
 - tapOn:
