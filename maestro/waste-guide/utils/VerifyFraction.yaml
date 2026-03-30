@@ -12,7 +12,6 @@ appId: nl.amsterdam.app.dev
     commands:
       - assertVisible:
           text: 'Hoe: ${HOW}'
-          # id: WasteGuideFractionHowSection
 - runFlow:
     when:
       true: ${!!HOW && HOW === 'Appointment'}
@@ -29,7 +28,6 @@ appId: nl.amsterdam.app.dev
     commands:
       - assertVisible:
           text: 'Ophaaldag: ${DAY}'
-          # id: WasteGuideFractionDAYSection
       - assertVisible:
           id: WasteGuideFractionNextCollectionSection
       - assertVisible:
@@ -41,7 +39,6 @@ appId: nl.amsterdam.app.dev
     commands:
       - assertVisible:
           text: 'Buitenzetten: ${OUTSIDE}'
-          # id: WasteGuideFractionOutsideSection
 - runFlow:
     when:
       true: ${!!WHERE}
@@ -49,7 +46,6 @@ appId: nl.amsterdam.app.dev
     commands:
       - assertVisible:
           text: 'Waar: ${WHERE}'
-          # id: WasteGuideFractionWhereSection
 - assertVisible:
     id: WasteGuideFractionWhatSection
 - tapOn:
