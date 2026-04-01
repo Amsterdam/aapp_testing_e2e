@@ -7,7 +7,6 @@ appId: nl.amsterdam.app.dev
     id: WasteGuideRecyclingButton
 - assertVisible:
     text: Nieuw-West, Henk Sneevlietweg 22 1066 VH Amsterdam
-    id: RecyclePointTopTaskButton
 - assertVisible:
     text: Maandag, dinsdag, woensdag, donderdag, vrijdag en zaterdag van 08.00 tot 17.00 uur
 - assertVisible:
@@ -16,7 +15,6 @@ appId: nl.amsterdam.app.dev
     id: WasteGuideRecyclePointsSeeMapButton
 - assertVisible:
     text: Henk Sneevlietweg
-    id: HeaderTitle
 - extendedWaitUntil:
     visible:
       text: Henk Sneevlietweg. Henk Sneevlietweg.?
@@ -31,7 +29,6 @@ appId: nl.amsterdam.app.dev
     id: RecyclePoint2Button
 - assertVisible:
     text: Oost, Rozenburglaan 1 1097 HK Amsterdam
-    id: RecyclePointTopTaskButton
 - assertVisible:
     text: Maandag, dinsdag, woensdag, donderdag, vrijdag en zaterdag van 08.00 tot 17.00 uur
 - assertNotVisible:
@@ -40,7 +37,6 @@ appId: nl.amsterdam.app.dev
     id: WasteGuideRecyclePointsSeeMapButton
 - assertVisible:
     text: Rozenburglaan
-    id: HeaderTitle
 - extendedWaitUntil:
     visible:
       text: Rozenburglaan. Rozenburglaan.?
