@@ -15,9 +15,11 @@ appId: nl.amsterdam.app.dev
     id: WasteGuideRecyclePointsSeeMapButton
 - assertVisible:
     text: Henk Sneevlietweg
+    index: 0
 - extendedWaitUntil:
     visible:
-      text: Henk Sneevlietweg. Henk Sneevlietweg.?
+      text: Henk Sneevlietweg
+      index: 1
     timeout: 30000
 - assertVisible:
     id: WasteGuideRecyclePointMapExternalLinkButton
@@ -37,9 +39,11 @@ appId: nl.amsterdam.app.dev
     id: WasteGuideRecyclePointsSeeMapButton
 - assertVisible:
     text: Rozenburglaan
+    index: 0
 - extendedWaitUntil:
     visible:
-      text: Rozenburglaan. Rozenburglaan.?
+      text: Rozenburglaan
+      index: 1
     timeout: 30000
 - assertVisible:
     id: WasteGuideRecyclePointMapExternalLinkButton

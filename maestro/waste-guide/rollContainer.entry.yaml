@@ -49,10 +49,10 @@ appId: nl.amsterdam.app.dev
     file: './utils/VerifyFraction.yaml'
     env:
       FRACTION: GFT
-      HOW: Bij het restafval
-      DAY: ''
-      OUTSIDE: ''
-      WHERE: ''
+      HOW: In rolcontainer
+      DAY: Dinsdag, even weken
+      OUTSIDE: Maandag vanaf 21.00 tot dinsdag 07.00 uur
+      WHERE: Aan de rand van de stoep of op de vaste plek
 - runFlow:
     label: Glas
     file: './utils/VerifyFraction.yaml'
