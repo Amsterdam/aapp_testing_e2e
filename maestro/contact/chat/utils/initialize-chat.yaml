@@ -5,6 +5,7 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeContactModuleButton
+      PERMISSION: 'allow'
 
 - tapOn:
     id: ContactChatButton
