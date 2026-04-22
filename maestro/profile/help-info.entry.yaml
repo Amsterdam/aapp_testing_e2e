@@ -16,12 +16,12 @@ appId: nl.amsterdam.app.dev
           id: UserNavigationToAppSummaryButton
       - scrollUntilVisible:
           element:
-            id: AboutAboutTheAppDutchFeedbackExternalLinkButton
-      - runFlow:
-          label: Test external button "Uw mening"
-          file: ../shared/handle-external-link-button.yaml
-          env:
-            ID: "AboutAboutTheAppDutchFeedbackExternalLinkButton"
+            id: AboutAboutTheAppDutchFeedbackButton
+      - tapOn:
+          id: AboutAboutTheAppDutchFeedbackButton
+      - assertVisible: "Uw mening"
+      - tapOn:
+          id: HeaderBackButton
       - tapOn:
           id: HeaderBackButton
 
@@ -32,12 +32,12 @@ appId: nl.amsterdam.app.dev
           id: UserNavigationToAboutEnglishButton
       - scrollUntilVisible:
           element:
-            id: AboutAboutTheAppEnglishFeedbackExternalLinkButton
-      - runFlow:
-          label: Test external button "Your opinion"
-          file: ../shared/handle-external-link-button.yaml
-          env:
-            ID: "AboutAboutTheAppEnglishFeedbackExternalLinkButton"
+            id: AboutAboutTheAppEnglishFeedbackButton
+      - tapOn:
+          id: AboutAboutTheAppEnglishFeedbackButton
+      - assertVisible: "Uw mening"
+      - tapOn:
+          id: HeaderBackButton
       - tapOn:
           id: HeaderBackButton
 
