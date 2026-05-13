@@ -11,6 +11,7 @@ appId: nl.amsterdam.app.dev
     id: ParkingChooseParkingMachineButton
 - tapOn:
     id: ParkingPermitZoneHeaderButton
+- waitForAnimationToEnd
 - tapOn:
     id: ParkingSessionUseFavoriteMachineButton
 - tapOn:
