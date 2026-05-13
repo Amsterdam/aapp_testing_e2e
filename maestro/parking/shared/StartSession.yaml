@@ -12,6 +12,7 @@ appId: nl.amsterdam.app.dev
 - waitForAnimationToEnd
 - tapOn:
     id: ParkingPermitZoneHeaderButton
+    retryTapIfNoChange: true
 - waitForAnimationToEnd
 - tapOn:
     id: ParkingSessionUseFavoriteMachineButton
