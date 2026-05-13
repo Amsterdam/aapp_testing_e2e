@@ -35,7 +35,7 @@ appId: nl.amsterdam.app.dev
             id: AboutAboutTheAppEnglishFeedbackButton
       - tapOn:
           id: AboutAboutTheAppEnglishFeedbackButton
-      - assertVisible: "Your opinion"
+      - assertVisible: "Uw mening"
       - tapOn:
           id: HeaderBackButton
       - tapOn:
