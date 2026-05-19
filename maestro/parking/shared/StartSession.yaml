@@ -9,11 +9,8 @@ appId: nl.amsterdam.app.dev
     id: ParkingSessionAddLicensePlateSubmitButton
 - tapOn:
     id: ParkingChooseParkingMachineButton
-- waitForAnimationToEnd
 - tapOn:
     id: ParkingPermitZoneHeaderButton
-    retryTapIfNoChange: true
-- waitForAnimationToEnd
 - runFlow:
     file: "../../shared/TapToCloseKeyboard.yaml"
 - tapOn:
