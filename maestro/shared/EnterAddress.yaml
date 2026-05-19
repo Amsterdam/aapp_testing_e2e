@@ -21,6 +21,8 @@ appId: nl.amsterdam.app.dev
           id: AddressSwitchSaveMyAddressButton
       - assertVisible:
           id: ${ID}AddressSwitchHouseIcon
+      - assertVisible:
+          id: AddressSaveMyAddressSuccessAlert
       - tapOn:
           id: AddressSaveMyAddressSuccessAlert
 
