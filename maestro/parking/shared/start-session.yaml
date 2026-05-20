@@ -26,6 +26,7 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     text: 'Sta toe|Allow'
     optional: true
+- runFlow: '../../shared/close-survey.yaml'
 - assertVisible:
     id: 'ParkingStartSessionSuccessAlert'
 - tapOn:

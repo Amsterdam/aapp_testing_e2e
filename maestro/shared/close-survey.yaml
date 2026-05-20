@@ -1,0 +1,10 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    when:
+      visible:
+        id: 'ParkingDashboardBottomSheet'
+    commands:
+      - tapOn:
+        point: 50%, 50%
+            

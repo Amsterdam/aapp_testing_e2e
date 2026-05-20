@@ -11,4 +11,4 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: UserNavigationToFeedbackButton
 - runFlow:
-    file: ./SubmitDynamicForm.yaml
+    file: ./submit-dynamic-form.yaml
