@@ -1,0 +1,31 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: "ParkingPaymentByVisitorButton"
+- assertVisible: "Bezoeker laten betalen"
+- tapOn:
+    id: "ParkingManageVisitorInviteVisitorButton"
+- tapOn:
+    point: 50%, 20%
+- assertVisible: "Tijdsaldo bezoeker"
+- assertVisible:
+    id: "ManageVisitorTimeBalanceOverviewAmountPhrase"
+- tapOn:
+    id: "ParkingManageVisitorIncreaseTimeBalanceButton"
+- runFlow:
+    file: './add-time.yaml'
+- tapOn:
+    id: "ParkingManageVisitorDecreaseTimeBalanceButton"
+- runFlow:
+    file: './remove-time.yaml'
+- scrollUntilVisible:
+    element:
+        id: "ParkingManageVisitorRemoveAccountButton"
+- assertVisible:
+    id: "ManageVisitorCredentialsOverviewReportCodePhrase"
+- assertVisible:
+    id: "ManageVisitorCredentialsOverviewPinPhrase"
+- assertVisible:
+    id: "ParkingManageVisitorCopyCredentialsButton"
+- tapOn:
+    id: HeaderBackButton

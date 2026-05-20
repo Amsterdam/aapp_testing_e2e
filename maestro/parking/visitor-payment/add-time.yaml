@@ -1,0 +1,18 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: "ManageVisitorChooseTimeAddOnButton"
+- tapOn:
+    id: "ParkingSessionAmountBottomSheetContentRadioGroup.*"
+- tapOn:
+    id: "ParkingSessionAmountBottomSheetContentDoneButton"
+- copyTextFrom:
+    id: "ManageVisitorChooseTimeAddOnButtonText"
+- assertTrue: ${maestro.copiedText === "+ 2 uur"}
+- copyTextFrom:
+    id: "ManageVisitorTimeBalanceMutationAmountTitle"
+- assertTrue: ${maestro.copiedText === "+ 2 uur"}
+- tapOn:
+    id: "ManageVisitorTimeBalanceSubmitButton"
+- tapOn:
+    id: "ParkingManageVisitorAdjustTimeBalanceSuccessAlert"

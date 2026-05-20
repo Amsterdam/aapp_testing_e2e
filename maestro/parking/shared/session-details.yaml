@@ -1,0 +1,17 @@
+appId: nl.amsterdam.app.dev
+---
+- assertVisible:
+    id: "ParkingSessionDetailsLicensePlate"
+- assertVisible:
+    id: "ParkingSessionDetailsParkingMachine"
+- tapOn:
+    id: "ParkingParkingPermitZonesButton"
+- assertVisible: "Google Map"
+- tapOn:
+    id: "HeaderBackIcon"
+- assertVisible:
+    id: "ParkingSessionDetailsParkingTime"
+- assertVisible:
+    id: "ParkingSessionDetailsParkingCost"
+- tapOn:
+    id: "ParkingSessionDetailsAdjustEndTimeButton"

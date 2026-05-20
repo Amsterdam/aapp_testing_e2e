@@ -1,0 +1,7 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: "ParkingPermitSessionsActiveBadgeButton"
+- assertVisible: "Actief"
+- runFlow:
+    file: '../shared/session-details.yaml'

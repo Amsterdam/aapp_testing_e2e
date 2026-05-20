@@ -6,13 +6,7 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: "ParkingSessionNavigationButton"
 - assertVisible: "Parkeersessie"
-- assertVisible:
-    id: "ParkingSessionDetailsLicensePlate"
-- assertVisible:
-    id: "ParkingSessionDetailsParkingMachine"
-- assertVisible:
-    id: "ParkingSessionDetailsParkingTime"
-- assertVisible:
-    id: "ParkingSessionDetailsParkingCost"
+- runFlow:
+    file: '../shared/session-details.yaml'
 - tapOn:
     id: HeaderBackButton

@@ -20,3 +20,9 @@ appId: nl.amsterdam.app.dev
       PERMIT_NAME: 'Bezoekersparkeervergunning'
 - runFlow: '../shared/start-session.yaml'
 - runFlow: '../navigation/navigation.yaml'
+- runFlow: '../visitor-payment/visitor-payment.yaml'
+- assertVisible:
+    id: "ParkingPermitBalanceMoneyAddButton"
+- assertVisible:
+    id: "ParkingHomeParkingInformationExternalLinkButton"
+
