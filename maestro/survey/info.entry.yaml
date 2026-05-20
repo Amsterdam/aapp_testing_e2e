@@ -22,8 +22,6 @@ appId: nl.amsterdam.app.dev
     length: 20
 - runFlow:
     file: ../shared/TapToCloseKeyboard.yaml
-    env:
-      PARENT_ID: SurveyQuestion2
 - tapOn:
     id: DynamicFormSubmitButton
 - assertVisible:

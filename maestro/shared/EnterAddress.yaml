@@ -21,8 +21,10 @@ appId: nl.amsterdam.app.dev
           id: AddressSwitchSaveMyAddressButton
       - assertVisible:
           id: ${ID}AddressSwitchHouseIcon
+      - assertVisible:
+          id: AddressSaveMyAddressSuccessAlert
       - tapOn:
-          id: AddressSaveMyAddressSuccessAlertCloseIcon
+          id: AddressSaveMyAddressSuccessAlert
 
 - runFlow:
     when:
@@ -36,4 +38,4 @@ appId: nl.amsterdam.app.dev
       - assertVisible:
           id: ${ID}AddressSwitchMapMarkerIcon
       - assertNotVisible:
-          id: AddressSaveMyAddressSuccessAlertCloseIcon
+          id: AddressSaveMyAddressSuccessAlert

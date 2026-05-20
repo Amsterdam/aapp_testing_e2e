@@ -37,7 +37,7 @@ appId: nl.amsterdam.app.dev
       - assertVisible:
           id: AddressDeletedAlert
       - tapOn:
-          id: AddressDeletedAlertCloseIcon
+          id: AddressDeletedAlert
       - waitForAnimationToEnd
 
 - runFlow:

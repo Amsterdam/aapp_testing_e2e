@@ -9,8 +9,6 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: "HomeEnvironmentSelectorTestButton"
 - tapOn:
-    id: "HeaderBackIcon"
-- tapOn:
     id: "HeaderEnvironmentIcon"
 - tapOn:
     id: AdminScreenShowSurveyButton
@@ -23,8 +21,6 @@ appId: nl.amsterdam.app.dev
     length: 20
 - runFlow:
     file: ../shared/TapToCloseKeyboard.yaml
-    env:
-      PARENT_ID: SurveyQuestion2
 - scrollUntilVisible:
     element:
       id: DynamicFormSubmitButton

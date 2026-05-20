@@ -42,8 +42,6 @@ appId: nl.amsterdam.app.dev
       - inputRandomText
       - runFlow:
           file: ../../shared/TapToCloseKeyboard.yaml
-          env:
-            PARENT_ID: ${output.question_id}
 - runFlow:
     when:
       visible:
@@ -58,8 +56,6 @@ appId: nl.amsterdam.app.dev
       - inputRandomEmail
       - runFlow:
           file: ../../shared/TapToCloseKeyboard.yaml
-          env:
-            PARENT_ID: ${output.question_id}
 - runFlow:
     when:
       visible:
@@ -74,8 +70,6 @@ appId: nl.amsterdam.app.dev
       - inputText: 'www.amsterdam.nl'
       - runFlow:
           file: ../../shared/TapToCloseKeyboard.yaml
-          env:
-            PARENT_ID: ${output.question_id}
 - runFlow:
     when:
       visible:
@@ -91,5 +85,3 @@ appId: nl.amsterdam.app.dev
           length: 12
       - runFlow:
           file: ../../shared/TapToCloseKeyboard.yaml
-          env:
-            PARENT_ID: ${output.question_id}

@@ -11,6 +11,8 @@ appId: nl.amsterdam.app.dev
     id: ParkingChooseParkingMachineButton
 - tapOn:
     id: ParkingPermitZoneHeaderButton
+- runFlow:
+    file: "../../shared/TapToCloseKeyboard.yaml"
 - tapOn:
     id: ParkingSessionUseFavoriteMachineButton
 - tapOn:
