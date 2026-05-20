@@ -1,0 +1,18 @@
+appId: nl.amsterdam.app.dev
+---
+- scrollUntilVisible:
+    element: "Uw saldo"
+- runFlow:
+    file: './history.yaml'
+- tapOn:
+    id: HeaderBackButton
+- runFlow:
+    file: './license-plates.yaml'
+- tapOn:
+    id: HeaderBackButton
+- runFlow:
+    file: './payments.yaml'
+- tapOn:
+    id: HeaderBackButton
+- runFlow:
+    file: './permit-zone.yaml'

@@ -1,0 +1,22 @@
+appId: nl.amsterdam.app.dev
+---
+- launchApp:
+    clearState: true
+- runFlow:
+    file: ../../shared/OpenModuleFromFreshApp.yaml
+    env:
+      ENVIRONMENT: Test
+      MODULE: HomeParkingModuleButton
+      PERMISSION: 'allow'
+- runScript: ../../scripts/credentials.js
+- runFlow:
+    file: ./login-to-parking.yaml
+    env:
+      REPORT_CODE: ${output.parkingVisitorReportCode}
+      PIN_CODE: ${output.parkingVisitorPinCode}
+- runFlow:
+    file: ../shared/select-permit.yaml
+    env:
+      PERMIT_NAME: 'Bezoekersparkeervergunning'
+- runFlow: '../shared/start-session.yaml'
+- runFlow: '../navigation/navigation.yaml'

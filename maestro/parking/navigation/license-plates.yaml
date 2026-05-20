@@ -1,0 +1,17 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: "ParkingLicensePlatesButton"
+- assertVisible: "Mijn kentekens"
+- tapOn:
+    id: "ParkingAddLicensePlateHeaderButton"
+- inputText: 'TEST1'
+- tapOn:
+    id: "ParkingAddLicensePlateFormNameInputFieldInput"
+- inputText: 'Test'
+- tapOn:
+    id: "ParkingAddLicensePlateFormSubmitButton"
+- assertVisible: "TEST1 - Test"
+- tapOn: Verwijder kenteken TEST1, Test
+- tapOn: 'Verwijderen'
+- assertNotVisible: Verwijder kenteken TEST1, Test
