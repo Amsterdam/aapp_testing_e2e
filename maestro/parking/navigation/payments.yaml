@@ -10,7 +10,7 @@ appId: nl.amsterdam.app.dev
     id: "ParkingChooseAmountButton"
 - assertVisible: "Kies een bedrag"
 - tapOn:
-    id: "ParkingSessionAmountBottomSheetContentRadioGroup.*"
+    id: "ParkingSessionAmountBottomSheetContentRadioGroup2.5RadioButton"
 - tapOn:
     id: "ParkingSessionAmountBottomSheetContentDoneButton"
 - copyTextFrom:

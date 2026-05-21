@@ -3,7 +3,7 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: "ManageVisitorChooseTimeAddOnButton"
 - tapOn:
-    id: "ParkingSessionAmountBottomSheetContentRadioGroup.*"
+    id: "ParkingSessionAmountBottomSheetContentRadioGroup7200RadioButton"
 - tapOn:
     id: "ParkingSessionAmountBottomSheetContentDoneButton"
 - copyTextFrom:
