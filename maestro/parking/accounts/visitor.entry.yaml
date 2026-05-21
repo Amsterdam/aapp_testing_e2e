@@ -1,19 +1,16 @@
 appId: nl.amsterdam.app.dev
 ---
-- runScript: ../../scripts/credentials.js
+- launchApp:
+    clearState: true
 - runFlow:
     file: ../../shared/OpenModuleFromFreshApp.yaml
     env:
       ENVIRONMENT: Test
       MODULE: HomeParkingModuleButton
       PERMISSION: 'allow'
+- runScript: ../../scripts/credentials.js
 - runFlow:
-    file: ../../parking/shared/login-to-parking.yaml
+    file: ./login-to-parking.yaml
     env:
       REPORT_CODE: ${output.parkingVisitorPermitHolderReportCode}
       PIN_CODE: ${output.parkingVisitorPermitHolderPinCode}
-
-- tapOn:
-    id: HeaderBackButton
-- tapOn:
-    id: HeaderUserButton

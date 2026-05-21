@@ -12,8 +12,8 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ./login-to-parking.yaml
     env:
-      REPORT_CODE: ${output.parkingVisitorReportCode}
-      PIN_CODE: ${output.parkingVisitorPinCode}
+      REPORT_CODE: ${output.parkingVisitorPermitHolderReportCode}
+      PIN_CODE: ${output.parkingVisitorPermitHolderPinCode}
 - runFlow:
     file: ../shared/select-permit.yaml
     env:

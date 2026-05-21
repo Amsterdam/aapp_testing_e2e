@@ -1,2 +1,4 @@
-output.parkingVisitorReportCode = __PARKING_VISITOR_REPORT_CODE__
-output.parkingVisitorPinCode = __PARKING_VISITOR_PIN_CODE__
+output.parkingVisitorPermitHolderReportCode = __PARKING_VISITOR_PERMIT_HOLDER_REPORT_CODE__
+output.parkingVisitorPermitHolderPinCode = __PARKING_VISITOR_PERMIT_HOLDER_PIN_CODE__
+output.parkingVisitorPermitHolderReportCode = __PARKING_VISITOR_REPORT_CODE__
+output.parkingVisitorPermitHolderPinCode = __PARKING_VISITOR_PIN_CODE__
