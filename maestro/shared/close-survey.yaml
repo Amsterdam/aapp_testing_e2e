@@ -6,5 +6,5 @@ appId: nl.amsterdam.app.dev
         id: 'ParkingDashboardBottomSheet'
     commands:
       - tapOn:
-        point: 50%, 50%
+          point: 50%, 50%
             

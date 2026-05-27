@@ -2,7 +2,7 @@ appId: nl.amsterdam.app.dev
 ---
 - runFlow:
     label: Clean app start
-    file: ../../shared/OpenModuleFromFreshApp.yaml
+    file: ../../shared/open-module-from-fresh-app.yaml
     env:
       ENVIRONMENT: Test
       MODULE: HeaderUserIcon

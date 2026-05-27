@@ -3,7 +3,7 @@ appId: nl.amsterdam.app.dev
 - launchApp:
     clearState: true
 - runFlow:
-    file: ../shared/CloseOnboarding.yaml
+    file: ../shared/close-onboarding.yaml
 - tapOn:
     id: "HeaderEnvironmentIcon"
 - tapOn:
@@ -20,7 +20,7 @@ appId: nl.amsterdam.app.dev
 - inputRandomText:
     length: 20
 - runFlow:
-    file: ../shared/TapToCloseKeyboard.yaml
+    file: ../shared/tap-to-close-keyboard.yaml
 - scrollUntilVisible:
     element:
       id: DynamicFormSubmitButton

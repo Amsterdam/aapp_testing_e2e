@@ -1,0 +1,17 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../../shared/open-module-from-fresh-app.yaml
+    env:
+      ENVIRONMENT: Test
+      MODULE: HomeParkingModuleButton
+      PERMISSION: 'allow'
+- runScript: ../../scripts/credentials.js
+- runFlow:
+    file: ../shared/login-to-parking.yaml
+    env:
+      REPORT_CODE: ${output.parkingBusinessReportCode}
+      PIN_CODE: ${output.parkingBusinessPinCode}
+- runFlow: '../shared/start-session.yaml'
+- tapOn:
+    id: "ParkingSessionNavigationButton"

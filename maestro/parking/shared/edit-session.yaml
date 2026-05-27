@@ -12,12 +12,12 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: ParkingPermitZoneHeaderButton
 - runFlow:
-    file: "../../shared/TapToCloseKeyboard.yaml"
+    file: "../../shared/tap-to-close-keyboard.yaml"
 - tapOn:
     id: ParkingSessionUseFavoriteMachineButton
 - tapOn:
     id: SelectParkingMachineButton
-- runFlow: './ChooseEndTimeScrollWheel.yaml'
+- runFlow: './choose-end-time-scrollwheel..yaml'
 - scrollUntilVisible:
     element:
       id: ParkingStartSession.*Button

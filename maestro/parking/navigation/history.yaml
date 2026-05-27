@@ -8,5 +8,8 @@ appId: nl.amsterdam.app.dev
 - assertVisible: "Parkeersessie"
 - runFlow:
     file: '../shared/session-details.yaml'
+    env:
+        IS_PAID: ${IS_PAID}
+        STATUS: 'complete'
 - tapOn:
     id: HeaderBackButton

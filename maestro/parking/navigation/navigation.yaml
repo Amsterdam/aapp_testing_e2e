@@ -4,6 +4,8 @@ appId: nl.amsterdam.app.dev
     element: "Uw saldo"
 - runFlow:
     file: './history.yaml'
+    env:
+        IS_PAID: ${IS_PAID}
 - tapOn:
     id: HeaderBackButton
 - runFlow:

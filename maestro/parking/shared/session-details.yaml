@@ -1,17 +1,58 @@
 appId: nl.amsterdam.app.dev
 ---
-- assertVisible:
-    id: "ParkingSessionDetailsLicensePlate"
-- assertVisible:
-    id: "ParkingSessionDetailsParkingMachine"
-- tapOn:
-    id: "ParkingParkingPermitZonesButton"
-- assertVisible: "Google Map"
-- tapOn:
-    id: "HeaderBackIcon"
-- assertVisible:
-    id: "ParkingSessionDetailsParkingTime"
-- assertVisible:
-    id: "ParkingSessionDetailsParkingCost"
-- tapOn:
-    id: "ParkingSessionDetailsAdjustEndTimeButton"
+- runFlow:
+    when:
+        true: ${STATUS == 'active'}
+    commands:
+        - assertVisible:
+            id: "ParkingSessionDetailsLicensePlate"
+        - assertVisible:
+            id: "ParkingSessionDetailsPermitZone"
+        - tapOn:
+            id: "ParkingParkingPermitZonesButton"
+        - assertVisible: "Google Map"
+        - tapOn:
+            id: "HeaderBackIcon"
+        - assertVisible:
+            id: "ParkingSessionDetailsParkingTime"
+        - runFlow:
+            when:
+                true: ${IS_PAID == 'true'}
+            commands:
+              - assertVisible:
+                  id: "ParkingSessionDetailsParkingCost"
+        - assertVisible:
+            id: "ParkingSessionDetailsAdjustEndTimeButton"
+        - assertVisible:
+            id: "ParkingSessionDetailsStopButton"
+- runFlow:
+    when:
+        true: ${STATUS == 'complete'}
+    commands:
+        - runFlow:
+            when: 
+                true: ${IS_PAID == 'true'}
+            commands:
+                - assertVisible:
+                    id: "ParkingSessionDetailsLicensePlate"
+                - assertVisible:
+                    id: "ParkingSessionDetailsParkingMachine"
+                - assertVisible:
+                    id: "ParkingSessionDetailsParkingTime"
+                - assertVisible:
+                    id: "ParkingSessionDetailsParkingCost"
+        - runFlow:
+            when: 
+                true: ${IS_PAID != 'true'}
+            commands:
+                - assertVisible:
+                    id: "ParkingSessionDetailsLicensePlate"
+                - assertVisible:
+                    id: "ParkingSessionDetailsPermitZone"
+                - tapOn:
+                    id: "ParkingParkingPermitZonesButton"
+                - assertVisible: "Google Map"
+                - tapOn:
+                    id: "HeaderBackIcon"
+                - assertVisible:
+                    id: "ParkingSessionDetailsParkingTime"

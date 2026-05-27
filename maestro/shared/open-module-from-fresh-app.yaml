@@ -6,7 +6,7 @@ appId: nl.amsterdam.app.dev
     permissions:
       all: ${PERMISSION || 'allow'}
 - runFlow:
-    file: ./CloseOnboarding.yaml
+    file: ./close-onboarding.yaml
 - tapOn:
     id: 'HeaderEnvironmentIcon'
 - scrollUntilVisible:

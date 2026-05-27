@@ -7,7 +7,7 @@ appId: nl.amsterdam.app.dev
       all: allow
 - runFlow:
     label: Close onboarding
-    file: ../shared/CloseOnboarding.yaml
+    file: ../shared/close-onboarding.yaml
 
 - runFlow:
     label: Toggling Construction-work module

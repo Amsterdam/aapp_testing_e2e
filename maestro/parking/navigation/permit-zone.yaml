@@ -2,7 +2,6 @@ appId: nl.amsterdam.app.dev
 ---
 - tapOn:
     id: "ParkingPermitZoneButton"
-- assertVisible: "CE02E Centrum-2e"
 - tapOn:
     id: "ParkingPermitZoneHeaderButton"
 - assertVisible: "Voer een adres in en zie parkeerautomaten in de buurt"

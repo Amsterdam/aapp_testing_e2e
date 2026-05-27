@@ -1,16 +1,14 @@
 appId: nl.amsterdam.app.dev
 ---
-- launchApp:
-    clearState: true
 - runFlow:
-    file: ../../shared/OpenModuleFromFreshApp.yaml
+    file: ../../shared/open-module-from-fresh-app.yaml
     env:
       ENVIRONMENT: Test
       MODULE: HomeParkingModuleButton
       PERMISSION: 'allow'
 - runScript: ../../scripts/credentials.js
 - runFlow:
-    file: ./login-to-parking.yaml
+    file: ../shared/login-to-parking.yaml
     env:
       REPORT_CODE: ${output.parkingVisitorPermitHolderReportCode}
       PIN_CODE: ${output.parkingVisitorPermitHolderPinCode}
@@ -19,7 +17,13 @@ appId: nl.amsterdam.app.dev
     env:
       PERMIT_NAME: 'Bezoekersparkeervergunning'
 - runFlow: '../shared/start-session.yaml'
-- runFlow: '../navigation/navigation.yaml'
+- runFlow: '../sessions/active.yaml'
+- tapOn:
+    id: HeaderBackButton
+- runFlow: 
+    file: '../navigation/navigation.yaml'
+    env:
+        IS_PAID: 'true'
 - runFlow: '../visitor-payment/visitor-payment.yaml'
 - assertVisible:
     id: "ParkingPermitBalanceMoneyAddButton"

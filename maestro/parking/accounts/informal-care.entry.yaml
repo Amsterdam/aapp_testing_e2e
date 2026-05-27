@@ -1,0 +1,55 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../../shared/open-module-from-fresh-app.yaml
+    env:
+      ENVIRONMENT: Test
+      MODULE: HomeParkingModuleButton
+      PERMISSION: 'allow'
+- runScript: ../../scripts/credentials.js
+- runFlow:
+    file: ../shared/login-to-parking.yaml
+    env:
+      REPORT_CODE: ${output.parkingInformalCareReportCode}
+      PIN_CODE: ${output.parkingInformalCarePinCode}
+- tapOn:
+    id: "ParkingGoToStartSessionMantelzorgvergunningButton"
+- tapOn:
+    id: "ParkingChooseLicensePlateButton"
+- tapOn:
+    id: "ParkingSessionSelectLicensePlateTopTaskButton"
+- tapOn:
+    id: "ParkingActivateLicensePlateMantelzorgvergunningButton"
+- runFlow:
+    when:
+        visible:
+            id: "ParkingChooseLicensePlateButtonErrorText"
+    commands:
+        - tapOn:
+            id: "ParkingChooseLicensePlateButton"
+        - tapOn:
+            id: "ParkingSessionSelectLicensePlateTopTaskButton"
+            index: 1
+        - tapOn:
+            id: "ParkingActivateLicensePlateMantelzorgvergunningButton"
+- tapOn:
+    id: "ParkingStartSessionSuccessAlert"
+- assertVisible:
+    id: "ParkingSessionNavigationButton"
+- runFlow:
+    file: '../navigation/history.yaml'
+- tapOn:
+    id: HeaderBackButton
+- tapOn:
+    id: "ParkingLicensePlatesButton"
+- assertVisible:
+    id: "LicensePlateListItem"
+- assertVisible:
+    id: "ParkingMyLicensePlatesForceLicensePlatesPhoneExternalLinkButton"
+- tapOn:
+    id: HeaderBackButton
+- runFlow:
+    file: '../navigation/permit-zone.yaml'
+
+
+

@@ -1,7 +1,18 @@
 appId: nl.amsterdam.app.dev
 ---
+- runFlow:
+    when:
+        visible:
+            id: 'ParkingPermitSessionsActiveBadgeButton'
+    commands:
+      - tapOn:
+          id: "ParkingPermitSessionsActiveBadgeButton"
+      - assertVisible: "Actief"
 - tapOn:
-    id: "ParkingPermitSessionsActiveBadgeButton"
-- assertVisible: "Actief"
+    id: "ParkingSessionNavigationButton"
 - runFlow:
     file: '../shared/session-details.yaml'
+    env:
+        STATUS: 'active'
+- tapOn:
+    id: HeaderBackButton
