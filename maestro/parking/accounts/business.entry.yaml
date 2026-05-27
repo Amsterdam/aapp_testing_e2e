@@ -15,3 +15,5 @@ appId: nl.amsterdam.app.dev
 - runFlow: '../shared/start-session.yaml'
 - tapOn:
     id: "ParkingSessionNavigationButton"
+- runFlow:
+    file: '../set-alias.yaml'
