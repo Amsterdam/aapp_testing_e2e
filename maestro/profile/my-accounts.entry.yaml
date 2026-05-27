@@ -13,7 +13,7 @@ appId: nl.amsterdam.app.dev
 
 - runFlow:
     label: Check Parking account functionality
-    file: ./utils/login-from-accounts.yaml
+    file: ./utils/login-to-parking-from-accounts.yaml
 
 - runFlow:
     label: Check City Pass account functionality
