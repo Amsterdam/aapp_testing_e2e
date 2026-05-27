@@ -8,7 +8,7 @@ appId: nl.amsterdam.app.dev
       PERMISSION: 'allow'
 - runScript: ../../scripts/credentials.js
 - runFlow:
-    file: ../shared/login-to-parking.yaml
+    file: ../shared/login.yaml
     env:
       REPORT_CODE: ${output.parkingBusinessReportCode}
       PIN_CODE: ${output.parkingBusinessPinCode}
@@ -17,3 +17,5 @@ appId: nl.amsterdam.app.dev
     id: "ParkingSessionNavigationButton"
 - runFlow:
     file: '../set-alias.yaml'
+- runFlow:
+    file: '../shared/logout.yaml'

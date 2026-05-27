@@ -8,7 +8,7 @@ appId: nl.amsterdam.app.dev
       PERMISSION: 'allow'
 - runScript: ../../scripts/credentials.js
 - runFlow:
-    file: ../shared/login-to-parking.yaml
+    file: ../shared/login.yaml
     env:
       REPORT_CODE: ${output.parkingResidentsReportCode}
       PIN_CODE: ${output.parkingResidentsPinCode}

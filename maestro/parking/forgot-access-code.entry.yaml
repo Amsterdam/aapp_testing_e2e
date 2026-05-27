@@ -10,7 +10,7 @@ appId: nl.amsterdam.app.dev
       MODULE: HomeParkingModuleButton
       PERMISSION: 'allow'
 - runFlow:
-    file: ../parking/shared/login-to-parking.yaml
+    file: ../parking/shared/login.yaml
     env:
       REPORT_CODE: ${output.parkingVisitorPermitHolderReportCode}
       PIN_CODE: ${output.parkingVisitorPermitHolderPinCode}
