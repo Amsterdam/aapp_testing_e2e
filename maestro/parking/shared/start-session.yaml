@@ -13,16 +13,16 @@ appId: nl.amsterdam.app.dev
     when:
       true: ${IS_PAID == 'true'}
     commands:
-    - tapOn:
-        id: ParkingChooseParkingMachineButton
-    - tapOn:
-        id: ParkingPermitZoneHeaderButton
-    - runFlow:
-        file: "../../shared/tap-to-close-keyboard.yaml"
-    - tapOn:
-        id: ParkingSessionUseFavoriteMachineButton
-    - tapOn:
-        id: SelectParkingMachineButton
+        - tapOn:
+            id: ParkingChooseParkingMachineButton
+        - tapOn:
+            id: ParkingPermitZoneHeaderButton
+        - runFlow:
+            file: "../../shared/tap-to-close-keyboard.yaml"
+        - tapOn:
+            id: ParkingSessionUseFavoriteMachineButton
+        - tapOn:
+            id: SelectParkingMachineButton
 - runFlow: './choose-end-time-scrollwheel.yaml'
 - scrollUntilVisible:
     element:
