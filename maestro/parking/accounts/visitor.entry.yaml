@@ -29,7 +29,7 @@ appId: nl.amsterdam.app.dev
     id: "ParkingStartSessionVisitorPermitZoneParagraph"
 - copyTextFrom:
     id: "ParkingVisitorLicensePlateInputFieldInput"
-- evalScript: ${maestro.copiedText == "TEST1"}
+- assertTrue: ${maestro.copiedText === "TEST1"}
 - assertVisible:
     id: "ParkingChooseParkingMachineButton"
 - assertVisible:
