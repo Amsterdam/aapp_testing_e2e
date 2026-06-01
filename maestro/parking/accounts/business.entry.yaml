@@ -13,8 +13,6 @@ appId: nl.amsterdam.app.dev
       REPORT_CODE: ${output.parkingBusinessReportCode}
       PIN_CODE: ${output.parkingBusinessPinCode}
 - runFlow: '../shared/start-session.yaml'
-- tapOn:
-    id: "ParkingSessionNavigationButton"
 - runFlow:
     file: '../set-alias.yaml'
 - runFlow:
