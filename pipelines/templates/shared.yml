@@ -132,7 +132,8 @@ steps:
           devices: [$device],
           networkLogs: false,
           deviceLogs: true,
-          execute: $execute
+          execute: $execute,
+          maestroVersion: "latest"
         }')
       response=$(curl -s -X POST "${{ parameters.buildApiUrl }}" \
         -H "Authorization: Basic $(AUTH_HASH)" \
