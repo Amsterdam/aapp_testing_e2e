@@ -4,11 +4,11 @@ appId: nl.amsterdam.app.dev
     id: NotificationSettingparkingLoginNavigationButton
 
 - runFlow:
-    file: '../../../parking/shared/login-to-parking.yaml'
+    file: '../../../parking/shared/login.yaml'
     env:
       EXTERNAL_LOGIN_LINK_ID: NotificationSettingparkingLoginNavigationButton
-      REPORT_CODE: ${output.parkingVisitorReportCode}
-      PIN_CODE: ${output.parkingVisitorPinCode}
+      REPORT_CODE: ${output.parkingVisitorPermitHolderReportCode}
+      PIN_CODE: ${output.parkingVisitorPermitHolderPinCode}
 
 - tapOn:
     id: HeaderBackButton

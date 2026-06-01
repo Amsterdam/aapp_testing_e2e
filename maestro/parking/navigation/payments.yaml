@@ -1,0 +1,23 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: "ParkingPaymentHistoryButton"
+- assertVisible: "Betalingen"
+- tapOn:
+    id: "ParkingMoneyHeaderButtonIcon"
+- assertVisible: "Geld toevoegen"
+- tapOn:
+    id: "ParkingChooseAmountButton"
+- assertVisible: "Kies een bedrag"
+- tapOn:
+    id: "ParkingSessionAmountBottomSheetContentRadioGroup2.5RadioButton"
+- tapOn:
+    id: "ParkingSessionAmountBottomSheetContentDoneButton"
+- copyTextFrom:
+    id: "ParkingChooseAmountButtonText"
+- assertTrue: ${maestro.copiedText === "+ € 2,50"}
+- copyTextFrom:
+    id: "ParkingReceiptItemAddMoneyPhrase"
+- assertTrue: ${maestro.copiedText === "+ € 2,50"}
+- tapOn:
+    id: HeaderBackButton

@@ -29,8 +29,16 @@ steps:
 
   # Inject Azure DevOps variable(s) into Maestro YAMLs before zipping
   - script: |
+      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_PERMIT_HOLDER_REPORT_CODE__|$(PARKING_VISITOR_PERMIT_HOLDER_REPORT_CODE)|g' {} +
+      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_PERMIT_HOLDER_PIN_CODE__|$(PARKING_VISITOR_PERMIT_HOLDER_PIN_CODE)|g' {} +
       find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_REPORT_CODE__|$(PARKING_VISITOR_REPORT_CODE)|g' {} +
       find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_PIN_CODE__|$(PARKING_VISITOR_PIN_CODE)|g' {} +
+      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_INFORMAL_CARE_REPORT_CODE__|$(PARKING_INFORMAL_CARE_REPORT_CODE)|g' {} +
+      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_INFORMAL_CARE_PIN_CODE__|$(PARKING_INFORMAL_CARE_PIN_CODE)|g' {} +
+      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_BUSINESS_REPORT_CODE__|$(PARKING_BUSINESS_REPORT_CODE)|g' {} +
+      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_BUSINESS_PIN_CODE__|$(PARKING_BUSINESS_PIN_CODE)|g' {} +
+      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_RESIDENTS_REPORT_CODE__|$(PARKING_RESIDENTS_REPORT_CODE)|g' {} +
+      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_RESIDENTS_PIN_CODE__|$(PARKING_RESIDENTS_PIN_CODE)|g' {} +
     displayName: 'Inject parking account variables into Maestro tests'
   # Archive Maestro tests
   - task: ArchiveFiles@2

@@ -1,7 +1,7 @@
 appId: nl.amsterdam.app.dev
 ---
 - runFlow:
-    file: ../shared/OpenModuleFromFreshApp.yaml
+    file: ../shared/open-module-from-fresh-app.yaml
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeWasteGuideModuleButton

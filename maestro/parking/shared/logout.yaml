@@ -1,0 +1,12 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: "ParkingPermitContextSwitchButton"
+- tapOn:
+    id: "ParkingSelectPermitLogoutNavigationButton"
+- tapOn:
+    id: "ParkingAccountsByScope.*.NavigationButton"
+- tapOn:
+    id: "ParkingAccountDetailLogoutButton"
+- tapOn:
+    id: "ParkingLogoutScreenLogoutButton"

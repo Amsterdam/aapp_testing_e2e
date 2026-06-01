@@ -1,0 +1,11 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: "ParkingPermitZoneButton"
+- tapOn:
+    id: "ParkingPermitZoneHeaderButton"
+- assertVisible: "Voer een adres in en zie parkeerautomaten in de buurt"
+- assertVisible:
+    id: "ParkingMachineListItemButton"
+- tapOn:
+    id: HeaderBackButton

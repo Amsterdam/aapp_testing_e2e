@@ -1,0 +1,58 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    when:
+        true: ${STATUS == 'active'}
+    commands:
+        - assertVisible:
+            id: "ParkingSessionDetailsLicensePlateRow"
+        - assertVisible:
+            id: "ParkingSessionDetailsPermitZoneRow"
+        - tapOn:
+            id: "ParkingParkingPermitZonesButton"
+        - assertVisible: "Google Map"
+        - tapOn:
+            id: "HeaderBackIcon"
+        - assertVisible:
+            id: "ParkingSessionDetailsParkingTimeRow"
+        - runFlow:
+            when:
+                true: ${IS_PAID == 'true'}
+            commands:
+              - assertVisible:
+                  id: "ParkingSessionDetailsParkingCostRow"
+        - assertVisible:
+            id: "ParkingSessionDetailsAdjustEndTimeButton"
+        - assertVisible:
+            id: "ParkingSessionDetailsStopButton"
+- runFlow:
+    when:
+        true: ${STATUS == 'complete'}
+    commands:
+        - runFlow:
+            when: 
+                true: ${IS_PAID == 'true'}
+            commands:
+                - assertVisible:
+                    id: "ParkingSessionDetailsLicensePlateRow"
+                - assertVisible:
+                    id: "ParkingSessionDetailsParkingMachineRow"
+                - assertVisible:
+                    id: "ParkingSessionDetailsParkingTimeRow"
+                - assertVisible:
+                    id: "ParkingSessionDetailsParkingCostRow"
+        - runFlow:
+            when: 
+                true: ${IS_PAID != 'true'}
+            commands:
+                - assertVisible:
+                    id: "ParkingSessionDetailsLicensePlateRow"
+                - assertVisible:
+                    id: "ParkingSessionDetailsPermitZoneRow"
+                - tapOn:
+                    id: "ParkingParkingPermitZonesButton"
+                - assertVisible: "Google Map"
+                - tapOn:
+                    id: "HeaderBackIcon"
+                - assertVisible:
+                    id: "ParkingSessionDetailsParkingTimeRow"
