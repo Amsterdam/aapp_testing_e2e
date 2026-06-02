@@ -143,7 +143,17 @@ steps:
 
   # Run Maestro Tests on BrowserStack
   - script: |
-      execute_json='["browserstack.generated.yaml"]'
+      if [ "${{ parameters.testSuiteId }}" != " " ]; then
+        # Existing BrowserStack test suite may not contain browserstack.generated.yaml; execute individual entry flows instead.
+        entry_files=$(find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) | sort | sed 's|^maestro/||')
+        if [ -z "$entry_files" ]; then
+          echo "##vso[task.logissue type=error]No Maestro entry flows found for platform ${{ parameters.platform }}"
+          exit 1
+        fi
+        execute_json=$(printf '%s\n' "$entry_files" | jq -R . | jq -s .)
+      else
+        execute_json='["browserstack.generated.yaml"]'
+      fi
       # Compose buildBody JSON dynamically
       buildBody=$(jq -n \
         --arg app "bs://$(appId)" \
