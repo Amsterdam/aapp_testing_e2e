@@ -40,6 +40,27 @@ steps:
       find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_RESIDENTS_REPORT_CODE__|$(PARKING_RESIDENTS_REPORT_CODE)|g' {} +
       find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_RESIDENTS_PIN_CODE__|$(PARKING_RESIDENTS_PIN_CODE)|g' {} +
     displayName: 'Inject parking account variables into Maestro tests'
+
+  # Generate a single BrowserStack entry flow to keep the execute payload below API limits
+  - script: |
+      browserstack_flow='maestro/browserstack.generated.yaml'
+      entry_files=$(find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) ! -name 'browserstack.generated.yaml' | sort | sed 's|^maestro/||')
+
+      if [ -z "$entry_files" ]; then
+        echo "##vso[task.logissue type=error]No Maestro entry flows found for platform ${{ parameters.platform }}"
+        exit 1
+      fi
+
+      {
+        printf 'appId: nl.amsterdam.app.dev\n---\n'
+        printf '%s\n' "$entry_files" | while IFS= read -r entry_file; do
+          [ -n "$entry_file" ] || continue
+          printf -- "- runFlow: '%s'\n" "$entry_file"
+        done
+      } > "$browserstack_flow"
+
+      echo "Generated BrowserStack aggregate flow with $(printf '%s\n' "$entry_files" | wc -l | tr -d ' ') entries"
+    displayName: 'Generate BrowserStack aggregate flow'
   # Archive Maestro tests
   - task: ArchiveFiles@2
     condition: ${{ eq(parameters.testSuiteId, ' ') }}
@@ -122,10 +143,7 @@ steps:
 
   # Run Maestro Tests on BrowserStack
   - script: |
-      # Find all .entry.yaml and .entry.<platform>.yaml files in maestro directory
-      entry_files=$(find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) | sort | sed 's|^maestro/||')
-      # Convert to JSON array
-      execute_json=$(printf '%s\n' "$entry_files" | jq -R . | jq -s .)
+      execute_json='["browserstack.generated.yaml"]'
       # Compose buildBody JSON dynamically
       buildBody=$(jq -n \
         --arg app "bs://$(appId)" \
