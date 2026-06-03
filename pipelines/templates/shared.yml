@@ -148,7 +148,7 @@ steps:
 
   # Run Maestro Tests on BrowserStack
   - script: |
-      if [ -n "${{ parameters.testSuiteId }}" ] && [ "${{ parameters.testSuiteId }}" != " " ]; then
+      if [ "${{ parameters.testSuiteId }}" != " " ]; then
         # Existing BrowserStack test suites may not contain generated wrapper flows.
         entry_files=$(find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) | sort | sed 's|^maestro/||')
         if [ -z "$entry_files" ]; then
