@@ -65,6 +65,7 @@ steps:
 
       echo "Generated BrowserStack wrapper flows: $(find maestro -maxdepth 1 -type f -name 'browserstack.*.yaml' | wc -l | tr -d ' ')"
     displayName: 'Generate BrowserStack wrapper flows'
+    condition: ${{ eq(parameters.testSuiteId, ' ') }}
   # Archive Maestro tests
   - task: ArchiveFiles@2
     condition: ${{ eq(parameters.testSuiteId, ' ') }}
