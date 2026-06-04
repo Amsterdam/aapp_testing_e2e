@@ -71,7 +71,7 @@ steps:
     condition: ${{ or(eq(parameters.testSuiteId, ' '), eq(parameters.testSuiteId, '')) }}
     inputs:
       rootFolderOrFile: 'maestro'
-      includeRootFolder: false
+      includeRootFolder: true
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/maestro-tests.zip'
       replaceExistingArchive: true
@@ -148,16 +148,16 @@ steps:
 
   # Run Maestro Tests on BrowserStack
   - script: |
-      if [ "${{ parameters.testSuiteId }}" != " " ]; then
+      if [ -n "${{ parameters.testSuiteId }}" ] && [ "${{ parameters.testSuiteId }}" != " " ]; then
         # Existing BrowserStack test suites may not contain generated wrapper flows.
-        entry_files=$(find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) | sort | sed 's|^maestro/||')
+        entry_files=$(find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) | sort)
         if [ -z "$entry_files" ]; then
           echo "##vso[task.logissue type=error]No Maestro entry flows found for platform ${{ parameters.platform }}"
           exit 1
         fi
         execute_json=$(printf '%s\n' "$entry_files" | jq -R . | jq -s .)
       else
-        execute_json=$(find maestro -maxdepth 1 -type f -name 'browserstack.*.yaml' | sort | sed 's|^maestro/||' | jq -R . | jq -s .)
+        execute_json=$(find maestro -maxdepth 1 -type f -name 'browserstack.*.yaml' | sort | jq -R . | jq -s .)
         if [ "$execute_json" = "[]" ]; then
           echo "##vso[task.logissue type=error]No BrowserStack wrapper flows were generated"
           exit 1
