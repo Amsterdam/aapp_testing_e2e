@@ -40,35 +40,9 @@ steps:
       find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_RESIDENTS_REPORT_CODE__|$(PARKING_RESIDENTS_REPORT_CODE)|g' {} +
       find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_RESIDENTS_PIN_CODE__|$(PARKING_RESIDENTS_PIN_CODE)|g' {} +
     displayName: 'Inject parking account variables into Maestro tests'
-
-  # Generate short BrowserStack wrapper flows to keep the execute payload below API limits
-  - script: |
-      find maestro -maxdepth 1 -type f -name 'browserstack-*.yaml' -delete
-
-      entry_files=$(find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) | sort | sed 's|^maestro/||')
-
-      if [ -z "$entry_files" ]; then
-        echo "##vso[task.logissue type=error]No Maestro entry flows found for platform ${{ parameters.platform }}"
-        exit 1
-      fi
-
-      index=1
-      printf '%s\n' "$entry_files" | while IFS= read -r entry_file; do
-        [ -n "$entry_file" ] || continue
-        wrapper_file=$(printf 'maestro/browserstack-%02d.yaml' "$index")
-        {
-          printf -- '---\n'
-          printf -- "- runFlow: '%s'\n" "$entry_file"
-        } > "$wrapper_file"
-        index=$((index + 1))
-      done
-
-      echo "Generated BrowserStack wrapper flows: $(find maestro -maxdepth 1 -type f -name 'browserstack-*.yaml' | wc -l | tr -d ' ')"
-    displayName: 'Generate BrowserStack wrapper flows'
-    condition: ${{ or(eq(parameters.testSuiteId, ' '), eq(parameters.testSuiteId, '')) }}
   # Archive Maestro tests
   - task: ArchiveFiles@2
-    condition: ${{ or(eq(parameters.testSuiteId, ' '), eq(parameters.testSuiteId, '')) }}
+    condition: ${{ eq(parameters.testSuiteId, ' ') }}
     inputs:
       rootFolderOrFile: 'maestro'
       includeRootFolder: true
@@ -87,7 +61,7 @@ steps:
 
   # Download app build files
   - download: build
-    condition: ${{ or(eq(parameters.appId, ' '), eq(parameters.appId, '')) }}
+    condition: ${{ eq(parameters.appId, ' ') }}
     artifact: ${{ parameters.buildArtifact }}
     displayName: 'Download app build files'
 
@@ -100,7 +74,7 @@ steps:
 
   # Upload Maestro tests to BrowserStack
   - powershell: |
-      if ("${{ parameters.testSuiteId }}" -ne " " -and "${{ parameters.testSuiteId }}" -ne "") {
+      if ("${{ parameters.testSuiteId }}" -ne " ") {
           Write-Host "testSuiteId is pre-filled: ${{ parameters.testSuiteId }}"
           Write-Host "##vso[task.setvariable variable=testSuiteId]${{ parameters.testSuiteId }}"
           exit 0
@@ -121,7 +95,7 @@ steps:
 
   # Upload App to BrowserStack
   - powershell: |
-      if ("${{ parameters.appId }}" -ne " " -and "${{ parameters.appId }}" -ne "") {
+      if ("${{ parameters.appId }}" -ne " ") {
           Write-Host "appId is pre-filled: ${{ parameters.appId }}"
           Write-Host "##vso[task.setvariable variable=appId]${{ parameters.appId }}"
           exit 0
@@ -148,11 +122,17 @@ steps:
 
   # Run Maestro Tests on BrowserStack
   - script: |
+      # Find all .entry.yaml and .entry.<platform>.yaml files in maestro directory
+      entry_files=$(find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) | sort | sed 's|^maestro/||')
+      # Convert to JSON array
+      execute_json=$(printf '%s\n' "$entry_files" | jq -R . | jq -s .)
+      # Compose buildBody JSON dynamically
       buildBody=$(jq -n \
         --arg app "bs://$(appId)" \
         --arg testSuite "bs://$(testSuiteId)" \
         --arg project "Amsterdam App Maestro Tests" \
         --arg device "${{ parameters.device }}" \
+        --argjson execute "$execute_json" \
         '{
           app: $app,
           testSuite: $testSuite,
