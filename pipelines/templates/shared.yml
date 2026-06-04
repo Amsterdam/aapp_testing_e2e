@@ -124,38 +124,52 @@ steps:
   - script: |
       # Find all .entry.yaml and .entry.<platform>.yaml files in maestro directory
       entry_files=$(find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) | sort | sed 's|^maestro/||')
-      # Convert to JSON array
-      execute_json=$(printf '%s\n' "$entry_files" | jq -R . | jq -s .)
-      # Compose buildBody JSON dynamically
-      buildBody=$(jq -n \
-        --arg app "bs://$(appId)" \
-        --arg testSuite "bs://$(testSuiteId)" \
-        --arg project "Amsterdam App Maestro Tests" \
-        --arg device "${{ parameters.device }}" \
-        --argjson execute "$execute_json" \
-        '{
-          app: $app,
-          testSuite: $testSuite,
-          project: $project,
-          devices: [$device],
-          networkLogs: false,
-          deviceLogs: true,
-          execute: $execute,
-          maestroVersion: "latest"
-        }')
-      response=$(curl -s -X POST "${{ parameters.buildApiUrl }}" \
-        -H "Authorization: Basic $(AUTH_HASH)" \
-        -H "Content-Type: application/json" \
-        -d "$buildBody")
-      build_id=$(echo "$response" | jq -r '.build_id // empty')
-      if [ -z "$build_id" ]; then
-        echo "Error: build_id is empty in BrowserStack API response."
-        echo "API response: $response"
-        echo "##vso[task.logissue type=error]Failed to retrieve build_id from BrowserStack API response."
-        exit 1
-      fi
-      echo "Build ID: $build_id"
-      echo "##vso[task.setvariable variable=BUILD_ID]$build_id"
+
+      # Split into chunks of 20 files and run a BrowserStack build per chunk
+      build_ids=()
+      chunk_size=20
+      echo "$entry_files" | split -l $chunk_size - /tmp/chunk_
+
+      for chunk_file in /tmp/chunk_*; do
+        execute_json=$(cat "$chunk_file" | jq -R . | jq -s .)
+        buildBody=$(jq -n \
+          --arg app "bs://$(appId)" \
+          --arg testSuite "bs://$(testSuiteId)" \
+          --arg project "Amsterdam App Maestro Tests" \
+          --arg device "${{ parameters.device }}" \
+          --argjson execute "$execute_json" \
+          '{
+            app: $app,
+            testSuite: $testSuite,
+            project: $project,
+            devices: [$device],
+            networkLogs: false,
+            deviceLogs: true,
+            execute: $execute,
+            maestroVersion: "latest"
+          }')
+
+        response=$(curl -s -X POST "${{ parameters.buildApiUrl }}" \
+          -H "Authorization: Basic $(AUTH_HASH)" \
+          -H "Content-Type: application/json" \
+          -d "$buildBody")
+
+        build_id=$(echo "$response" | jq -r '.build_id // empty')
+        if [ -z "$build_id" ]; then
+          echo "Error: build_id is empty in BrowserStack API response."
+          echo "API response: $response"
+          echo "##vso[task.logissue type=error]Failed to retrieve build_id from BrowserStack API response."
+          exit 1
+        fi
+
+        echo "Build ID: $build_id"
+        build_ids+=("$build_id")
+      done
+
+      # Join all build IDs as comma-separated and export
+      build_ids_joined=$(IFS=,; echo "${build_ids[*]}")
+      echo "All Build IDs: $build_ids_joined"
+      echo "##vso[task.setvariable variable=BUILD_ID]$build_ids_joined"
     displayName: 'Run Maestro Tests on BrowserStack'
 
   # Wait for BrowserStack Build and Show Result
