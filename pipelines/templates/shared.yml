@@ -87,7 +87,7 @@ steps:
 
   # Download app build files
   - download: build
-    condition: ${{ eq(parameters.appId, ' ') }}
+    condition: ${{ or(eq(parameters.appId, ' '), eq(parameters.appId, '')) }}
     artifact: ${{ parameters.buildArtifact }}
     displayName: 'Download app build files'
 
@@ -100,7 +100,7 @@ steps:
 
   # Upload Maestro tests to BrowserStack
   - powershell: |
-      if ("${{ parameters.testSuiteId }}" -ne " ") {
+      if ("${{ parameters.testSuiteId }}" -ne " " -and "${{ parameters.testSuiteId }}" -ne "") {
           Write-Host "testSuiteId is pre-filled: ${{ parameters.testSuiteId }}"
           Write-Host "##vso[task.setvariable variable=testSuiteId]${{ parameters.testSuiteId }}"
           exit 0
@@ -121,7 +121,7 @@ steps:
 
   # Upload App to BrowserStack
   - powershell: |
-      if ("${{ parameters.appId }}" -ne " ") {
+      if ("${{ parameters.appId }}" -ne " " -and "${{ parameters.appId }}" -ne "") {
           Write-Host "appId is pre-filled: ${{ parameters.appId }}"
           Write-Host "##vso[task.setvariable variable=appId]${{ parameters.appId }}"
           exit 0
