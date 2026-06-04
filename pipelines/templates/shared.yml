@@ -71,7 +71,7 @@ steps:
     condition: ${{ or(eq(parameters.testSuiteId, ' '), eq(parameters.testSuiteId, '')) }}
     inputs:
       rootFolderOrFile: 'maestro'
-      includeRootFolder: true
+      includeRootFolder: false
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/maestro-tests.zip'
       replaceExistingArchive: true
