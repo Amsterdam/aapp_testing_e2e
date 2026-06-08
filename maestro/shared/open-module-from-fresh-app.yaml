@@ -3,6 +3,8 @@ appId: nl.amsterdam.app.dev
 - launchApp:
     clearState: true
     clearKeychain: true
+    permissions:
+      all: ${PERMISSION || 'allow'}
 - runFlow:
     file: ./close-onboarding.yaml
 - tapOn:
