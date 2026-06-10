@@ -2,7 +2,7 @@ appId: nl.amsterdam.app.dev
 ---
 - launchApp:
     clearState: true
-    # clearKeychain: true
+    clearKeychain: true
     permissions:
       all: 'allow'
 - runFlow:
