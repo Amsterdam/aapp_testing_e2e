@@ -125,7 +125,6 @@ steps:
       # Find entry directories and legacy entry files outside entry directories
       entry_files=$({
         find maestro -type d -name 'entry'
-        find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) ! -path '*/entry/*'
       } | sort | sed 's|^maestro/||')
       # Convert to JSON array
       execute_json=$(printf '%s\n' "$entry_files" | jq -R . | jq -s .)
