@@ -5,7 +5,6 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeBurningGuideModuleButton
-      PERMISSION: 'allow'
 - tapOn:
     id: BurningGuideAddressSwitch
 - runFlow:

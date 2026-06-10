@@ -7,7 +7,6 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Test
       MODULE: HomeContactModuleButton
-      PERMISSION: 'allow'
 - scrollUntilVisible:
     element:
       id: .*SurveyQuestion.*

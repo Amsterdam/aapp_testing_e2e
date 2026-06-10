@@ -7,7 +7,6 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Test
       MODULE: HeaderUserIcon
-      PERMISSION: 'allow'
 - tapOn:
     id: UserNavigationToFeedbackButton
 - runFlow:

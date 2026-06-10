@@ -5,7 +5,6 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeWasteGuideModuleButton
-      PERMISSION: 'allow'
 - tapOn:
     id: WasteGuideAddressSwitch
 - runFlow:

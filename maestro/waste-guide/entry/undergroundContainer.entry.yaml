@@ -1,16 +1,15 @@
 appId: nl.amsterdam.app.dev
 ---
 - runFlow:
-    file: ../shared/open-module-from-fresh-app.yaml
+    file: ../../shared/open-module-from-fresh-app.yaml
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeWasteGuideModuleButton
-      PERMISSION: 'allow'
 - tapOn:
     id: WasteGuideAddressSwitch
 - runFlow:
     label: Enter address
-    file: '../shared/EnterAddress.yaml'
+    file: '../../shared/EnterAddress.yaml'
     env:
       ADDRESS: Balistraat 1-1
       BAGID: '0363200000038242'
