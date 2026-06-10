@@ -1,31 +1,31 @@
 parameters:
   - name: appId
     type: string
-    default: ''
+    default: ""
   - name: testSuiteId
     type: string
-    default: ''
+    default: ""
   - name: buildArtifact
     type: string
-    default: ''
+    default: ""
   - name: appFileName
     type: string
-    default: ''
+    default: ""
   - name: platform
     type: string
-    default: 'not-found'
+    default: "not-found"
   - name: device
     type: string
-    default: ''
+    default: ""
   - name: buildApiUrl
     type: string
-    default: ''
+    default: ""
 
 steps:
   # Rename credentials.ci.js to credentials.js before variable injection
   - script: |
       find maestro -type f -name 'credentials.ci.js' -exec sh -c 'mv "$0" "${0%/*}/credentials.js"' {} \;
-    displayName: 'Rename credentials.ci.js to credentials.js'
+    displayName: "Rename credentials.ci.js to credentials.js"
 
   # Inject Azure DevOps variable(s) into Maestro YAMLs before zipping
   - script: |
@@ -39,38 +39,38 @@ steps:
       find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_BUSINESS_PIN_CODE__|$(PARKING_BUSINESS_PIN_CODE)|g' {} +
       find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_RESIDENTS_REPORT_CODE__|$(PARKING_RESIDENTS_REPORT_CODE)|g' {} +
       find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_RESIDENTS_PIN_CODE__|$(PARKING_RESIDENTS_PIN_CODE)|g' {} +
-    displayName: 'Inject parking account variables into Maestro tests'
+    displayName: "Inject parking account variables into Maestro tests"
   # Archive Maestro tests
   - task: ArchiveFiles@2
     condition: ${{ eq(parameters.testSuiteId, ' ') }}
     inputs:
-      rootFolderOrFile: 'maestro'
+      rootFolderOrFile: "maestro"
       includeRootFolder: true
-      archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/maestro-tests.zip'
+      archiveType: "zip"
+      archiveFile: "$(Build.ArtifactStagingDirectory)/maestro-tests.zip"
       replaceExistingArchive: true
-    displayName: 'Create ZIP-file of Maestro tests'
+    displayName: "Create ZIP-file of Maestro tests"
 
   # Publish Maestro tests artifact
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: '$(Build.ArtifactStagingDirectory)/maestro-tests.zip'
-      artifactName: 'maestro-tests'
-      publishLocation: 'Container'
-    displayName: 'Publish Maestro Tests Artifact'
+      pathToPublish: "$(Build.ArtifactStagingDirectory)/maestro-tests.zip"
+      artifactName: "maestro-tests"
+      publishLocation: "Container"
+    displayName: "Publish Maestro Tests Artifact"
 
   # Download app build files
   - download: build
     condition: ${{ eq(parameters.appId, ' ') }}
     artifact: ${{ parameters.buildArtifact }}
-    displayName: 'Download app build files'
+    displayName: "Download app build files"
 
   # Create BrowserStack Auth Hash
   - powershell: |
       $authString = "$(BROWSERSTACK_USERNAME):$(BROWSERSTACK_ACCESS_KEY)"
       $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes($authString))
       Write-Host "##vso[task.setvariable variable=AUTH_HASH;issecret=true]$auth"
-    displayName: 'Create BrowserStack Auth Hash'
+    displayName: "Create BrowserStack Auth Hash"
 
   # Upload Maestro tests to BrowserStack
   - powershell: |
@@ -91,7 +91,7 @@ steps:
           -Form $form
       Write-Host "Test Suite ID: $($testSuiteResponse.test_suite_id)"
       Write-Host "##vso[task.setvariable variable=testSuiteId]$($testSuiteResponse.test_suite_id)"
-    displayName: 'Upload Maestro tests to BrowserStack'
+    displayName: "Upload Maestro tests to BrowserStack"
 
   # Upload App to BrowserStack
   - powershell: |
@@ -118,12 +118,15 @@ steps:
           -Form $form
       Write-Host "App ID: $($appResponse.app_id)"
       Write-Host "##vso[task.setvariable variable=appId]$($appResponse.app_id)"
-    displayName: 'Upload App to BrowserStack'
+    displayName: "Upload App to BrowserStack"
 
   # Run Maestro Tests on BrowserStack
   - script: |
-      # Find all .entry.yaml and .entry.<platform>.yaml files in maestro directory
-      entry_files=$(find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) | sort | sed 's|^maestro/||')
+      # Find entry directories and legacy entry files outside entry directories
+      entry_files=$({
+        find maestro -type d -name 'entry'
+        find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) ! -path '*/entry/*'
+      } | sort | sed 's|^maestro/||')
       # Convert to JSON array
       execute_json=$(printf '%s\n' "$entry_files" | jq -R . | jq -s .)
       # Compose buildBody JSON dynamically
@@ -156,7 +159,7 @@ steps:
       fi
       echo "Build ID: $build_id"
       echo "##vso[task.setvariable variable=BUILD_ID]$build_id"
-    displayName: 'Run Maestro Tests on BrowserStack'
+    displayName: "Run Maestro Tests on BrowserStack"
 
   # Wait for BrowserStack Build and Show Result
   - powershell: |
@@ -169,7 +172,7 @@ steps:
       }
       $status = "running"
       $attempt = 0
-      $maxAttempts = 60
+      $maxAttempts = 4
       $waitSeconds = 30
       Write-Host "Polling BrowserStack build status for build ID: $buildId"
       while ($status -eq "running" -and $attempt -lt $maxAttempts) {
@@ -181,16 +184,8 @@ steps:
               $attempt++
           }
       }
-      if ($status -eq "running") {
-          Write-Host "##vso[task.logissue type=error]Timed out waiting for build to finish."
+      if ($status -ne "running") {
+          Write-Host "##vso[task.logissue type=error]Build not running anymore."
           exit 1
       }
-      Write-Host "Final build status: $status"
-      Write-Host "View build result in BrowserStack: https://app-automate.browserstack.com/dashboard/v2/builds/$buildId"
-      Write-Host "Full response:"
-      $response | ConvertTo-Json -Depth 10
-      if ($status -ne "passed") {
-          Write-Host "##vso[task.logissue type=error]Build did not pass. Status: $status"
-          exit 1
-      }
-    displayName: 'Wait for BrowserStack Build and Show Result'
+    displayName: "Wait for BrowserStack Build and Show Result"

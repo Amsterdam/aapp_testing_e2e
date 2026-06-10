@@ -19,7 +19,7 @@ appId: nl.amsterdam.app.dev
 
 - runFlow:
     label: Restafval
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: Rest
       HOW: In rolcontainer
@@ -28,7 +28,7 @@ appId: nl.amsterdam.app.dev
       WHERE: Aan de rand van de stoep of op de vaste plek
 - runFlow:
     label: Grofafval
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: GA
       HOW: Breng uw grof afval naar een Recyclepunt of buiten zetten
@@ -37,7 +37,7 @@ appId: nl.amsterdam.app.dev
       WHERE: Aan de rand van de stoep of op de vaste plek
 - runFlow:
     label: Papier en karton
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: Papier
       HOW: In de container voor papier
@@ -46,7 +46,7 @@ appId: nl.amsterdam.app.dev
       WHERE: ''
 - runFlow:
     label: GFE/t
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: GFT
       HOW: In rolcontainer
@@ -55,7 +55,7 @@ appId: nl.amsterdam.app.dev
       WHERE: Aan de rand van de stoep of op de vaste plek
 - runFlow:
     label: Glas
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: Glas
       HOW: In de container voor glas
@@ -64,7 +64,7 @@ appId: nl.amsterdam.app.dev
       WHERE: ''
 - runFlow:
     label: Textiel
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: Textiel
       HOW: In de container voor textiel
