@@ -1,10 +1,10 @@
 parameters:
   - name: appId
     type: string
-    default: ""
+    default: " "
   - name: testSuiteId
     type: string
-    default: ""
+    default: " "
   - name: buildArtifact
     type: string
     default: ""
