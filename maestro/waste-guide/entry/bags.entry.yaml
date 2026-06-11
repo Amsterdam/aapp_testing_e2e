@@ -1,16 +1,15 @@
 appId: nl.amsterdam.app.dev
 ---
 - runFlow:
-    file: ../shared/open-module-from-fresh-app.yaml
+    file: ../../shared/open-module-from-fresh-app.yaml
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeWasteGuideModuleButton
-      PERMISSION: 'allow'
 - tapOn:
     id: WasteGuideAddressSwitch
 - runFlow:
     label: Enter address
-    file: '../shared/EnterAddress.yaml'
+    file: '../../shared/EnterAddress.yaml'
     env:
       ADDRESS: Omval 18
       BAGID: '0363200000468752'
@@ -19,7 +18,7 @@ appId: nl.amsterdam.app.dev
 
 - runFlow:
     label: Restafval
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: Rest
       HOW: In afvalzak
@@ -28,7 +27,7 @@ appId: nl.amsterdam.app.dev
       WHERE: Aan de rand van de stoep of op de vaste plek
 - runFlow:
     label: Grofafval
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: GA
       HOW: Appointment
@@ -37,7 +36,7 @@ appId: nl.amsterdam.app.dev
       WHERE: ''
 - runFlow:
     label: Papier en karton
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: Papier
       HOW: In de container voor papier
@@ -46,7 +45,7 @@ appId: nl.amsterdam.app.dev
       WHERE: ''
 - runFlow:
     label: GFE/t
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: GFT
       HOW: Bij het restafval
@@ -55,7 +54,7 @@ appId: nl.amsterdam.app.dev
       WHERE: ''
 - runFlow:
     label: Glas
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: Glas
       HOW: In de container voor glas
@@ -64,7 +63,7 @@ appId: nl.amsterdam.app.dev
       WHERE: ''
 - runFlow:
     label: Textiel
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: Textiel
       HOW: In de container voor textiel

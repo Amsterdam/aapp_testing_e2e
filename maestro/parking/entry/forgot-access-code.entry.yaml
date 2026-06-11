@@ -2,15 +2,14 @@ appId: nl.amsterdam.app.dev
 ---
 - launchApp:
     clearState: true
-- runScript: ../scripts/credentials.js
+- runScript: ../../scripts/credentials.js
 - runFlow:
-    file: ../shared/open-module-from-fresh-app.yaml
+    file: ../../shared/open-module-from-fresh-app.yaml
     env:
       ENVIRONMENT: Test
       MODULE: HomeParkingModuleButton
-      PERMISSION: 'allow'
 - runFlow:
-    file: ../parking/shared/login.yaml
+    file: ../../parking/shared/login.yaml
     env:
       REPORT_CODE: ${output.parkingVisitorPermitHolderReportCode}
       PIN_CODE: ${output.parkingVisitorPermitHolderPinCode}

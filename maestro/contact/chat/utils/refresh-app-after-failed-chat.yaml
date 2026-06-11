@@ -5,7 +5,6 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeContactModuleButton
-      PERMISSION: 'allow'
 - scrollUntilVisible:
     element:
       id: ContactChatButton

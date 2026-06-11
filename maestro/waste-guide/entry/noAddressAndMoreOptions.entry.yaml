@@ -1,11 +1,10 @@
 appId: nl.amsterdam.app.dev
 ---
 - runFlow:
-    file: ../shared/open-module-from-fresh-app.yaml
+    file: ../../shared/open-module-from-fresh-app-without-permissions.yaml
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeWasteGuideModuleButton
-      PERMISSION: deny
 - assertVisible:
     id: WasteGuideAddressSwitchNoAddressTitle
 - assertVisible:
@@ -32,7 +31,7 @@ appId: nl.amsterdam.app.dev
 
 # Recyclepunten
 - runFlow:
-    file: ./utils/RecyclingPoints.yaml
+    file: ../utils/RecyclingPoints.yaml
 
 # Alles over afval
 - scrollUntilVisible:
@@ -41,6 +40,6 @@ appId: nl.amsterdam.app.dev
 - assertVisible:
     id: WasteGuideInformationTitle
 - runFlow:
-    file: ../shared/handle-external-link-button.yaml
+    file: ../../shared/handle-external-link-button.yaml
     env:
       ID: WasteGuideInformationButton

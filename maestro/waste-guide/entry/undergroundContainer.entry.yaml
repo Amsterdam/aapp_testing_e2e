@@ -1,52 +1,51 @@
 appId: nl.amsterdam.app.dev
 ---
 - runFlow:
-    file: ../shared/open-module-from-fresh-app.yaml
+    file: ../../shared/open-module-from-fresh-app.yaml
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeWasteGuideModuleButton
-      PERMISSION: 'allow'
 - tapOn:
     id: WasteGuideAddressSwitch
 - runFlow:
     label: Enter address
-    file: '../shared/EnterAddress.yaml'
+    file: '../../shared/EnterAddress.yaml'
     env:
-      ADDRESS: Rokin 8-3
-      BAGID: '0363200000254673'
+      ADDRESS: Balistraat 1-1
+      BAGID: '0363200000038242'
       ID: WasteGuide
       SAVEASMYADDRESS: Yes
 
 - runFlow:
     label: Restafval
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: Rest
-      HOW: In witte afvalzak
-      DAY: Dinsdag en vrijdag
-      OUTSIDE: Tussen 17.00 en 18.00 uur
-      WHERE: Aan de rand van de stoep of op de vaste plek
-- runFlow:
-    label: Grofafval
-    file: './utils/VerifyFraction.yaml'
-    env:
-      FRACTION: GA
-      HOW: Appointment
+      HOW: In de container voor restafval
       DAY: ''
       OUTSIDE: ''
       WHERE: ''
 - runFlow:
+    label: Grofafval
+    file: '../utils/VerifyFraction.yaml'
+    env:
+      FRACTION: GA
+      HOW: Breng uw grof afval naar een Recyclepunt of buiten zetten
+      DAY: Maandag en vrijdag
+      OUTSIDE: Zondag vanaf 21.00 tot maandag 07.00 uur en donderdag vanaf 21.00 tot vrijdag 07.00 uur
+      WHERE: Aan de rand van de stoep of op de vaste plek
+- runFlow:
     label: Papier en karton
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: Papier
-      HOW: Maak vast tot 1 pakket
-      DAY: Dinsdag en vrijdag
-      OUTSIDE: Tussen 17.00 en 18.00 uur
-      WHERE: Leg uw pakket op de stoep
+      HOW: In de container voor papier
+      DAY: ''
+      OUTSIDE: ''
+      WHERE: ''
 - runFlow:
     label: GFE/t
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: GFT
       HOW: Bij het restafval
@@ -55,7 +54,7 @@ appId: nl.amsterdam.app.dev
       WHERE: ''
 - runFlow:
     label: Glas
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: Glas
       HOW: In de container voor glas
@@ -64,7 +63,7 @@ appId: nl.amsterdam.app.dev
       WHERE: ''
 - runFlow:
     label: Textiel
-    file: './utils/VerifyFraction.yaml'
+    file: '../utils/VerifyFraction.yaml'
     env:
       FRACTION: Textiel
       HOW: In de container voor textiel
