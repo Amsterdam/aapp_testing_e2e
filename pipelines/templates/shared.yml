@@ -126,12 +126,18 @@ steps:
       entry_files=$(find maestro -type f \( -name '*.entry.yaml' -o -name "*.entry.${{ parameters.platform }}.yaml" \) | sort | sed 's|^maestro/||')
 
       # Split into chunks of 20 files and run a BrowserStack build per chunk
+      if [ -z "$entry_files" ]; then
+        echo "##vso[task.logissue type=error]No Maestro entry files found."
+        exit 1
+      fi
+
       build_ids=()
       chunk_size=20
-      echo "$entry_files" | split -l $chunk_size - /tmp/chunk_
+      tmp_dir="$(mktemp -d)"
+      trap 'rm -rf "$tmp_dir"' EXIT
+      printf '%s\n' "$entry_files" | split -l "$chunk_size" - "$tmp_dir/chunk_"
 
-      for chunk_file in /tmp/chunk_*; do
-        execute_json=$(cat "$chunk_file" | jq -R . | jq -s .)
+      for chunk_file in "$tmp_dir"/chunk_*; do
         buildBody=$(jq -n \
           --arg app "bs://$(appId)" \
           --arg testSuite "bs://$(testSuiteId)" \
