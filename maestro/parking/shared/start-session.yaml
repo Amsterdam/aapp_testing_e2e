@@ -1,7 +1,8 @@
 appId: nl.amsterdam.app.dev
+
 ---
 - tapOn:
-    id: "ParkingGoToStartSessionCodevergunningButton"
+    id: "ParkingGoToStartSession.*Button"
 - tapOn:
     id: ParkingChooseLicensePlateButton
 - tapOn:

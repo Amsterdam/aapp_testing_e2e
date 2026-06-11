@@ -1,5 +1,8 @@
 appId: nl.amsterdam.app.dev
 ---
+- scrollUntilVisible:
+    element:
+      id: ${MODULE_BUTTON_ID}
 - tapOn:
     id: ${MODULE_BUTTON_ID}
 - waitForAnimationToEnd
