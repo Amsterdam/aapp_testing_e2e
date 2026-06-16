@@ -10,7 +10,7 @@ appId: nl.amsterdam.app.dev
             id: "ParkingSessionDetailsPermitZoneRow"
         - tapOn:
             id: "ParkingParkingPermitZonesButton"
-        - assertVisible: "Google Map"
+        - assertVisible: "Google Maps?"
         - tapOn:
             id: "HeaderBackIcon"
         - assertVisible:
@@ -51,7 +51,7 @@ appId: nl.amsterdam.app.dev
                     id: "ParkingSessionDetailsPermitZoneRow"
                 - tapOn:
                     id: "ParkingParkingPermitZonesButton"
-                - assertVisible: "Google Map"
+                - assertVisible: "Google Maps?"
                 - tapOn:
                     id: "HeaderBackIcon"
                 - assertVisible:
