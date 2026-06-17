@@ -106,6 +106,7 @@ Both platform pipelines support optional parameters for reusing existing Browser
 - For local execution, create `maestro/scripts/credentials.js` (it is gitignored), e.g. by copying `maestro/scripts/credentials.ci.js`, then fill in non-production test accounts.
 - For CI, keep placeholders in `maestro/scripts/credentials.ci.js` and let the pipeline inject secret values.
 
+
 ## Contributing
 
 When adding or updating tests:
