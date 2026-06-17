@@ -40,7 +40,8 @@ Common actions are centralized in shared flows, for example:
 
 The suite uses Maestro JavaScript scripts for dynamic values and secrets:
 
-- `maestro/scripts/credentials.js` (gitignored): create locally for parking login flows
+- `maestro/scripts/credentials.js` (gitignored): create locally for parking login flows
+
 - `maestro/scripts/credentials.ci.js`: CI placeholders that are replaced in pipelines
 - `maestro/parking/scripts/generateRandomLicensePlate.js`: creates random license plates
 
@@ -80,8 +81,7 @@ maestro test maestro/contact/contact.entry.yaml
 
 Notes:
 
-- Many flows start from a fresh app state and switch environment inside the app UI.
-- Parking scenarios depend on report code and pin values from `maestro/scripts/credentials.js`.
+- Parking scenarios depend on report code and pin values from `maestro/scripts/credentials.js` (gitignored; create it locally, e.g. by copying `maestro/scripts/credentials.ci.js`).
 
 ## CI/CD Execution
 
