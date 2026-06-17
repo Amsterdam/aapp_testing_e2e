@@ -83,7 +83,6 @@ Notes:
 
 - Parking scenarios depend on report code and pin values from `maestro/scripts/credentials.js` (gitignored; create it locally, e.g. by copying `maestro/scripts/credentials.ci.js`).
 
-
 ## CI/CD Execution
 
 Pipelines:
@@ -104,7 +103,8 @@ Both platform pipelines support optional parameters for reusing existing Browser
 
 ## Credentials And Secrets
 
-- For local execution, create `maestro/scripts/credentials.js` (it is gitignored), e.g. by copying `maestro/scripts/credentials.ci.js`, then fill in non-production test accounts.
+- For local execution, create `maestro/scripts/credentials.js` (it is gitignored), e.g. by copying `maestro/scripts/credentials.ci.js`, then fill in non-production test accounts.
+
 - For local execution, update `maestro/scripts/credentials.js` with non-production test accounts.
 - For CI, use the pipeline variable group placeholders in `credentials.ci.js` and let the pipeline inject values.
 
