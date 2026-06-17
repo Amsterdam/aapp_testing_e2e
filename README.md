@@ -40,7 +40,7 @@ Common actions are centralized in shared flows, for example:
 
 The suite uses Maestro JavaScript scripts for dynamic values and secrets:
 
-- `maestro/scripts/credentials.js`: local credential values for parking login flows
+- `maestro/scripts/credentials.js` (gitignored): create locally for parking login flows
 - `maestro/scripts/credentials.ci.js`: CI placeholders that are replaced in pipelines
 - `maestro/parking/scripts/generateRandomLicensePlate.js`: creates random license plates
 
