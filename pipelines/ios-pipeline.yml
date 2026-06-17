@@ -50,7 +50,7 @@ steps:
   parameters:
     appId: ${{ parameters.iosAppId }}
     testSuiteId: ${{ parameters.testSuiteId }}
-    buildArtifact: 'ios-build'
+    buildArtifact: 'ios-build-test'
     appFileName: 'ios/builds/AmsterdamTest.ipa'
     platform: 'ios'
     device: $(randomDevice)
