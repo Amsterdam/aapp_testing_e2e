@@ -39,7 +39,7 @@ steps:
   parameters:
     appId: ${{ parameters.androidAppId }}
     testSuiteId: ${{ parameters.testSuiteId }}
-    buildArtifact: 'android-build'
+    buildArtifact: 'android-build-all'
     appFileName: 'android/app/build/outputs/apk/dev/release/app-dev-release.apk'
     platform: 'android'
     device: 'Google Pixel 8 Pro-14.0'
