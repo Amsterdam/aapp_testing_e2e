@@ -32,7 +32,7 @@ variables:
   - group: aapp_testing_e2e
 
 pool:
-      vmImage: 'macOS-15'
+  vmImage: 'macOS-26'
 
 steps:
 - template: templates/shared.yml
