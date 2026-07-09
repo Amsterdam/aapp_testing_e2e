@@ -107,6 +107,7 @@ Both platform pipelines support optional parameters for reusing existing Browser
 - For CI, keep placeholders in `maestro/scripts/credentials.ci.js` and let the pipeline inject secret values.
 
 
+
 ## Contributing
 
 When adding or updating tests:
