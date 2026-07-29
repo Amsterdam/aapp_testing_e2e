@@ -15,9 +15,9 @@ appId: nl.amsterdam.app.dev
           id: UserNavigationToAboutButton
       - scrollUntilVisible:
           element:
-            id: AboutScreenFeedbackButton
+            id: UserAboutScreenFeedbackButton
       - tapOn:
-          id: AboutScreenFeedbackButton
+          id: UserAboutScreenFeedbackButton
       - assertVisible: "Uw mening"
       - tapOn:
           id: HeaderBackButton
