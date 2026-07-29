@@ -1,10 +1,19 @@
 appId: nl.amsterdam.app.dev
 ---
+- scrollUntilVisible:
+    element:
+      id: UserAccountCityPassModuleTitle
+
 - assertVisible:
     id: UserAccountCityPassModuleTitle
 
+- scrollUntilVisible:
+    element:
+      id: UserAccountCityPassLoginButton
+
 - tapOn:
     id: UserAccountCityPassLoginButton
+
 - extendedWaitUntil:
     visible:
       id: CityPassDashboardScreen

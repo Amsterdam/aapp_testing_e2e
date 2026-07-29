@@ -1,6 +1,15 @@
 appId: nl.amsterdam.app.dev
 ---
-- assertVisible: Log in als vergunninghouder of bezoeker om de parkeersessie te starten en te betalen.
+- scrollUntilVisible:
+    element:
+      id: UserAccountParkingModuleTitle
+
+- assertVisible:
+    id: UserAccountParkingModuleTitle
+
+- scrollUntilVisible:
+    element:
+      id: UserAccountParkingLoginButton
 
 - tapOn:
     id: UserAccountParkingLoginButton
