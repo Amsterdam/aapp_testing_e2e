@@ -12,28 +12,12 @@ appId: nl.amsterdam.app.dev
     commands:
       - tapOn:
           label: Check "Over deze app"
-          id: UserNavigationToAppSummaryButton
+          id: UserNavigationToAboutButton
       - scrollUntilVisible:
           element:
-            id: AboutAboutTheAppDutchFeedbackButton
+            id: AboutScreenFeedbackButton
       - tapOn:
-          id: AboutAboutTheAppDutchFeedbackButton
-      - assertVisible: "Uw mening"
-      - tapOn:
-          id: HeaderBackButton
-      - tapOn:
-          id: HeaderBackButton
-
-- runFlow:
-    label: Check "About this app"
-    commands:
-      - tapOn:
-          id: UserNavigationToAboutEnglishButton
-      - scrollUntilVisible:
-          element:
-            id: AboutAboutTheAppEnglishFeedbackButton
-      - tapOn:
-          id: AboutAboutTheAppEnglishFeedbackButton
+          id: AboutScreenFeedbackButton
       - assertVisible: "Uw mening"
       - tapOn:
           id: HeaderBackButton
