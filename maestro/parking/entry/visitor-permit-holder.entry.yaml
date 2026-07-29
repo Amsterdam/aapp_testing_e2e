@@ -14,7 +14,7 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../shared/select-permit.yaml
     env:
-      PERMIT_NAME: 'Bezoekersparkeervergunning'
+      PERMIT_NAME: 'Bezoekersparkeervergunning( \(1004\))?'
 - runFlow: '../shared/start-session.yaml'
 - runFlow: '../sessions/active.yaml'
 - tapOn:
