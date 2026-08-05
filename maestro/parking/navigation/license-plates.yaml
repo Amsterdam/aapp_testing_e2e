@@ -1,17 +1,40 @@
 appId: nl.amsterdam.app.dev
 ---
 - tapOn:
-    id: "ParkingLicensePlatesButton"
-- assertVisible: "Mijn kentekens"
+    id: 'ParkingLicensePlatesButton'
+
+- assertVisible: 'Mijn kentekens'
 - tapOn:
-    id: "ParkingAddLicensePlateHeaderButton"
+    id: 'ParkingAddLicensePlateHeaderButton'
+
+- assertVisible: 'Kenteken'
 - inputText: 'TEST1'
 - tapOn:
-    id: "ParkingAddLicensePlateFormNameInputFieldInput"
+    id: 'ParkingLicensePlateFormNameInputFieldInput'
 - inputText: 'Test'
 - tapOn:
-    id: "ParkingAddLicensePlateFormSubmitButton"
-- assertVisible: "TEST1 - Test"
-- tapOn: Verwijder kenteken TEST1, Test
+    id: 'ParkingLicensePlateFormSubmitButton'
+
+- assertVisible: '3.  TEST1 - Test'
+- tapOn: '3.  TEST1 - Test'
+
+- assertVisible: 'Kenteken'
+- eraseText
+- inputText: 'TEST2'
+- tapOn:
+    id: 'ParkingLicensePlateFormSubmitButton'
+
+- assertVisible: '3.  TEST2 - Test'
+- tapOn: '3.  TEST2 - Test'
+
+- scrollUntilVisible:
+    element:
+      id: 'ParkingDeleteLicensePlateButton'
+- tapOn:
+    id: 'ParkingDeleteLicensePlateButton'
+- extendedWaitUntil:
+    visible: 'Verwijderen'
+    timeout: 5000
 - tapOn: 'Verwijderen'
-- assertNotVisible: Verwijder kenteken TEST1, Test
+
+- assertNotVisible: '3.  TEST2 - Test'
