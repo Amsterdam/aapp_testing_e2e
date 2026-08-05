@@ -15,8 +15,8 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: 'ParkingLicensePlateFormSubmitButton'
 
-- assertVisible: '3.  TEST1 - Test'
-- tapOn: '3.  TEST1 - Test'
+- assertVisible: '.*TEST1 - Test'
+- tapOn: '.*TEST1 - Test'
 
 - assertVisible: 'Kenteken'
 - eraseText
@@ -24,8 +24,8 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: 'ParkingLicensePlateFormSubmitButton'
 
-- assertVisible: '3.  TEST2 - Test'
-- tapOn: '3.  TEST2 - Test'
+- assertVisible: '.*TEST2 - Test'
+- tapOn: '.*TEST2 - Test'
 
 - scrollUntilVisible:
     element:
@@ -37,4 +37,4 @@ appId: nl.amsterdam.app.dev
     timeout: 5000
 - tapOn: 'Verwijderen'
 
-- assertNotVisible: '3.  TEST2 - Test'
+- assertNotVisible: '.*TEST2 - Test'
