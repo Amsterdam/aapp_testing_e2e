@@ -1,0 +1,20 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../../shared/open-module-from-fresh-app.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeConstructionWorkModuleButton
+- openLink: 'amsterdam://construction-work/project/348' # ontw: 351, test: 353, acc: 348, prod:
+- tapOn:
+    id: ConstructionWorkProjectUnFollowButton
+    optional: true
+- tapOn:
+    id: ConstructionWorkProjectFollowButton
+- tapOn:
+    text: 'Sta toe|Allow'
+    optional: true
+- tapOn:
+    id: ConstructionWorkProjectUnFollowButton
+- assertVisible:
+    id: ConstructionWorkProjectFollowButton
