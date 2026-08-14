@@ -1,0 +1,37 @@
+appId: nl.amsterdam.app.dev
+---
+- setOrientation: PORTRAIT
+- openLink: ${output.boatChargingVcpsUrl}
+- tapOn: "Enter session name"
+- eraseText
+# do it a second time to make sure the field is empty, as the first eraseText only clears the first half of the text on Android
+- tapOn: "Enter session name"
+- eraseText
+- inputText: ${output.boatChargingVcpsSessionName}
+- tapOn: "ws://"
+- tapOn: "wss://"
+- tapOn: "Enter hostname"
+- inputText: ${output.boatChargingVcpsEndpoint}
+- scrollUntilVisible:
+    element:
+      text: "Enter identity"
+- tapOn: "Enter identity"
+- eraseText
+- inputText: ${output.boatChargingVcpsStationId}
+- scrollUntilVisible:
+    element:
+      text: "Enter type"
+- tapOn: "Enter type"
+- eraseText
+- inputText: ${output.boatChargingVcpsModelType}
+- scrollUntilVisible:
+    element:
+      text: "Amount of connectors"
+- tapOn: "Amount of connectors"
+- eraseText
+- inputText: ${output.boatChargingVcpsConnectors}
+- scrollUntilVisible:
+    element:
+      text: "Connect"
+- tapOn: "Connect"
+- setOrientation: LANDSCAPE_RIGHT
