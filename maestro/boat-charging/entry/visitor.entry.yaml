@@ -1,7 +1,6 @@
 appId: nl.amsterdam.app.dev
 ---
-- runScript: ../../scripts/credentials.js
-- runScript: ../scripts/select-vcps.js
+- runFlow: ../load-credentials.yaml
 
 # Make sure the VCPS is available and ready to be used
 - runFlow: ../vcps/open-vcps.yaml

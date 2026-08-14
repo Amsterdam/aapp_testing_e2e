@@ -1,0 +1,7 @@
+console.log('platform: iOS')
+output.boatChargingChargingLocation = output.boatChargingChargingLocationiOS
+output.boatChargingVcpsSessionName = output.boatChargingVcpsSessionNameiOS
+output.boatChargingVcpsStationId = output.boatChargingVcpsStationIdiOS
+output.boatChargingVcpsModelType = output.boatChargingVcpsModelTypeiOS
+output.boatChargingVcpsConnectors = output.boatChargingVcpsConnectorsiOS
+output.boatChargingSocket = output.boatChargingSocketiOS
