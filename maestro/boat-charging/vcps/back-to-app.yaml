@@ -1,4 +1,4 @@
 appId: nl.amsterdam.app.dev
 ---
-- tapOn: "Terug naar Amsterdam test"
 - setOrientation: PORTRAIT
+- tapOn: "Terug naar Amsterdam test"

@@ -5,3 +5,5 @@ output.boatChargingVcpsStationId = output.boatChargingVcpsStationIdiOS
 output.boatChargingVcpsModelType = output.boatChargingVcpsModelTypeiOS
 output.boatChargingVcpsConnectors = output.boatChargingVcpsConnectorsiOS
 output.boatChargingSocket = output.boatChargingSocketiOS
+output.boatChargingEmail = output.boatChargingEmailiOS
+output.boatChargingPassword = output.boatChargingPasswordiOS

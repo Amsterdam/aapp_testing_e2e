@@ -1,0 +1,12 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    when:
+        platform: iOS
+    commands:
+      - tapOn: '(next)|(volgende)'
+- runFlow:
+    when:
+        platform: Android
+    commands:
+      - pressKey: "tab"

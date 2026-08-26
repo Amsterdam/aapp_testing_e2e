@@ -1,6 +1,6 @@
 appId: nl.amsterdam.app.dev
 ---
-- runFlow: ../load-credentials.yaml
+- runFlow: ../../shared/load-credentials.yaml
 
 # Make sure the VCPS is available and ready to be used
 - runFlow: ../vcps/open-vcps.yaml
@@ -13,16 +13,7 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeBoatChargingModuleButton
-- tapOn:
-    id: "BoatChargingHeaderButton"
-- assertVisible: ${'Boot oplaadpunt ' + output.boatChargingChargingLocation + ', status Vrij'}
-- tapOn: ${'Boot oplaadpunt ' + output.boatChargingChargingLocation + ', status Vrij'}
-- tapOn:
-    id: "BoatChargingPointDetailsChargeButton"
-- tapOn:
-    id: ${'BoatChargingDetailsChooseSocketRadioGroup{"stationId":"' + output.boatChargingVcpsStationId + '","socketNumber":"' + output.boatChargingSocket + '"}RadioButton'}
-- tapOn:
-    id: "BoatChargingDetailsChooseSocketSubmitButtonLabel"
+- runFlow: ../session/select-socket.yaml
 - tapOn:
     id: "BoatChargingGuestEmailTextInputFieldInput"
 - inputText: ${output.boatChargingEmail}
@@ -31,43 +22,10 @@ appId: nl.amsterdam.app.dev
 - assertVisible: ${output.boatChargingEmail}
 - tapOn:
     id: "BoatChargingGuestEmailConfirmSubmitButton"
-- tapOn:
-    id: "BoatChargingTermsAndConditionsSwitch"
-- tapOn:
-    id: "BoatChargingTermsAndConditionsScreenSubmitButton"
-- tapOn: "Redirect »"
-- tapOn: "Ga verder"
-- tapOn: "Open"
-- assertVisible: "Steek de stekker in het stopcontact"
-- tapOn: ${output.boatChargingVcpsStationId + '-' + output.boatChargingSocket}
-- tapOn:
-    id: "BoatChargingSessionButtonsStartButton"
-- assertVisible: "Steek de stekker in het stopcontact om verder te gaan."
-
-# Simulate plugging in the cable
-- runFlow: ../vcps/open-vcps.yaml
-- runFlow: ../vcps/turn-vcps-on.yaml
-- runFlow: ../vcps/plug-cable-in-vcps.yaml
-# TODO: the next step should be replaced by opening the app again, but for now we just go back to the app which only works on iOS
-- runFlow: ../vcps/back-to-app.yaml
-
-- assertVisible: "De stekker is aangesloten. De sessie kan worden gestart."
-- tapOn:
-    id: "BoatChargingSessionButtonsStartButton"
-- extendedWaitUntil:
-    notVisible: 
-      id: "BoatChargingSessionButtonsStartButton"
-    timeout: 180000
-- assertVisible: "Geladen"
-- tapOn:
-    id: "BoatChargingSessionButtonsStopButton"
-- tapOn: "Laden stoppen"
-- extendedWaitUntil:
-    notVisible: "Laden stoppen"
-    timeout: 180000
-- assertVisible:
-    id: "BoatChargingChargingStoppedSuccessAlert"
-- assertVisible: ${'Betaalbewijs verzonden naar ' + output.boatChargingEmail}
+- runFlow: ../session/accept-terms.yaml
+- runFlow: ../session/handle-payment.yaml
+- runFlow: ../session/plugin-socket-step.yaml
+- runFlow: ../session/stop-session.yaml
 
 
 

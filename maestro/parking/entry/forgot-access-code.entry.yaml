@@ -2,7 +2,7 @@ appId: nl.amsterdam.app.dev
 ---
 - launchApp:
     clearState: true
-- runScript: ../../scripts/credentials.js
+- runFlow: ../../shared/load-credentials.yaml
 - runFlow:
     file: ../../shared/open-module-from-fresh-app.yaml
     env:

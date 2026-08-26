@@ -8,30 +8,24 @@ appId: nl.amsterdam.app.dev
 - tapOn: "Enter session name"
 - eraseText
 - inputText: ${output.boatChargingVcpsSessionName}
-- tapOn: "ws://"
+# - tapOn: "ws://"
+- runFlow: ../../shared/next-field-in-browser.yaml
 - tapOn: "wss://"
 - tapOn: "Enter hostname"
 - inputText: ${output.boatChargingVcpsEndpoint}
-- scrollUntilVisible:
-    element:
-      text: "Enter identity"
-- tapOn: "Enter identity"
+- runFlow: ../../shared/next-field-in-browser.yaml
 - eraseText
 - inputText: ${output.boatChargingVcpsStationId}
-- scrollUntilVisible:
-    element:
-      text: "Enter type"
-- tapOn: "Enter type"
+- runFlow: ../../shared/next-field-in-browser.yaml
 - eraseText
 - inputText: ${output.boatChargingVcpsModelType}
-- scrollUntilVisible:
-    element:
-      text: "Amount of connectors"
-- tapOn: "Amount of connectors"
+- runFlow: ../../shared/next-field-in-browser.yaml
+- runFlow: ../../shared/next-field-in-browser.yaml
 - eraseText
 - inputText: ${output.boatChargingVcpsConnectors}
 - scrollUntilVisible:
     element:
       text: "Connect"
+    visibilityPercentage: 80
 - tapOn: "Connect"
 - setOrientation: LANDSCAPE_RIGHT

@@ -1,0 +1,6 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: "BoatChargingTermsAndConditionsSwitch"
+- tapOn:
+    id: "BoatChargingTermsAndConditionsScreenSubmitButton"

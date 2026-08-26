@@ -1,0 +1,19 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: "BoatChargingHeaderButton"
+- runFlow: 
+    when:
+        notVisible: "Toon kaartweergave"
+    commands:
+        - tapOn:
+            id: "BoatChargingHeaderButton"
+    
+- assertVisible: ${'Boot oplaadpunt ' + output.boatChargingChargingLocation + ', status Vrij'}
+- tapOn: ${'Boot oplaadpunt ' + output.boatChargingChargingLocation + ', status Vrij'}
+- tapOn:
+    id: "BoatChargingPointDetailsChargeButton"
+- tapOn:
+    id: ${'BoatChargingDetailsChooseSocketRadioGroup{"stationId":"' + output.boatChargingVcpsStationId + '","socketNumber":"' + output.boatChargingSocket + '"}RadioButton'}
+- tapOn:
+    id: "BoatChargingDetailsChooseSocketSubmitButton"

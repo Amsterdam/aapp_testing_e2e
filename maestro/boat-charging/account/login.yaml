@@ -1,0 +1,34 @@
+appId: nl.amsterdam.app.dev
+---
+
+# enter credentials
+- waitForAnimationToEnd
+- tapOn:
+    id: "BoatChargingLoginFormEmailTextInputFieldInput"
+- inputText: ${output.boatChargingEmailAndroid}
+- tapOn:
+    id: "BoatChargingLoginFormPasswordInputFieldInput"
+- inputText: ${output.boatChargingPasswordAndroid}
+- tapOn:
+    id: "BoatChargingLoginFormSubmitButton"
+
+# accesscode
+- waitForAnimationToEnd
+- tapOn:
+    id: 'BoatChargingLoginStepsScreenNextButton'
+- repeat:
+    times: 2
+    commands:
+      - runFlow: ../../shared/EnterAccessCode.yaml
+- tapOn:
+    id: 'BoatChargingLoginStepsScreenNextButton'
+- waitForAnimationToEnd
+- runFlow: ../../shared/EnterAccessCode.yaml
+- runFlow:
+    label: Decline biometrics when prompted (if needed)
+    when:
+      visible:
+        id: BiometricsPermissionScreen
+    commands:
+      - tapOn:
+          id: AccessCodeBiometricsPermissionScreenSubmitButton
