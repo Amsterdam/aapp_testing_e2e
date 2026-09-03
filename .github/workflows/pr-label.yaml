@@ -27,7 +27,7 @@ jobs:
                   copilot-ready-label: "Copilot ready"
                   labels: |
                       "maestro/(.*)/":
-                        name: "src"
+                        name: "module: $1"
                         color: "#0366d6"
                       "^(?:pipelines/|\\.github/(?:workflows|actions)/)":
                         name: 'pipelines'
