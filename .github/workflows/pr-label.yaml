@@ -29,7 +29,7 @@ jobs:
                       "maestro/(.*)/":
                         name: "src"
                         color: "#0366d6"
-                      "^(?:pipelines/|\\.github/(?:workflows|actions)/)": 
+                      "^(?:pipelines/|\\.github/(?:workflows|actions)/)":
                         name: 'pipelines'
                         color: '#036d66'
                         description: 'Pipeline related'
