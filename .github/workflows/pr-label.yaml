@@ -1,0 +1,44 @@
+name: PR labels
+on:
+    pull_request:
+        branches: [main]
+    pull_request_review:
+        types: [submitted, edited, dismissed]
+    pull_request_review_comment:
+        types: [created, edited, deleted]
+
+permissions:
+    contents: read
+    pull-requests: write
+
+jobs:
+    test-action:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: Amsterdam/aapp_pr_label@main
+              with:
+                  code-reviewed-color: "#99f490"
+                  code-reviewed-enabled: true
+                  code-reviewed-label: "Code reviewed"
+                  copilot-logins: |
+                      github-copilot[bot]
+                  copilot-ready-color: "#05b103"
+                  copilot-ready-enabled: true
+                  copilot-ready-label: "Copilot ready"
+                  labels: |
+                      "maestro/(.*)/":
+                        name: "src"
+                        color: "#0366d6"
+                      "^(?:pipelines/|\\.github/(?:workflows|actions)/)": 
+                        name: 'pipelines'
+                        color: '#036d66'
+                        description: 'Pipeline related'
+                  pr-description-copilot-section-before: "# Changes"
+                  pr-description-copilot-section-after: "## Test instructions"
+                  pr-description-update-enabled: true
+                  reviewer-usernames: |
+                      frankfe-amsterdam
+                      RikSchefferAmsterdam
+                      WouterAms
+                      fhaver-amsterdam
+                      jjbeekman
