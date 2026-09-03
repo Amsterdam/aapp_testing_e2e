@@ -1,4 +1,4 @@
-name: PR labels
+name: PR label
 on:
     pull_request:
         branches: [main]
@@ -12,7 +12,7 @@ permissions:
     pull-requests: write
 
 jobs:
-    test-action:
+    pr-label:
         runs-on: ubuntu-latest
         steps:
             - uses: Amsterdam/aapp_pr_label@main
