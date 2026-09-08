@@ -1,0 +1,54 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow: ../../shared/load-credentials.yaml
+
+# Make sure the VCPS is available and ready to be used
+- runFlow: ../vcps/open-vcps.yaml
+- runFlow: ../vcps/turn-vcps-on.yaml
+- runFlow: ../vcps/unplug-cable-vcps.yaml
+- setOrientation: PORTRAIT
+
+- runFlow:
+    file: ../../shared/open-module-from-fresh-app.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeBoatChargingModuleButton
+- runFlow: ../session/select-socket.yaml
+- tapOn:
+    id: "BoatChargingGuestEmailFormLoginButton"
+- runFlow: ../account/login.yaml
+
+- runFlow: ../session/accept-terms.yaml
+- runFlow: ../session/handle-payment.yaml
+- runFlow: ../session/plugin-socket-step.yaml
+- runFlow: ../session/stop-session.yaml
+
+- tapOn:
+    id: HeaderBackButton
+
+# Make sure the VCPS is available and ready to be used
+- runFlow: ../vcps/open-vcps.yaml
+- runFlow: ../vcps/unplug-cable-vcps.yaml
+- setOrientation: PORTRAIT
+- launchApp:
+    clearState: false
+    permissions:
+      all: 'allow'
+- tapOn:
+    id: HomeBoatChargingModuleButton
+
+- runFlow: ../../shared/EnterAccessCode.yaml
+- runFlow:
+    label: Decline biometrics when prompted (if needed)
+    when:
+      visible:
+        id: BiometricsPermissionScreen
+    commands:
+      - tapOn:
+          id: AccessCodeBiometricsPermissionScreenSubmitButton
+- runFlow: ../../shared/load-credentials.yaml
+- runFlow: ../session/select-socket.yaml
+- runFlow: ../session/handle-payment.yaml
+- runFlow: ../session/plugin-socket-step.yaml
+- runFlow: ../session/stop-session.yaml
+

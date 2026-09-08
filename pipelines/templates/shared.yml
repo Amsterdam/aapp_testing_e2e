@@ -29,17 +29,35 @@ steps:
 
   # Inject Azure DevOps variable(s) into Maestro YAMLs before zipping
   - script: |
-      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_PERMIT_HOLDER_REPORT_CODE__|$(PARKING_VISITOR_PERMIT_HOLDER_REPORT_CODE)|g' {} +
-      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_PERMIT_HOLDER_PIN_CODE__|$(PARKING_VISITOR_PERMIT_HOLDER_PIN_CODE)|g' {} +
-      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_REPORT_CODE__|$(PARKING_VISITOR_REPORT_CODE)|g' {} +
-      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_VISITOR_PIN_CODE__|$(PARKING_VISITOR_PIN_CODE)|g' {} +
-      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_INFORMAL_CARE_REPORT_CODE__|$(PARKING_INFORMAL_CARE_REPORT_CODE)|g' {} +
-      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_INFORMAL_CARE_PIN_CODE__|$(PARKING_INFORMAL_CARE_PIN_CODE)|g' {} +
-      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_BUSINESS_REPORT_CODE__|$(PARKING_BUSINESS_REPORT_CODE)|g' {} +
-      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_BUSINESS_PIN_CODE__|$(PARKING_BUSINESS_PIN_CODE)|g' {} +
-      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_RESIDENTS_REPORT_CODE__|$(PARKING_RESIDENTS_REPORT_CODE)|g' {} +
-      find maestro -type f -name 'credentials.js' -exec sed -i '' 's|__PARKING_RESIDENTS_PIN_CODE__|$(PARKING_RESIDENTS_PIN_CODE)|g' {} +
-    displayName: "Inject parking account variables into Maestro tests"
+      find maestro -type f -name 'credentials.js' -exec sed -i '' \
+        -e 's|__PARKING_VISITOR_PERMIT_HOLDER_REPORT_CODE__|$(PARKING_VISITOR_PERMIT_HOLDER_REPORT_CODE)|g' \
+        -e 's|__PARKING_VISITOR_PERMIT_HOLDER_PIN_CODE__|$(PARKING_VISITOR_PERMIT_HOLDER_PIN_CODE)|g' \
+        -e 's|__PARKING_VISITOR_REPORT_CODE__|$(PARKING_VISITOR_REPORT_CODE)|g' \
+        -e 's|__PARKING_VISITOR_PIN_CODE__|$(PARKING_VISITOR_PIN_CODE)|g' \
+        -e 's|__PARKING_INFORMAL_CARE_REPORT_CODE__|$(PARKING_INFORMAL_CARE_REPORT_CODE)|g' \
+        -e 's|__PARKING_INFORMAL_CARE_PIN_CODE__|$(PARKING_INFORMAL_CARE_PIN_CODE)|g' \
+        -e 's|__PARKING_BUSINESS_REPORT_CODE__|$(PARKING_BUSINESS_REPORT_CODE)|g' \
+        -e 's|__PARKING_BUSINESS_PIN_CODE__|$(PARKING_BUSINESS_PIN_CODE)|g' \
+        -e 's|__PARKING_RESIDENTS_REPORT_CODE__|$(PARKING_RESIDENTS_REPORT_CODE)|g' \
+        -e 's|__PARKING_RESIDENTS_PIN_CODE__|$(PARKING_RESIDENTS_PIN_CODE)|g' \
+        -e 's|__BOAT_CHARGING_EMAIL__|$(BOAT_CHARGING_EMAIL)|g' \
+        -e 's|__BOAT_CHARGING_PASSWORD__|$(BOAT_CHARGING_PASSWORD)|g' \
+        -e 's|__BOAT_CHARGING_VCPS_URL__|$(BOAT_CHARGING_VCPS_URL)|g' \
+        -e 's|__BOAT_CHARGING_VCPS_ENDPOINT__|$(BOAT_CHARGING_VCPS_ENDPOINT)|g' \
+        -e 's|__BOAT_CHARGING_CHARGING_LOCATION_IOS__|$(BOAT_CHARGING_CHARGING_LOCATION_IOS)|g' \
+        -e 's|__BOAT_CHARGING_VCPS_SESSION_NAME_IOS__|$(BOAT_CHARGING_VCPS_SESSION_NAME_IOS)|g' \
+        -e 's|__BOAT_CHARGING_VCPS_STATION_ID_IOS__|$(BOAT_CHARGING_VCPS_STATION_ID_IOS)|g' \
+        -e 's|__BOAT_CHARGING_VCPS_MODEL_TYPE_IOS__|$(BOAT_CHARGING_VCPS_MODEL_TYPE_IOS)|g' \
+        -e 's|__BOAT_CHARGING_VCPS_CONNECTORS_IOS__|$(BOAT_CHARGING_VCPS_CONNECTORS_IOS)|g' \
+        -e 's|__BOAT_CHARGING_SOCKET_IOS__|$(BOAT_CHARGING_SOCKET_IOS)|g' \
+        -e 's|__BOAT_CHARGING_CHARGING_LOCATION_ANDROID__|$(BOAT_CHARGING_CHARGING_LOCATION_ANDROID)|g' \
+        -e 's|__BOAT_CHARGING_VCPS_SESSION_NAME_ANDROID__|$(BOAT_CHARGING_VCPS_SESSION_NAME_ANDROID)|g' \
+        -e 's|__BOAT_CHARGING_VCPS_STATION_ID_ANDROID__|$(BOAT_CHARGING_VCPS_STATION_ID_ANDROID)|g' \
+        -e 's|__BOAT_CHARGING_VCPS_MODEL_TYPE_ANDROID__|$(BOAT_CHARGING_VCPS_MODEL_TYPE_ANDROID)|g' \
+        -e 's|__BOAT_CHARGING_VCPS_CONNECTORS_ANDROID__|$(BOAT_CHARGING_VCPS_CONNECTORS_ANDROID)|g' \
+        -e 's|__BOAT_CHARGING_SOCKET_ANDROID__|$(BOAT_CHARGING_SOCKET_ANDROID)|g' \
+        {} +
+    displayName: "Inject variables into Maestro tests"
   # Archive Maestro tests
   - task: ArchiveFiles@2
     condition: ${{ eq(parameters.testSuiteId, ' ') }}

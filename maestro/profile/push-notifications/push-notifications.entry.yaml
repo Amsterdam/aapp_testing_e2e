@@ -7,7 +7,7 @@ appId: nl.amsterdam.app.dev
       ENVIRONMENT: Test
       MODULE: HeaderUserIcon
 
-- runScript: ../../scripts/credentials.js
+- runFlow: ../../shared/load-credentials.yaml
 
 - tapOn:
     id: UserNavigationToNotificationSettingsButton

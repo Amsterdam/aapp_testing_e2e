@@ -1,0 +1,33 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow: ../../shared/load-credentials.yaml
+
+# Make sure the VCPS is available and ready to be used
+- runFlow: ../vcps/open-vcps.yaml
+- runFlow: ../vcps/turn-vcps-on.yaml
+- runFlow: ../vcps/unplug-cable-vcps.yaml
+- setOrientation: PORTRAIT
+
+- runFlow:
+    file: ../../shared/open-module-from-fresh-app.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeBoatChargingModuleButton
+- runFlow: ../session/select-socket.yaml
+- tapOn:
+    id: "BoatChargingGuestEmailTextInputFieldInput"
+- inputText: ${output.boatChargingEmail}
+- tapOn:
+    id: "BoatChargingGuestEmailFormSubmitButton"
+- assertVisible: ${output.boatChargingEmail}
+- tapOn:
+    id: "BoatChargingGuestEmailConfirmSubmitButton"
+- runFlow: ../session/accept-terms.yaml
+- runFlow: ../session/handle-payment.yaml
+- runFlow: ../session/plugin-socket-step.yaml
+- runFlow: ../session/stop-session.yaml
+
+
+
+
+

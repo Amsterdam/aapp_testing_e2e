@@ -1,0 +1,5 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn: "Redirect »"
+- tapOn: "Ga verder"
+- tapOn: "Open"

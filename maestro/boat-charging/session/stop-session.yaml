@@ -1,0 +1,11 @@
+appId: nl.amsterdam.app.dev
+---
+- tapOn:
+    id: "BoatChargingSessionButtonsStopButton"
+- tapOn: "Laden stoppen"
+- extendedWaitUntil:
+    notVisible: "Laden stoppen"
+    timeout: 180000
+- assertVisible:
+    id: "BoatChargingChargingStoppedSuccessAlert"
+- assertVisible: ${'Betaalbewijs verzonden naar ' + output.boatChargingEmail}

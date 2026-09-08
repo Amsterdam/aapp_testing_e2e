@@ -1,0 +1,9 @@
+console.log('platform: Android')
+output.boatChargingChargingLocation = output.boatChargingChargingLocationAndroid
+output.boatChargingVcpsSessionName = output.boatChargingVcpsSessionNameAndroid
+output.boatChargingVcpsStationId = output.boatChargingVcpsStationIdAndroid
+output.boatChargingVcpsModelType = output.boatChargingVcpsModelTypeAndroid
+output.boatChargingVcpsConnectors = output.boatChargingVcpsConnectorsAndroid
+output.boatChargingSocket = output.boatChargingSocketAndroid
+output.boatChargingEmail = output.boatChargingEmailAndroid
+output.boatChargingPassword = output.boatChargingPasswordAndroid
