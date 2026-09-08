@@ -42,7 +42,7 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: "ParkingLicensePlatesButton"
 - assertVisible:
-    id: "LicensePlateListItem"
+    id: "LicensePlateListItemNavigationButton"
 - assertVisible:
     id: "ParkingMyLicensePlatesForceLicensePlatesPhoneExternalLinkButton"
 - tapOn:
