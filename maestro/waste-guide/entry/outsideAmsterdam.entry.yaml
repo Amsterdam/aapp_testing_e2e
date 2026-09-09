@@ -11,8 +11,8 @@ appId: nl.amsterdam.app.dev
     label: Enter address
     file: '../../shared/EnterAddress.yaml'
     env:
-      ADDRESS: Meteorenlaan 123, Amsterdam-Duivendrecht
-      BAGID: '0437200000006919'
+      ADDRESS: Ellermanstraat 3A, Amsterdam-Duivendrecht
+      BAGID: '0437200000001743'
       ID: WasteGuide
       SAVEASMYADDRESS: No
 - assertVisible:

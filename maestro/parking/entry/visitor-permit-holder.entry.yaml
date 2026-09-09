@@ -3,7 +3,7 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../../shared/open-module-from-fresh-app.yaml
     env:
-      ENVIRONMENT: Test
+      ENVIRONMENT: Acceptance
       MODULE: HomeParkingModuleButton
 - runScript: ../../scripts/credentials.js
 - runFlow:
@@ -15,7 +15,10 @@ appId: nl.amsterdam.app.dev
     file: ../shared/select-permit.yaml
     env:
       PERMIT_NAME: 'Bezoekersparkeervergunning( \(1004\))?'
-- runFlow: '../shared/start-session.yaml'
+- runFlow: 
+    file: '../shared/start-session.yaml'
+    env:
+        IS_PAID: 'true'
 - runFlow: '../sessions/active.yaml'
 - tapOn:
     id: HeaderBackButton

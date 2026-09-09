@@ -3,7 +3,7 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../../shared/open-module-from-fresh-app-without-permissions.yaml
     env:
-      ENVIRONMENT: Test
+      ENVIRONMENT: Acceptance
       MODULE: HomeParkingModuleButton
 - runScript: ../../scripts/credentials.js
 - runFlow:
@@ -42,7 +42,7 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: "ParkingLicensePlatesButton"
 - assertVisible:
-    id: "LicensePlateListItem"
+    id: "LicensePlateListItemNavigationButton"
 - assertVisible:
     id: "ParkingMyLicensePlatesForceLicensePlatesPhoneExternalLinkButton"
 - tapOn:
