@@ -1,6 +1,7 @@
 {
   "name": "aapp_testing_e2e",
   "version": "1.0.0",
+  "private": true,
   "description": "End-to-end test suite for the [Amsterdam app](https://github.com/Amsterdam/aapp_app_mobile), implemented with Maestro flows.",
   "homepage": "https://github.com/Amsterdam/aapp_testing_e2e#readme",
   "bugs": {
