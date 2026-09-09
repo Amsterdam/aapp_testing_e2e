@@ -1,5 +1,5 @@
 trigger:
-- main
+  - main
 
 parameters:
   - name: iosAppId
@@ -21,12 +21,12 @@ resources:
             - main
 
 schedules:
-  - cron: "0 6 * * *"   # every night
+  - cron: '0 6 * * *' # every night
     displayName: Scheduled E2E Test
     branches:
       include:
         - main
-    always: true  # run even if no recent changes
+    always: true # run even if no recent changes
 
 variables:
   - group: aapp_testing_e2e
@@ -35,23 +35,23 @@ pool:
   vmImage: 'macOS-26'
 
 steps:
-- powershell: |
-    $devices = @(
-      "iPhone 17-26.2"
-      "iPhone 16 Pro Max-18.0"
-      "iPhone 15-17.0"
-    )
-    $random = Get-Random -Minimum 0 -Maximum $devices.Length
-    $randomDevice = $devices[$random]
-    Write-Host "##vso[task.setvariable variable=randomDevice]$randomDevice"
-  displayName: 'Pick random device'
+  - powershell: |
+      $devices = @(
+        "iPhone 17-26.2"
+        "iPhone 16 Pro Max-18.0"
+        "iPhone 15-17.0"
+      )
+      $random = Get-Random -Minimum 0 -Maximum $devices.Length
+      $randomDevice = $devices[$random]
+      Write-Host "##vso[task.setvariable variable=randomDevice]$randomDevice"
+    displayName: 'Pick random device'
 
-- template: templates/shared.yml
-  parameters:
-    appId: ${{ parameters.iosAppId }}
-    testSuiteId: ${{ parameters.testSuiteId }}
-    buildArtifact: 'ios-build-test'
-    appFileName: 'ios/builds/AmsterdamTest.ipa'
-    platform: 'ios'
-    device: $(randomDevice)
-    buildApiUrl: 'https://api-cloud.browserstack.com/app-automate/maestro/v2/ios/build'
+  - template: templates/shared.yml
+    parameters:
+      appId: ${{ parameters.iosAppId }}
+      testSuiteId: ${{ parameters.testSuiteId }}
+      buildArtifact: 'ios-build-test'
+      appFileName: 'ios/builds/AmsterdamTest.ipa'
+      platform: 'ios'
+      device: $(randomDevice)
+      buildApiUrl: 'https://api-cloud.browserstack.com/app-automate/maestro/v2/ios/build'
