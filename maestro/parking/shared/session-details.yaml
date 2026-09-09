@@ -7,7 +7,7 @@ appId: nl.amsterdam.app.dev
         - assertVisible:
             id: "ParkingSessionDetailsLicensePlateRow"
         - assertVisible:
-            id: "ParkingSessionDetailsPermitZoneRow"
+            id: "ParkingSessionDetailsParkingMachineRow"
         - tapOn:
             id: "ParkingParkingPermitZonesButton"
         - assertVisible: "Google Maps?"
@@ -48,7 +48,7 @@ appId: nl.amsterdam.app.dev
                 - assertVisible:
                     id: "ParkingSessionDetailsLicensePlateRow"
                 - assertVisible:
-                    id: "ParkingSessionDetailsPermitZoneRow"
+                    id: "ParkingSessionDetailsParkingMachineRow"
                 - tapOn:
                     id: "ParkingParkingPermitZonesButton"
                 - assertVisible: "Google Maps?"
