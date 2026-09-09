@@ -15,12 +15,16 @@
   "main": "index.js",
   "scripts": {
     "format": "oxfmt --check",
-    "format:fix": "oxfmt"
+    "format:fix": "oxfmt",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "husky": "^9.1.6",
+    "lint-staged": "^17.0.4",
     "oxfmt": "^0.67.0"
   },
   "volta": {
     "node": "24.19.0"
-  }
+  },
+  "type": "module"
 }
