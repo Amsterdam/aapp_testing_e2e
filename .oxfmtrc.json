@@ -10,8 +10,5 @@
   "trailingComma": "all",
   "printWidth": 80,
   "sortPackageJson": false,
-  "ignorePatterns": [
-    "node_modules",
-    "**/node_modules",
-  ]
+  "ignorePatterns": ["node_modules", "**/node_modules"]
 }

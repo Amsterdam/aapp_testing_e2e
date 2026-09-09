@@ -1,7 +1,7 @@
 name: Install Node from package.json
 description: Detect and install Node.js version from nodescripts/getNodeVersion.js
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     - name: Read required node version
       id: node_version

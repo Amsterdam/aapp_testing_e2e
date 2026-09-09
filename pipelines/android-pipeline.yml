@@ -1,5 +1,5 @@
 trigger:
-- main
+  - main
 
 parameters:
   - name: androidAppId
@@ -21,12 +21,12 @@ resources:
             - main
 
 schedules:
-  - cron: "0 6 * * *"   # every night
+  - cron: '0 6 * * *' # every night
     displayName: Scheduled E2E Test
     branches:
       include:
         - main
-    always: true  # run even if no recent changes
+    always: true # run even if no recent changes
 
 variables:
   - group: aapp_testing_e2e
@@ -35,12 +35,12 @@ pool:
   vmImage: 'macOS-26'
 
 steps:
-- template: templates/shared.yml
-  parameters:
-    appId: ${{ parameters.androidAppId }}
-    testSuiteId: ${{ parameters.testSuiteId }}
-    buildArtifact: 'android-build-all'
-    appFileName: 'android/app/build/outputs/apk/dev/release/app-dev-release.apk'
-    platform: 'android'
-    device: 'Google Pixel 8 Pro-14.0'
-    buildApiUrl: 'https://api-cloud.browserstack.com/app-automate/maestro/v2/android/build'
+  - template: templates/shared.yml
+    parameters:
+      appId: ${{ parameters.androidAppId }}
+      testSuiteId: ${{ parameters.testSuiteId }}
+      buildArtifact: 'android-build-all'
+      appFileName: 'android/app/build/outputs/apk/dev/release/app-dev-release.apk'
+      platform: 'android'
+      device: 'Google Pixel 8 Pro-14.0'
+      buildApiUrl: 'https://api-cloud.browserstack.com/app-automate/maestro/v2/android/build'
