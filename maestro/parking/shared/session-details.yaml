@@ -7,12 +7,12 @@ appId: nl.amsterdam.app.dev
       - assertVisible:
           id: 'ParkingSessionDetailsLicensePlateRow'
       - runFlow:
-        when:
-          notVisible:
-            id: 'ParkingSessionDetailsParkingMachineRow'
-        commands:
-          - assertVisible:
-              id: 'ParkingSessionDetailsPermitZoneRow'
+          when:
+            notVisible:
+              id: 'ParkingSessionDetailsParkingMachineRow'
+          commands:
+            - assertVisible:
+                id: 'ParkingSessionDetailsPermitZoneRow'
       - tapOn:
           id: 'ParkingParkingPermitZonesButton'
       - assertVisible: 'Google Maps?'
