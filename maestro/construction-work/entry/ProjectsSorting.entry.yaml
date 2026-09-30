@@ -1,0 +1,40 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../../shared/open-module-from-fresh-app.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeConstructionWorkModuleButton
+- runFlow:
+    file: ../shared/unfollow-all-projects.yaml
+
+- copyTextFrom:
+    id: "ConstructionWork\\d+ProjectCard"
+    index: 1
+- evalScript: ${output.secondProject = maestro.copiedText}
+- tapOn:
+    id: "ConstructionWork\\d+ProjectCard"
+    index: 1
+- tapOn:
+    id: ConstructionWorkProjectUnfollowButton
+    optional: true
+- tapOn:
+    id: ConstructionWorkProjectFollowButton
+- tapOn:
+    text: 'Sta toe|Allow'
+    optional: true
+- assertVisible:
+    id: ConstructionWorkProjectUnfollowButton
+- tapOn:
+    id: 'HeaderBackButton'
+- copyTextFrom:
+    id: "ConstructionWork\\d+ProjectCard"
+    index: 0
+- evalScript: ${output.firstProject = maestro.copiedText}
+- assertTrue:
+    condition: ${output.firstProject.split(',')[0] == output.secondProject.split(',')[0]}
+    label: Second project moved to first place by following
+- tapOn:
+    id: 'ConstructionWorkProjectFollowingTraitLabel'
+- tapOn:
+    id: ConstructionWorkProjectUnfollowButton

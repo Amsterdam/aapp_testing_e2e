@@ -1,0 +1,41 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../../shared/open-module-from-fresh-app.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeConstructionWorkModuleButton
+- tapOn:
+    id: "ConstructionWorkSearchHeaderButton"
+- assertNotVisible:
+    id: "ConstructionWorkProjectsNumberOfSearchResultsText"
+- assertNotVisible:
+    id: "ConstructionWorkListEmptyMessage"
+- inputText: "yknrcnpoe"
+- assertVisible:
+    id: "ConstructionWorkProjectsNumberOfSearchResultsText"
+- assertVisible:
+    id: "ConstructionWorkListEmptyMessage"
+- runFlow:
+    file: '../../shared/close-keyboard.yaml'
+- tapOn:
+    id: "ConstructionWorkProjectsTextSearchFieldClearButton"
+- assertNotVisible:
+    id: "ConstructionWorkProjectsNumberOfSearchResultsText"
+- assertNotVisible:
+    id: "ConstructionWorkListEmptyMessage"
+- tapOn:
+    id: "ConstructionWorkProjectsTextSearchField"
+- inputText: "brug"
+- assertVisible:
+    id: "ConstructionWorkProjectsNumberOfSearchResultsText"
+- assertVisible:
+    id: "ConstructionWork\\d+ProjectCard"
+- runFlow:
+    file: '../../shared/close-keyboard.yaml'
+- tapOn:
+    id: "ConstructionWorkProjectsTextSearchFieldClearButton"
+- assertNotVisible:
+    id: "ConstructionWorkProjectsNumberOfSearchResultsText"
+- assertNotVisible:
+    id: "ConstructionWorkListEmptyMessage"

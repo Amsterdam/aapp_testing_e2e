@@ -5,11 +5,11 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../shared/close-onboarding.yaml
 - tapOn:
-    id: "HeaderEnvironmentIcon"
+    id: 'HeaderEnvironmentIcon'
 - tapOn:
-    id: "HomeEnvironmentSelectorTestButton"
+    id: 'HomeEnvironmentSelectorTestButton'
 - tapOn:
-    id: "HeaderEnvironmentIcon"
+    id: 'HeaderEnvironmentIcon'
 - tapOn:
     id: AdminScreenShowSurveyButton
 - tapOn:
@@ -20,7 +20,7 @@ appId: nl.amsterdam.app.dev
 - inputRandomText:
     length: 20
 - runFlow:
-    file: ../shared/tap-to-close-keyboard.yaml
+    file: ../shared/close-keyboard.yaml
 - scrollUntilVisible:
     element:
       id: DynamicFormSubmitButton
