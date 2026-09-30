@@ -6,7 +6,7 @@ appId: nl.amsterdam.app.dev
       ENVIRONMENT: Acceptance
       MODULE: HomeConstructionWorkModuleButton
 - runFlow:
-    file: ../open-test-project.yaml
+    file: ../shared/open-test-project.yaml
 - tapOn:
     id: ConstructionWorkProjectUnfollowButton
     optional: true
