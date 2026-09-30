@@ -111,6 +111,7 @@ steps:
       $form = @{
           custom_id = "AmsterdamAppTest-${{ parameters.platform }}"
           file = Get-Item "$(Pipeline.Workspace)/build/${{ parameters.buildArtifact }}/${{ parameters.appFileName }}"
+          ios_keychain_support = "true"
       }
       $appResponse = Invoke-RestMethod -Uri "https://api-cloud.browserstack.com/app-automate/maestro/v2/app" `
           -Method POST `
