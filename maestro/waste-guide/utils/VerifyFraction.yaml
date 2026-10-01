@@ -11,7 +11,7 @@ appId: nl.amsterdam.app.dev
     label: Test hoe
     commands:
       - assertVisible:
-          text: 'Hoe,? ?:,? ? ,? ?${HOW}'
+          text: 'Hoe: ${HOW}'
 - runFlow:
     when:
       true: ${!!HOW && HOW === 'Appointment'}
@@ -27,7 +27,7 @@ appId: nl.amsterdam.app.dev
     label: Test dag
     commands:
       - assertVisible:
-          text: 'Ophaaldag,? ?:,? ? ,? ?${DAY}'
+          text: 'Ophaaldag: ${DAY}'
       - assertVisible:
           id: WasteGuideFractionNextCollectionSection
       - assertVisible:
@@ -38,14 +38,14 @@ appId: nl.amsterdam.app.dev
     label: Test buitenzetten
     commands:
       - assertVisible:
-          text: 'Buitenzetten,? ?:,? ? ,? ?${OUTSIDE}'
+          text: 'Buitenzetten: ${OUTSIDE}'
 - runFlow:
     when:
       true: ${!!WHERE}
     label: Test waar
     commands:
       - assertVisible:
-          text: 'Waar,? ?:,? ? ,? ?${WHERE}'
+          text: 'Waar: ${WHERE}'
 - assertVisible:
     id: WasteGuideFractionWhatSection
 - tapOn:
