@@ -20,7 +20,7 @@ appId: nl.amsterdam.app.dev
 - inputRandomText:
     length: 20
 - runFlow:
-    file: ../shared/tap-to-close-keyboard.yaml
+    file: ../shared/close-keyboard.yaml
 - tapOn:
     id: DynamicFormSubmitButton
 - assertVisible:

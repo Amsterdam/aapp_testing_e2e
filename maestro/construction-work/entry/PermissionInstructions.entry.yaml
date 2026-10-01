@@ -1,0 +1,27 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../../shared/open-module-from-fresh-app-without-permissions.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeConstructionWorkModuleButton
+- runFlow:
+    file: ../shared/open-test-project.yaml
+- tapOn:
+    id: "ConstructionWorkProjectFollowButtonTooltip"
+    optional: true
+- tapOn:
+    id: ConstructionWorkProjectUnfollowButton
+    optional: true
+
+- tapOn:
+    id: ConstructionWorkProjectFollowButton
+- tapOn:
+    text: 'Sta niet toe|Deny'
+    optional: true
+- assertVisible:
+    id: "PermissionInstructionModalCloseButtonLabel"
+- tapOn:
+    id: "PermissionInstructionModalHeaderCloseButton"
+- tapOn:
+    id: ConstructionWorkProjectUnfollowButton

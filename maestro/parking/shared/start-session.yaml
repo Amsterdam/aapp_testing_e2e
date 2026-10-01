@@ -2,7 +2,7 @@ appId: nl.amsterdam.app.dev
 
 ---
 - tapOn:
-    id: "ParkingGoToStartSession.*Button"
+    id: 'ParkingGoToStartSession.*Button'
 - tapOn:
     id: ParkingChooseLicensePlateButton
 - tapOn:
@@ -14,16 +14,16 @@ appId: nl.amsterdam.app.dev
     when:
       true: ${IS_PAID == 'true'}
     commands:
-        - tapOn:
-            id: ParkingChooseParkingMachineButton
-        - tapOn:
-            id: ParkingPermitZoneHeaderButton
-        - runFlow:
-            file: "../../shared/tap-to-close-keyboard.yaml"
-        - tapOn:
-            id: ParkingSessionUseFavoriteMachineButton
-        - tapOn:
-            id: SelectParkingMachineButton
+      - tapOn:
+          id: ParkingChooseParkingMachineButton
+      - tapOn:
+          id: ParkingPermitZoneHeaderButton
+      - runFlow:
+          file: '../../shared/close-keyboard.yaml'
+      - tapOn:
+          id: ParkingSessionUseFavoriteMachineButton
+      - tapOn:
+          id: SelectParkingMachineButton
 - runFlow: './choose-end-time-scrollwheel.yaml'
 - scrollUntilVisible:
     element:

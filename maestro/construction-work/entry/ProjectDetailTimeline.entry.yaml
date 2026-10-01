@@ -1,0 +1,31 @@
+appId: nl.amsterdam.app.dev
+---
+- runFlow:
+    file: ../../shared/open-module-from-fresh-app.yaml
+    env:
+      ENVIRONMENT: Acceptance
+      MODULE: HomeConstructionWorkModuleButton
+- openLink: 'amsterdam://construction-work/project/22'
+- tapOn:
+    id: 'ConstructionWorkProjectFollowButtonTooltip'
+    optional: true
+- tapOn:
+    id: 'ConstructionWorkProjectPlanningButton'
+- tapOn:
+    id: 'ConstructionWorkProjectTimelineItemAccordion'
+    index: 0
+- assertVisible: '2008'
+- assertVisible: 'Besluit om het Cruquiusgebied te veranderen van een industriegebied naar een nieuw stuk stad waar Amsterdammers kunnen wonen, werken en hun vrije tijd kunnen doorbrengen.'
+- assertVisible: '2011'
+- assertVisible: 'Ontwikkelaars starten de bouw van woningen'
+- assertVisible: '2021'
+- assertVisible: 'Planten 29 bomen op schoolplein DKC De Kleine Kapitein'
+- assertVisible: 'Kappen van 9 Canadese populieren Cruquiusweg'
+- tapOn:
+    id: 'ConstructionWorkProjectTimelineItemAccordion'
+    index: 0
+
+- tapOn:
+    id: 'ConstructionWorkProjectTimelineItemAccordion'
+    index: 1
+- assertVisible: "Opening supermarkt"

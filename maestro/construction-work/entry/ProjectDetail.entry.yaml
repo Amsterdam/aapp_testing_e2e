@@ -5,9 +5,13 @@ appId: nl.amsterdam.app.dev
     env:
       ENVIRONMENT: Acceptance
       MODULE: HomeConstructionWorkModuleButton
-- openLink: 'amsterdam://construction-work/project/348' # ontw: 351, test: 353, acc: 348, prod:
+- runFlow:
+    file: ../shared/open-test-project.yaml
 - tapOn:
-    id: ConstructionWorkProjectUnFollowButton
+    id: "ConstructionWorkProjectFollowButtonTooltip"
+    optional: true
+- tapOn:
+    id: ConstructionWorkProjectUnfollowButton
     optional: true
 - tapOn:
     id: ConstructionWorkProjectFollowButton
@@ -15,6 +19,18 @@ appId: nl.amsterdam.app.dev
     text: 'Sta toe|Allow'
     optional: true
 - tapOn:
-    id: ConstructionWorkProjectUnFollowButton
+    id: ConstructionWorkProjectUnfollowButton
 - assertVisible:
     id: ConstructionWorkProjectFollowButton
+- tapOn:
+    id: 'ConstructionWorkProjectArticlePreviewButton'
+- assertVisible:
+    id: "ConstructionWorkProjectArticle\\d+Image"
+- assertVisible:
+    id: "ConstructionWorkProjectArticle\\d+DateLabel"
+- assertVisible:
+    id: "ConstructionWorkProjectArticle\\d+ProjectTitle"
+- assertVisible:
+    id: "ConstructionWorkProjectArticle\\d+Title"
+- assertVisible:
+    id: 'html'

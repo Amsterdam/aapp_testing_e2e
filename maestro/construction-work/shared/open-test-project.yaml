@@ -1,0 +1,3 @@
+appId: nl.amsterdam.app.dev
+---
+- openLink: 'amsterdam://construction-work/project/348' # ontw: 351, test: 353, acc: 348, prod:

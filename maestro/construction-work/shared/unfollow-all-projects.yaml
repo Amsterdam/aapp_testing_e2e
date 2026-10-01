@@ -1,0 +1,16 @@
+appId: nl.amsterdam.app.dev
+---
+- repeat:
+    while:
+      visible:
+        id: 'ConstructionWorkProjectFollowingTraitLabel'
+    commands:
+      - tapOn:
+          id: 'ConstructionWorkProjectFollowingTraitLabel'
+      - tapOn:
+          id: "ConstructionWorkProjectFollowButtonTooltip"
+          optional: true
+      - tapOn:
+          id: ConstructionWorkProjectUnfollowButton
+      - tapOn:
+          id: 'HeaderBackButton'
