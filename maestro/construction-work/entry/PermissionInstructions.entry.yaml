@@ -8,6 +8,9 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../shared/open-test-project.yaml
 - tapOn:
+    id: "ConstructionWorkProjectFollowButtonTooltip"
+    optional: true
+- tapOn:
     id: ConstructionWorkProjectUnfollowButton
     optional: true
 

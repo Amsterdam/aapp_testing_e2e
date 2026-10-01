@@ -8,6 +8,9 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../shared/open-test-project.yaml
 - tapOn:
+    id: "ConstructionWorkProjectFollowButtonTooltip"
+    optional: true
+- tapOn:
     id: ConstructionWorkProjectUnfollowButton
     optional: true
 - tapOn:
@@ -19,7 +22,6 @@ appId: nl.amsterdam.app.dev
     id: ConstructionWorkProjectUnfollowButton
 - assertVisible:
     id: ConstructionWorkProjectFollowButton
-# TODO: check project details zoals contact, over dit project en planning
 - tapOn:
     id: 'ConstructionWorkProjectArticlePreviewButton'
 - assertVisible:
@@ -32,6 +34,3 @@ appId: nl.amsterdam.app.dev
     id: "ConstructionWorkProjectArticle\\d+Title"
 - assertVisible:
     id: 'html'
-# TODO: story maken voor wat moeten we met projecten zonder afbeelding?
-# TODO: moet nog de volgorde van projecten op afstand (adres of gps) getest worden?
-# TODO: checken of bij het invoeren van een adres ook een afstand tot het project staat

@@ -16,6 +16,9 @@ appId: nl.amsterdam.app.dev
     id: "ConstructionWork\\d+ProjectCard"
     index: 1
 - tapOn:
+    id: "ConstructionWorkProjectFollowButtonTooltip"
+    optional: true
+- tapOn:
     id: ConstructionWorkProjectUnfollowButton
     optional: true
 - tapOn:

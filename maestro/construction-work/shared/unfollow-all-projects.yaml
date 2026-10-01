@@ -8,6 +8,9 @@ appId: nl.amsterdam.app.dev
       - tapOn:
           id: 'ConstructionWorkProjectFollowingTraitLabel'
       - tapOn:
+          id: "ConstructionWorkProjectFollowButtonTooltip"
+          optional: true
+      - tapOn:
           id: ConstructionWorkProjectUnfollowButton
       - tapOn:
           id: 'HeaderBackButton'
