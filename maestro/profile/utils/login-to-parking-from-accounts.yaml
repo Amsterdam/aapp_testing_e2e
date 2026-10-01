@@ -34,4 +34,4 @@ appId: nl.amsterdam.app.dev
     id: HeaderBackButton
 - waitForAnimationToEnd
 - assertVisible:
-    text: '^U bent ingelogd met \d+ accounts?$'
+    text: '^U bent ingelogd met ,? ?\d+ accounts?$'
