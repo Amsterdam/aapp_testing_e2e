@@ -8,7 +8,7 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     file: ../shared/open-test-project.yaml
 - tapOn:
-    id: "ConstructionWorkProjectFollowButtonTooltip"
+    id: 'ConstructionWorkProjectFollowButtonTooltip'
     optional: true
 - tapOn:
     id: ConstructionWorkProjectUnfollowButton
@@ -17,11 +17,11 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: ConstructionWorkProjectFollowButton
 - tapOn:
-    text: 'Sta niet toe|Deny'
+    text: "Sta niet toe|Deny|Don't allow"
     optional: true
 - assertVisible:
-    id: "PermissionInstructionModalCloseButtonLabel"
+    id: 'PermissionInstructionModalCloseButtonLabel'
 - tapOn:
-    id: "PermissionInstructionModalHeaderCloseButton"
+    id: 'PermissionInstructionModalHeaderCloseButton'
 - tapOn:
     id: ConstructionWorkProjectUnfollowButton
