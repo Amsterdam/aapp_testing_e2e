@@ -13,11 +13,11 @@ appId: nl.amsterdam.app.dev
           commands:
             - assertVisible:
                 id: 'ParkingSessionDetailsPermitZoneRow'
-      - tapOn:
-          id: 'ParkingParkingPermitZonesButton'
-      - assertVisible: 'Google Maps?'
-      - tapOn:
-          id: 'HeaderBackIcon'
+            - tapOn:
+                id: 'ParkingParkingPermitZonesButton'
+            - assertVisible: 'Google Maps?'
+            - tapOn:
+                id: 'HeaderBackIcon'
       - assertVisible:
           id: 'ParkingSessionDetailsParkingTimeRow'
       - runFlow:
