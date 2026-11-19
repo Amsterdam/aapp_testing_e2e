@@ -28,4 +28,4 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: 'ConstructionWorkProjectTimelineItemAccordion'
     index: 1
-- assertVisible: "Opening supermarkt"
+- assertVisible: 'Opening supermarkt'

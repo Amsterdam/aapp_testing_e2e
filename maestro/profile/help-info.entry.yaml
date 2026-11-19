@@ -17,7 +17,7 @@ appId: nl.amsterdam.app.dev
             id: UserAboutScreenFeedbackButton
       - tapOn:
           id: UserAboutScreenFeedbackButton
-      - assertVisible: "Uw mening"
+      - assertVisible: 'Uw mening'
       - tapOn:
           id: HeaderBackButton
       - tapOn:
@@ -37,7 +37,7 @@ appId: nl.amsterdam.app.dev
     file: ./utils/accessibility-statement.yaml
 
 - runFlow:
-    label: "Check copy buttons"
+    label: 'Check copy buttons'
     commands:
       - tapOn:
           id: AboutVersionNumberText

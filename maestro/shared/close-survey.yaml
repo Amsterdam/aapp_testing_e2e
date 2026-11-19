@@ -7,4 +7,3 @@ appId: nl.amsterdam.app.dev
     commands:
       - tapOn:
           point: 50%, 50%
-            
