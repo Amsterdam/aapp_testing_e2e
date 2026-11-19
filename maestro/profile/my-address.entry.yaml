@@ -20,10 +20,8 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     label: Test Address Add Alert
     commands:
-      - assertVisible:
-          id: AddressAddedAlert
       - tapOn:
-          id: AddressAddedAlertCloseIcon
+          id: AddressAddedAlert
       - waitForAnimationToEnd
 
 - tapOn:
@@ -33,8 +31,6 @@ appId: nl.amsterdam.app.dev
 - runFlow:
     label: Test Address Delete Alert
     commands:
-      - assertVisible:
-          id: AddressDeletedAlert
       - tapOn:
           id: AddressDeletedAlert
       - waitForAnimationToEnd
