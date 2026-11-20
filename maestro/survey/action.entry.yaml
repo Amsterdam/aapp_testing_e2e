@@ -9,7 +9,7 @@ appId: nl.amsterdam.app.dev
 - tapOn:
     id: 'HomeEnvironmentSelectorTestButton'
 - assertVisible:
-    id: "HeaderNotificationHistoryButton"
+    id: 'HeaderNotificationHistoryButton'
     optional: true
 - tapOn:
     id: 'HeaderEnvironmentIcon'

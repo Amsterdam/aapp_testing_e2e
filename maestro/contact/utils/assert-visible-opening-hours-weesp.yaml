@@ -5,10 +5,10 @@ appId: nl.amsterdam.app.dev
     containsDescendants:
       - text: Stadsloket Weesp
 - assertVisible:
-    text: "Openingstijden"
+    text: 'Openingstijden'
 - assertVisible:
-    text: "Maandag, dinsdag, woensdag en vrijdag van 09.00 tot 17.00 uur"
-    below: "Openingstijden"
+    text: 'Maandag, dinsdag, woensdag en vrijdag van 09.00 tot 17.00 uur'
+    below: 'Openingstijden'
 - assertVisible:
-    text: "Donderdag van 09.00 tot 20.00 uur"
-    below: "Maandag, dinsdag, woensdag en vrijdag van 09.00 tot 17.00 uur"
+    text: 'Donderdag van 09.00 tot 20.00 uur'
+    below: 'Maandag, dinsdag, woensdag en vrijdag van 09.00 tot 17.00 uur'

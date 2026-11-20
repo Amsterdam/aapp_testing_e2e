@@ -26,6 +26,7 @@ appId: nl.amsterdam.app.dev
     id: ReportProblemWebViewScreen
 - tapOn:
     id: HeaderBackIcon
+- waitForAnimationToEnd
 - tapOn:
     text: Verlaat en verwijder antwoorden
 
